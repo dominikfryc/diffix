@@ -5,6 +5,10 @@ on:
     types:
       - published
 
+permissions:
+  statuses: write
+  deployments: write
+
 jobs:
   storybook:
     name: Publish Storybook to Netlify
