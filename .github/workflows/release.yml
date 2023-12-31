@@ -6,18 +6,17 @@ on:
       - main
       - next
 
-permissions:
-  contents: read
-
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+      statuses: write # to be able to write a GitHub status
+      deployments: write # to be able to publish a GitHub deployment
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,7 +30,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Install Playwright browsers
@@ -47,3 +46,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build Storybook
+        run: pnpm build:storybook
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1
+        with:
+          publish-dir: ./storybook-static
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-deployment-environment: Production
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
