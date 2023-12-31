@@ -12,7 +12,17 @@ const preview: Preview = {
   parameters: {
     docs: {
       source: {
-        transform: (input: string) => html(input, { indent_size: 2 }),
+        transform: (input: string) => {
+          const text = input
+            .replace(/></g, '>\n<')
+            .replace(/<([\w-]+)([^>]*)>\s+<\/([\w-]+)([^>]*)>/g, '<$1$2></$3$4>')
+            .replace(/=""/g, '')
+            .replace(/> </g, '>\n<')
+            .replace(/\/([\w-]+)>\s+([^<>]+\S)\s+<\//g, '/$1>\n$2\n</')
+            .replace(/<([\w-]+)([^>]*)>\s+([^<>]+\S)\s+<([\w-]+)/g, '<$1$2>\n$3\n<$4')
+            .replace(/<([\w-]+)([^>]*)>\s+([^<>]+\S)\s+<\/([\w-]+)>/g, '<$1$2>$3</$4>');
+          return html(text, { indent_size: 2 });
+        },
       },
     },
     options: {

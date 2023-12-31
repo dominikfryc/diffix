@@ -46,8 +46,7 @@ const ButtonTemplate = (args: Partial<Component>): TemplateResult =>
     target=${args.target ?? nothing}
     type=${args.type ?? nothing}
   >
-    ${args.start ? unsafeHTML(args.start) : nothing} ${args.slot ? unsafeHTML(args.slot) : nothing}
-    ${args.end ? unsafeHTML(args.end) : nothing}
+    ${unsafeHTML(args.start)} ${unsafeHTML(args.slot)} ${unsafeHTML(args.end)}
   </dfx-button>`;
 
 export const Default: Story = {

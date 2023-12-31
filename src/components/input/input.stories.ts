@@ -70,7 +70,7 @@ const InputTemplate = (args: Partial<Component>): TemplateResult =>
     helper-text=${args['helper-text'] ?? nothing}
     ?hide-label=${args['hide-label']}
   >
-    ${args.start ? unsafeHTML(args.start) : nothing} ${args.end ? unsafeHTML(args.end) : nothing}
+    ${unsafeHTML(args.start)} ${unsafeHTML(args.end)}
   </dfx-input>`;
 
 export const Default: Story = {
@@ -96,27 +96,26 @@ export const Default: Story = {
  * - `week`: Control for entering week number.
  */
 export const Types: Story = {
-  decorators: [
-    story => html`<div style="display: flex; flex-wrap: wrap; gap: 12px">${story()}</div>`,
-  ],
   render: args =>
-    html`${InputTemplate({ ...args, type: 'date', label: 'Date', value: '2024-01-01' })}
-    ${InputTemplate({
-      ...args,
-      type: 'datetime-local',
-      label: 'Date and time',
-      value: '2024-01-01T08:00',
-    })}
-    ${InputTemplate({ ...args, type: 'email', label: 'Email', value: 'john@doe.com' })}
-    ${InputTemplate({ ...args, type: 'month', label: 'Month', value: '2024-01' })}
-    ${InputTemplate({ ...args, type: 'number', label: 'Number', value: '4' })}
-    ${InputTemplate({ ...args, type: 'password', label: 'Password', value: 'password' })}
-    ${InputTemplate({ ...args, type: 'search', label: 'Search', value: 'News' })}
-    ${InputTemplate({ ...args, type: 'tel', label: 'Tel', value: '+1 785-156-8965' })}
-    ${InputTemplate({ ...args, type: 'text', label: 'Text', value: 'Note' })}
-    ${InputTemplate({ ...args, type: 'time', label: 'Time', value: '08:00' })}
-    ${InputTemplate({ ...args, type: 'url', label: 'URL', value: 'https://www.google.com' })}
-    ${InputTemplate({ ...args, type: 'week', label: 'Week', value: '2024-W01' })}`,
+    html`<div style="display: flex; flex-wrap: wrap; gap: 12px">
+      ${InputTemplate({ ...args, type: 'date', label: 'Date', value: '2024-01-01' })}
+      ${InputTemplate({
+        ...args,
+        type: 'datetime-local',
+        label: 'Date and time',
+        value: '2024-01-01T08:00',
+      })}
+      ${InputTemplate({ ...args, type: 'email', label: 'Email', value: 'john@doe.com' })}
+      ${InputTemplate({ ...args, type: 'month', label: 'Month', value: '2024-01' })}
+      ${InputTemplate({ ...args, type: 'number', label: 'Number', value: '4' })}
+      ${InputTemplate({ ...args, type: 'password', label: 'Password', value: 'password' })}
+      ${InputTemplate({ ...args, type: 'search', label: 'Search', value: 'News' })}
+      ${InputTemplate({ ...args, type: 'tel', label: 'Tel', value: '+1 785-156-8965' })}
+      ${InputTemplate({ ...args, type: 'text', label: 'Text', value: 'Note' })}
+      ${InputTemplate({ ...args, type: 'time', label: 'Time', value: '08:00' })}
+      ${InputTemplate({ ...args, type: 'url', label: 'URL', value: 'https://www.google.com' })}
+      ${InputTemplate({ ...args, type: 'week', label: 'Week', value: '2024-W01' })}
+    </div>`,
 };
 
 /**
