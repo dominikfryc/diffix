@@ -1,0 +1,72 @@
+:host {
+  display: grid;
+  gap: var(--dfx-spinner-gap);
+  justify-items: center;
+  width: fit-content;
+  contain: content;
+
+  --dfx-spinner-color: currentColor;
+  --dfx-spinner-font-family: var(
+    --dfx-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif
+  );
+  --dfx-spinner-font-size: var(--dfx-font-size-m, 0.875rem);
+  --dfx-spinner-gap: var(--dfx-size-2xs, 0.5rem);
+  --dfx-spinner-line-height: var(--dfx-line-height-m, 1.5);
+  --dfx-spinner-padding: 0;
+  --dfx-spinner-size: var(--dfx-size-2xl, 2rem);
+}
+
+:host([size='small']) {
+  --dfx-spinner-size: var(--dfx-size-m, 1rem);
+}
+
+:host([size='large']) {
+  --dfx-spinner-size: var(--dfx-size-4xl, 3rem);
+}
+
+span {
+  font-family: var(--dfx-spinner-font-family);
+  font-size: var(--dfx-spinner-font-size);
+  line-height: var(--dfx-spinner-line-height);
+}
+
+svg {
+  box-sizing: border-box;
+  width: var(--dfx-spinner-size);
+  height: var(--dfx-spinner-size);
+  padding: var(--dfx-spinner-padding);
+  animation: rotate 2s linear infinite;
+
+  & circle {
+    stroke: var(--dfx-spinner-color);
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

@@ -1,0 +1,179 @@
+:root {
+  /* Color gray */
+  --dfx-color-gray-50: #fafafa;
+  --dfx-color-gray-100: #f4f4f5;
+  --dfx-color-gray-200: #e4e4e7;
+  --dfx-color-gray-300: #d4d4d8;
+  --dfx-color-gray-400: #a1a1aa;
+  --dfx-color-gray-500: #71717a;
+  --dfx-color-gray-600: #52525b;
+  --dfx-color-gray-700: #3f3f46;
+  --dfx-color-gray-800: #27272a;
+  --dfx-color-gray-900: #18181b;
+  --dfx-color-gray-950: #09090b;
+
+  /* Color red */
+  --dfx-color-red-50: #fef2f2;
+  --dfx-color-red-100: #fee2e2;
+  --dfx-color-red-200: #fecaca;
+  --dfx-color-red-300: #fca5a5;
+  --dfx-color-red-400: #f87171;
+  --dfx-color-red-500: #ef4444;
+  --dfx-color-red-600: #dc2626;
+  --dfx-color-red-700: #b91c1c;
+  --dfx-color-red-800: #991b1b;
+  --dfx-color-red-900: #7f1d1d;
+  --dfx-color-red-950: #450a0a;
+
+  /* Color green */
+  --dfx-color-green-50: #f0fdf4;
+  --dfx-color-green-100: #dcfce7;
+  --dfx-color-green-200: #bbf7d0;
+  --dfx-color-green-300: #86efac;
+  --dfx-color-green-400: #4ade80;
+  --dfx-color-green-500: #22c55e;
+  --dfx-color-green-600: #16a34a;
+  --dfx-color-green-700: #15803d;
+  --dfx-color-green-800: #166534;
+  --dfx-color-green-900: #14532d;
+  --dfx-color-green-950: #052e16;
+
+  /* Color blue */
+  --dfx-color-blue-50: #eff6ff;
+  --dfx-color-blue-100: #dbeafe;
+  --dfx-color-blue-200: #bfdbfe;
+  --dfx-color-blue-300: #93c5fd;
+  --dfx-color-blue-400: #60a5fa;
+  --dfx-color-blue-500: #3b82f6;
+  --dfx-color-blue-600: #2563eb;
+  --dfx-color-blue-700: #1d4ed8;
+  --dfx-color-blue-800: #1e40af;
+  --dfx-color-blue-900: #1e3a8a;
+  --dfx-color-blue-950: #172554;
+
+  /* Color background */
+  --dfx-color-background-body: var(--dfx-color-gray-100);
+  --dfx-color-background-body-variant: var(--dfx-color-gray-200);
+  --dfx-color-background-surface: #ffffff;
+  --dfx-color-background-surface-variant: var(--dfx-color-gray-100);
+  --dfx-color-background-popover: #ffffff;
+  --dfx-color-background-popover-variant: var(--dfx-color-gray-100);
+  --dfx-color-background-border: var(--dfx-color-gray-300);
+  --dfx-color-background-border-variant: var(--dfx-color-gray-400);
+
+  /* Color text */
+  --dfx-color-text-dark: var(--dfx-color-gray-800);
+  --dfx-color-text-dark-variant: var(--dfx-color-gray-950);
+  --dfx-color-text-light: var(--dfx-color-gray-500);
+  --dfx-color-text-light-variant: var(--dfx-color-gray-600);
+
+  /* Color contrast */
+  --dfx-color-contrast-text: #ffffff;
+  --dfx-color-contrast-background: var(--dfx-color-gray-900);
+
+  /* Color primary */
+  --dfx-color-primary-dark: var(--dfx-color-blue-600);
+  --dfx-color-primary-dark-variant: var(--dfx-color-blue-700);
+  --dfx-color-primary-light: color-mix(in srgb, var(--dfx-color-blue-400) 10%, transparent);
+  --dfx-color-primary-light-variant: color-mix(in srgb, var(--dfx-color-blue-400) 20%, transparent);
+
+  /* Color neutral */
+  --dfx-color-neutral-dark: var(--dfx-color-gray-700);
+  --dfx-color-neutral-dark-variant: var(--dfx-color-gray-800);
+  --dfx-color-neutral-light: color-mix(in srgb, var(--dfx-color-gray-400) 10%, transparent);
+  --dfx-color-neutral-light-variant: color-mix(in srgb, var(--dfx-color-gray-400) 20%, transparent);
+
+  /* Color success */
+  --dfx-color-success-dark: var(--dfx-color-green-700);
+  --dfx-color-success-dark-variant: var(--dfx-color-green-800);
+  --dfx-color-success-light: color-mix(in srgb, var(--dfx-color-green-400) 10%, transparent);
+  --dfx-color-success-light-variant: color-mix(in srgb, var(--dfx-color-green-400) 20%, transparent);
+
+  /* Color danger */
+  --dfx-color-danger-dark: var(--dfx-color-red-600);
+  --dfx-color-danger-dark-variant: var(--dfx-color-red-700);
+  --dfx-color-danger-light: color-mix(in srgb, var(--dfx-color-red-400) 10%, transparent);
+  --dfx-color-danger-light-variant: color-mix(in srgb, var(--dfx-color-red-400) 20%, transparent);
+
+  /* Typography */
+  --dfx-font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Font sizes */
+  --dfx-font-size-xs: 0.625rem; /* 10px */
+  --dfx-font-size-s: 0.75rem; /* 12px */
+  --dfx-font-size-m: 0.875rem; /* 14px */
+  --dfx-font-size-l: 1rem; /* 16px */
+  --dfx-font-size-xl: 1.25rem; /* 20px */
+  --dfx-font-size-2xl: 1.5rem; /* 24px */
+  --dfx-font-size-3xl: 1.75rem; /* 28px */
+  --dfx-font-size-4xl: 2rem; /* 32px */
+
+  /* Font weights */
+  --dfx-font-weight-regular: 400;
+  --dfx-font-weight-medium: 500;
+  --dfx-font-weight-semibold: 600;
+  --dfx-font-weight-bold: 700;
+
+  /* Line heights */
+  --dfx-line-height-s: 1.25;
+  --dfx-line-height-m: 1.5;
+  --dfx-line-height-l: 1.75;
+
+  /* Border radius */
+  --dfx-border-radius-s: 0.25rem; /* 4px */
+  --dfx-border-radius-m: 0.375rem; /* 6px */
+  --dfx-border-radius-l: 0.5rem; /* 8px */
+  --dfx-border-radius-full: 62.438rem; /* 999px */
+
+  /* Box shadows */
+  --dfx-box-shadow-s: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  --dfx-box-shadow-m: 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.1);
+  --dfx-box-shadow-l: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
+
+  /* Forms */
+  --dfx-form-disabled-opacity: 0.5;
+  --dfx-form-outline-offset: 0.125rem; /* 2px */
+
+  /* Transitions */
+  --dfx-transition-fast: 0.1s ease-in-out;
+  --dfx-transition-medium: 0.2s ease-in-out;
+  --dfx-transition-slow: 0.4s ease-in-out;
+
+  /* Spacing */
+  --dfx-size-5xs: 0.0625rem; /* 1px */
+  --dfx-size-4xs: 0.125rem; /* 2px */
+  --dfx-size-3xs: 0.25rem; /* 4px */
+  --dfx-size-2xs: 0.5rem; /* 8px */
+  --dfx-size-xs: 0.75rem; /* 12px */
+  --dfx-size-s: 0.875rem; /* 14px */
+  --dfx-size-m: 1rem; /* 16px */
+  --dfx-size-l: 1.25rem; /* 20px */
+  --dfx-size-xl: 1.5rem; /* 24px */
+  --dfx-size-2xl: 2rem; /* 32px */
+  --dfx-size-3xl: 2.5rem; /* 40px */
+  --dfx-size-4xl: 3rem; /* 48px */
+  --dfx-size-5xl: 4rem; /* 64px */
+
+  /* Z-indexes */
+  --dfx-z-index-overlay: 100;
+  --dfx-z-index-dialog: 200;
+  --dfx-z-index-popover: 300;
+  --dfx-z-index-notification: 400;
+  --dfx-z-index-tooltip: 500;
+
+  /* Set default styles */
+  color: var(--dfx-color-text-dark);
+  background-color: var(--dfx-color-background-body);
+  font-family: var(--dfx-font-family);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Prevent flashing of unstyled components */
+  :not(:defined) {
+    visibility: hidden;
+  }
+}

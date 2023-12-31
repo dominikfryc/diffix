@@ -1,0 +1,43 @@
+:host {
+  display: inline-block;
+  width: fit-content;
+  contain: layout;
+  outline: none;
+
+  --dfx-checkbox-group-direction: column;
+  --dfx-checkbox-group-gap: var(--dfx-size-2xs, 0.5rem);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+}
+
+:host([disabled]) dfx-label {
+  opacity: var(--dfx-form-disabled-opacity, 0.5);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: var(--dfx-checkbox-group-gap);
+}
+
+[part='container'] {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: var(--dfx-checkbox-group-direction);
+  gap: var(--dfx-checkbox-group-gap) calc(var(--dfx-checkbox-group-gap) * 2);
+}
+
+dfx-label[type='error'] {
+  margin-top: var(--dfx-checkbox-group-gap);
+}

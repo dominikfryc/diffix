@@ -1,0 +1,94 @@
+:host {
+  display: block;
+  contain: content;
+
+  --dfx-alert-border-radius: var(--dfx-border-radius-l, 0.5rem);
+  --dfx-alert-box-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-alert-color-light-variant);
+  --dfx-alert-color-icon: var(--dfx-alert-color-dark);
+  --dfx-alert-color-background: var(--dfx-alert-color-light);
+  --dfx-alert-font-family: var(
+    --dfx-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif
+  );
+  --dfx-alert-font-size: var(--dfx-font-size-m, 0.875rem);
+  --dfx-alert-gap: var(--dfx-size-xs, 0.75rem);
+  --dfx-alert-line-height: var(--dfx-line-height-m, 1.5);
+  --dfx-alert-icon-size: calc(var(--dfx-alert-line-height) * var(--dfx-alert-font-size));
+  --dfx-alert-padding: var(--dfx-size-m, 1rem);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+div[role='alert'] {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: var(--dfx-alert-border-radius);
+  background-color: var(--dfx-alert-color-background);
+  font-family: var(--dfx-alert-font-family);
+  font-size: var(--dfx-alert-font-size);
+  line-height: var(--dfx-alert-line-height);
+  box-shadow: var(--dfx-alert-box-shadow);
+  padding: var(--dfx-alert-padding);
+  gap: var(--dfx-alert-gap);
+
+  & .content {
+    display: grid;
+    width: 100%;
+    gap: var(--dfx-alert-gap);
+  }
+
+  & .icon {
+    color: var(--dfx-alert-color-icon);
+    width: var(--dfx-alert-icon-size);
+    height: var(--dfx-alert-icon-size);
+  }
+}
+
+.icon svg,
+::slotted([slot='icon']) {
+  width: var(--dfx-alert-icon-size);
+  height: var(--dfx-alert-icon-size);
+}
+
+.close-button {
+  --dfx-button-color-background-hover: var(--dfx-alert-color-light-variant);
+  --dfx-button-height: var(--dfx-alert-icon-size);
+  --dfx-button-line-height: calc(var(--dfx-alert-icon-size) * 0.8);
+  --dfx-button-padding: calc(var(--dfx-alert-icon-size) * 0.1);
+}
+
+:host([theme='primary']) {
+  --dfx-alert-color-dark: var(--dfx-color-primary-dark, #2563eb);
+  --dfx-alert-color-dark-variant: var(--dfx-color-primary-dark-variant, #1d4ed8);
+  --dfx-alert-color-light: var(--dfx-color-primary-light, #60a5fa1a);
+  --dfx-alert-color-light-variant: var(--dfx-color-primary-light-variant, #60a5fa33);
+}
+
+:host([theme='neutral']) {
+  --dfx-alert-color-dark: var(--dfx-color-neutral-dark, #374151);
+  --dfx-alert-color-dark-variant: var(--dfx-color-neutral-dark-variant, #1f2937);
+  --dfx-alert-color-light: var(--dfx-color-neutral-light, #a1a1aa1a);
+  --dfx-alert-color-light-variant: var(--dfx-color-neutral-light-variant, #a1a1aa33);
+}
+
+:host([theme='success']) {
+  --dfx-alert-color-dark: var(--dfx-color-success-dark, #15803d);
+  --dfx-alert-color-dark-variant: var(--dfx-color-success-dark-variant, #166534);
+  --dfx-alert-color-light: var(--dfx-color-success-light, #4ade801a);
+  --dfx-alert-color-light-variant: var(--dfx-color-success-light-variant, #4ade8033);
+}
+
+:host([theme='danger']) {
+  --dfx-alert-color-dark: var(--dfx-color-danger-dark, #dc2626);
+  --dfx-alert-color-dark-variant: var(--dfx-color-danger-dark-variant, #b91c1c);
+  --dfx-alert-color-light: var(--dfx-color-danger-light, #f871711a);
+  --dfx-alert-color-light-variant: var(--dfx-color-danger-light-variant, #f8717133);
+}

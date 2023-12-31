@@ -1,0 +1,105 @@
+import { Meta, Canvas, Source } from '@storybook/blocks';
+import * as Stories from './stories/customization.stories';
+
+<Meta title="Customization" />
+
+# Customization
+
+Diffix Design System can be customized at a high level through [design tokens](/?path=/docs/customization--documentation). This gives you control over theme colors and general styling. For more advanced customizations, you can make use of component variables to target individual components.
+
+One of the core principles of Web Components is the encapsulation. The HTML and styles are encapsulated in the Shadow DOM. This avoids conflicts with any CSS styles used in the rest of the application, but also makes customization harder. However, thanks to [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), which cascade inside the Shadow DOM, and [CSS shadow parts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_shadow_parts), styling Web Components is very easy.
+
+## Default theme
+
+Design tokens are accessed through CSS custom properties that are defined in the `:root` block of theme styles. Because design tokens are global, they're always prefixed with `--dfx` to avoid collisions with other libraries.
+
+To use the default theme, import the CSS file.
+
+1) Using an application bundler (Webpack, Rollup, Vite, etc.):
+
+<Source language="ts" code={`
+import 'diffix-test/themes/default.css';
+`} />
+
+2) Or using a `<link>` tag:
+
+<Source language="html" code={`
+<link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
+`} />
+
+### Dark theme
+
+To use the dark theme, import the CSS file of the default theme and the dark theme.
+
+1) Using an application bundler (Webpack, Rollup, Vite, etc.):
+
+<Source language="ts" code={`
+import 'diffix-test/themes/default.css';
+import 'diffix-test/themes/dark.css';
+`} />
+
+2) Or using a `<link>` tag:
+
+<Source language="html" code={`
+<link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
+<link href="/node_modules/diffix-test/dist/themes/dark.css" rel="stylesheet" />
+`} />
+
+Dark theme is not applied automatically. Use the `data-theme` attribute on the `<html>` element to switch between the light and dark themes. In this example, we use the attribute on other element than `<html>`, so that the theme is only applied to the inner content:
+
+<style>{`
+  #story--getting-started--dark-theme-inner div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  [data-theme='custom'] {
+    padding: 0;
+  }
+`}</style>
+<Canvas sourceState="shown" of={Stories.DarkTheme} />
+
+If you want implement theme toggle, save the prefered theme outside the current session or auto-detect the user system preference theme, check out our [simple demo](https://github.com/dominikfryc/diffix-test/blob/next/demo/) which implements these features.
+
+## Custom theme
+
+Theme is basically just a set of CSS custom variables. You can customize them and use them in your own application with pure CSS — no preprocessor required. There are two similar ways to create a custom theme:
+
+1. Create a custom theme by extending the default theme. Import the CSS file of the default theme and then your custom styles. You can extend the default theme by defining the same CSS custom properties with different values inside your styles.
+
+2. Create a custom theme from scratch. Copy the content of the default theme and change the values of the variables. Then, import the CSS file of the custom theme instead of the default theme.
+
+Default theme is automatically applied, because it is declared in `:root` block. If you want to use more themes in your application, you can import them all and switch between them using the `data-theme` attribute, as shown in the previous section.
+
+### Font
+
+Diffix is using [Inter](https://fonts.google.com/specimen/Inter) as the default font. To use it, import it from Google Fonts:
+
+<Source language="html" code={`
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+`} />
+
+You don't have to use Inter. If you don't import it, components will fall back to the system font stack. It uses Segoe UI on Windows, San Francisco on macOS and iOS, and Roboto on Android and Chrome OS.
+
+You can use any font you want, but we recommend using a font that is optimized for the web. You can use any font widely available in browsers, import your local hosted font or use external font service such as [Google Fonts](https://fonts.google.com/). To use the imported font in the theme, define the `--dfx-font-family` CSS custom property inside your theme styles.
+
+In this example, you can see a custom theme with a customized font, primary colors, and border radius:
+
+<Canvas sourceState="shown" of={Stories.CustomTheme} />
+
+## Customizing components
+
+All components are built with CSS custom properties and CSS shadow parts for easy customization. They can use global design tokens from the theme, or define their own variables if no theme is used. For a list of all options a target component accepts, view the "CSS Custom Properties" and "CSS Shadow Parts" sections of its API reference.
+
+### CSS Custom Properties
+
+Diffix components provide variables that exist at the component level. They start with prefix `--dfx-component-name`, such as `--dfx-button`. For example, you can use CSS Custom Property `--dfx-button-border-radius` to change the border radius of `<dfx-button>`:
+
+<Canvas sourceState="shown" of={Stories.CSSCustomProperty} />
+
+### CSS Shadow Parts
+
+For more complex customization, we can use CSS shadow parts on specific elements in the components' Shadow DOM, so that the user can restyle them using standard CSS. To access the CSS shadow part in styles, use CSS part selector `::part()`. For example, you can use CSS shadow part `button` to change the `text-decoration` property of the element inside the Shadow DOM of `<dfx-button>`:
+
+<Canvas sourceState="shown" of={Stories.CSSPart} />

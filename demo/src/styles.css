@@ -1,0 +1,43 @@
+/* Page styles */
+
+html {
+  color: var(--dfx-color-text-dark);
+  background-color: var(--dfx-color-background-body);
+  color-scheme: light dark;
+}
+
+body {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding-inline: var(--dfx-size-2xl);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin-block: var(--dfx-size-2xl);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: var(--dfx-size-m);
+}
+
+article {
+  background-color: var(--dfx-color-background-surface);
+  border-radius: var(--dfx-border-radius-l);
+  padding: var(--dfx-size-2xl);
+  margin-bottom: var(--dfx-size-2xl);
+  box-shadow: var(--dfx-box-shadow-s);
+  display: grid;
+  gap: var(--dfx-size-m);
+
+  div {
+    display: flex;
+    gap: var(--dfx-size-2xs);
+  }
+}

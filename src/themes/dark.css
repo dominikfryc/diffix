@@ -1,0 +1,39 @@
+[data-theme='dark'] {
+  color-scheme: light dark;
+
+  /* Color background */
+  --dfx-color-background-body: var(--dfx-color-gray-950);
+  --dfx-color-background-body-variant: var(--dfx-color-gray-900);
+  --dfx-color-background-surface: var(--dfx-color-gray-900);
+  --dfx-color-background-surface-variant: var(--dfx-color-gray-800);
+  --dfx-color-background-popover: var(--dfx-color-gray-800);
+  --dfx-color-background-popover-variant: var(--dfx-color-gray-700);
+  --dfx-color-background-border: var(--dfx-color-gray-600);
+  --dfx-color-background-border-variant: var(--dfx-color-gray-500);
+
+  /* Color text */
+  --dfx-color-text-dark: var(--dfx-color-gray-200);
+  --dfx-color-text-dark-variant: var(--dfx-color-gray-100);
+  --dfx-color-text-light: var(--dfx-color-gray-400);
+  --dfx-color-text-light-variant: var(--dfx-color-gray-300);
+
+  /* Color contrast */
+  --dfx-color-contrast-text: var(--dfx-color-gray-900);
+  --dfx-color-contrast-background: #ffffff;
+
+  /* Color primary */
+  --dfx-color-primary-dark: var(--dfx-color-blue-400);
+  --dfx-color-primary-dark-variant: var(--dfx-color-blue-300);
+
+  /* Color neutral */
+  --dfx-color-neutral-dark: var(--dfx-color-gray-400);
+  --dfx-color-neutral-dark-variant: var(--dfx-color-gray-300);
+
+  /* Color success */
+  --dfx-color-success-dark: var(--dfx-color-green-400);
+  --dfx-color-success-dark-variant: var(--dfx-color-green-300);
+
+  /* Color danger */
+  --dfx-color-danger-dark: var(--dfx-color-red-400);
+  --dfx-color-danger-dark-variant: var(--dfx-color-red-300);
+}

@@ -1,0 +1,223 @@
+{
+  "name": "diffix-test",
+  "version": "0.0.0",
+  "description": "Web Components UI Library",
+  "keywords": [
+    "components",
+    "web-components",
+    "custom-elements",
+    "component-library",
+    "ui-components",
+    "design-system"
+  ],
+  "homepage": "https://www.diffix.dev",
+  "bugs": "https://github.com/dominikfryc/diffix-test/issues",
+  "license": "MIT",
+  "author": "Dominik Fryč <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
+  "funding": "https://ko-fi.com/dominikfryc",
+  "repository": "github:dominikfryc/diffix-test",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./themes/*": {
+      "import": "./dist/themes/*"
+    }
+  },
+  "customElements": "./dist/custom-elements.json",
+  "scripts": {
+    "build": "pnpm build:lib && pnpm build:manifest && pnpm build:types",
+    "build:lib": "vite build",
+    "build:manifest": "cem analyze --globs 'src/components/**/!(*.stories|*.test).ts' --litelement --outdir dist",
+    "build:types": "tsc --emitDeclarationOnly -p tsconfig.build.json",
+    "build:storybook": "pnpm build:manifest && storybook build",
+    "check:types": "tsc --noEmit -p tsconfig.json",
+    "format": "pnpm format:eslint && pnpm format:prettier",
+    "format:eslint": "eslint --ext .ts . --fix --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "generate": "node scripts/generate/index.js",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier",
+    "lint:eslint": "eslint --ext .ts . --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "prepare": "husky install",
+    "start": "concurrently -k -r \"storybook dev -p 6006 --no-open\" \"pnpm build:manifest --watch\"",
+    "test": "web-test-runner --coverage",
+    "test:watch": "web-test-runner --watch"
+  },
+  "dependencies": {
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@open-wc/form-control": "^1.0.0",
+    "@open-wc/form-helpers": "^1.0.0",
+    "@open-wc/testing": "^4.0.0",
+    "@storybook/addon-a11y": "^7.6.6",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-themes": "^7.6.6",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/web-components": "^7.6.6",
+    "@storybook/web-components-vite": "^7.6.6",
+    "@types/mocha": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "@web/dev-server-esbuild": "^1.0.1",
+    "@web/rollup-plugin-copy": "^0.5.1",
+    "@web/test-runner": "^0.18.0",
+    "@web/test-runner-playwright": "^0.11.0",
+    "commitizen": "^4.3.0",
+    "concurrently": "^8.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-lit": "^1.10.1",
+    "eslint-plugin-lit-a11y": "^4.1.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-wc": "^2.0.4",
+    "glob": "^10.3.10",
+    "husky": "^8.0.0",
+    "js-beautify": "^1.14.11",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "semantic-release": "^22.0.12",
+    "storybook": "^7.6.6",
+    "ts-lit-plugin": "^2.0.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:wc/recommended",
+      "plugin:lit/recommended",
+      "plugin:lit-a11y/recommended",
+      "plugin:storybook/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "unused-imports",
+      "lit-a11y"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix --ignore-path .gitignore",
+      "prettier --write --ignore-path .gitignore"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalCommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Performance Improvements"
+              },
+              {
+                "type": "revert",
+                "section": "Reverts"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation",
+                "hidden": false
+              },
+              {
+                "type": "chore",
+                "section": "Miscellaneous Chores",
+                "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": "Code Refactoring",
+                "hidden": false
+              },
+              {
+                "type": "test",
+                "section": "Tests",
+                "hidden": false
+              },
+              {
+                "type": "build",
+                "section": "Build System",
+                "hidden": false
+              },
+              {
+                "type": "ci",
+                "section": "Continuous Integration",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ],
+    "branches": [
+      "main",
+      {
+        "name": "next",
+        "prerelease": true
+      }
+    ]
+  }
+}

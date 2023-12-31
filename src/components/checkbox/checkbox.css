@@ -1,0 +1,135 @@
+:host {
+  display: inline-block;
+  contain: layout;
+
+  --dfx-checkbox-border-radius: var(--dfx-border-radius-m, 0.375rem);
+  --dfx-checkbox-box-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-color-background-border, #d4d4d8);
+  --dfx-checkbox-box-shadow-checked: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-checkbox-color);
+  --dfx-checkbox-box-shadow-error: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-color-danger-dark, #dc2626);
+  --dfx-checkbox-color: var(--dfx-color-primary-dark, #2563eb);
+  --dfx-checkbox-check-size: var(--dfx-size-xs, 0.75rem);
+  --dfx-checkbox-focus-offset: var(--dfx-form-outline-offset, 0.25rem);
+  --dfx-checkbox-font-family: var(
+    --dfx-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif
+  );
+  --dfx-checkbox-font-size: var(--dfx-font-size-m, 0.875rem);
+  --dfx-checkbox-gap: var(--dfx-size-2xs, 0.5rem);
+  --dfx-checkbox-line-height: var(--dfx-line-height-m, 1.5);
+  --dfx-checkbox-size: var(--dfx-size-l, 1.25rem);
+  --dfx-checkbox-switch-size: var(--dfx-size-2xl, 2rem);
+  --dfx-checkbox-transition: all var(--dfx-transition-medium, 0.2s ease-in-out);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([disabled]) label {
+  cursor: not-allowed;
+}
+
+:host([disabled]) input {
+  background-color: var(--dfx-color-background-border, #d1d5db);
+  box-shadow: var(--dfx-checkbox-box-shadow);
+  pointer-events: none;
+}
+
+:host([disabled]) [part='label'] {
+  opacity: var(--dfx-form-disabled-opacity, 0.5);
+}
+
+label {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto 1fr;
+  gap: var(--dfx-checkbox-gap);
+}
+
+input {
+  display: inline-block;
+  width: var(--dfx-checkbox-size);
+  height: var(--dfx-checkbox-size);
+  box-sizing: border-box;
+  background-color: transparent;
+  box-shadow: var(--dfx-checkbox-box-shadow);
+  transition: var(--dfx-checkbox-transition);
+  border-radius: var(--dfx-checkbox-border-radius);
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+
+  &:checked {
+    background-color: var(--dfx-checkbox-color);
+    box-shadow: var(--dfx-checkbox-box-shadow-checked);
+  }
+
+  &::after {
+    --dfx-checkbox-check-color: transparent;
+    --dfx-checkbox-switch-gap: calc(
+      (var(--dfx-checkbox-size) - var(--dfx-checkbox-check-size)) / 2
+    );
+    content: '';
+    display: block;
+    width: var(--dfx-checkbox-check-size);
+    height: var(--dfx-checkbox-check-size);
+    mask-image: url('data:image/svg+xml, <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5546 1.16805C11.0141 1.4744 11.1383 2.09527 10.8319 2.55479L6.032 9.75471C5.86581 10.004 5.59662 10.1656 5.29849 10.1951C5.00036 10.2247 4.7047 10.119 4.49286 9.90712L1.29289 6.70715C0.90237 6.31663 0.90237 5.68347 1.29289 5.29295C1.68341 4.90243 2.31657 4.90243 2.70709 5.29295L5.04453 7.6304L9.16786 1.4454C9.47421 0.985877 10.0951 0.861705 10.5546 1.16805Z" fill="black"/></svg>');
+    mask-size: contain;
+    background-color: var(--dfx-checkbox-check-color);
+    margin: var(--dfx-checkbox-switch-gap);
+    transition: var(--dfx-checkbox-transition);
+  }
+
+  &:checked::after {
+    --dfx-checkbox-check-color: var(--dfx-color-contrast-text);
+  }
+
+  &:focus-visible {
+    outline: auto;
+    outline-offset: var(--dfx-checkbox-focus-offset);
+  }
+}
+
+[part='label'] {
+  font-family: var(--dfx-checkbox-font-family);
+  font-size: var(--dfx-checkbox-font-size);
+  line-height: var(--dfx-checkbox-line-height);
+}
+
+.dirty input:invalid {
+  --dfx-checkbox-box-shadow: var(--dfx-checkbox-box-shadow-error);
+}
+
+:host([type='switch']) input {
+  --dfx-checkbox-border-radius: var(--dfx-border-radius-full, 62.438rem);
+  width: var(--dfx-checkbox-switch-size);
+}
+
+:host([type='switch']) input::after {
+  --dfx-checkbox-check-color: var(--dfx-color-background-border-variant, #9ca3af);
+  mask: none;
+  border-radius: var(--dfx-border-radius-full, 62.438rem);
+}
+
+:host([type='switch']) input:checked::after {
+  --dfx-checkbox-check-color: var(--dfx-color-contrast-text, #ffffff);
+  transform: translateX(
+    calc(
+      var(--dfx-checkbox-switch-size) - var(--dfx-checkbox-check-size) -
+        (var(--dfx-checkbox-switch-gap) * 2)
+    )
+  );
+}
+
+:host([type='switch']):host([disabled]) input::after {
+  --dfx-checkbox-check-color: var(--dfx-color-contrast-text, #ffffff);
+}

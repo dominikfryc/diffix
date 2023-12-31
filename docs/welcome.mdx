@@ -1,0 +1,63 @@
+import { Meta, Unstyled } from '@storybook/blocks';
+import icon from './assets/icon.svg';
+import storybook from "./assets/storybook.svg";
+import github from "./assets/github.svg";
+import npm from "./assets/npm.svg";
+
+<Meta title="Welcome" />
+
+<img src={icon} alt="Diffix Icon" width="72" />
+<Unstyled>
+  <h1>Diffix</h1>
+  <h2>Web Components</h2>
+</Unstyled>
+<div className="links">
+  <dfx-button href="https://www.diffix.dev" target="_blank"><img slot="start" src={storybook} alt="Diffix on Storybook" />Storybook</dfx-button>
+  <dfx-button href="https://github.com/dominikfryc/diffix-test" target="_blank"><img slot="start" src={github} alt="Diffix on Github" />GitHub</dfx-button>
+  <dfx-button href="https://www.npmjs.com/package/diffix-test" target="_blank"><img slot="start" src={npm} alt="Diffix on npm" />npm</dfx-button>
+</div>
+
+<style>
+  {`
+  .sbdocs-content {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--dfx-font-family);
+    margin: 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 8rem;
+    letter-spacing: -0.45rem;
+    padding-right: 1rem;
+  }
+
+  h2 {
+    color: #6C7793;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .sb-unstyled {
+    margin-block: 1.5rem 2.5rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 0.5rem;
+
+    img {
+      width: 1.25rem;
+      max-width: none;
+    }
+  }
+  `}
+</style>

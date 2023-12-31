@@ -1,0 +1,98 @@
+:host {
+  display: inline-block;
+  contain: content;
+  width: var(--dfx-textarea-width);
+
+  --dfx-textarea-border-radius: var(--dfx-border-radius-m, 0.375rem);
+  --dfx-textarea-box-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-color-background-border, #d4d4d8);
+  --dfx-textarea-box-shadow-active: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-color-background-border-variant, #9ca3af);
+  --dfx-textarea-box-shadow-error: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
+    var(--dfx-color-danger-dark, #dc2626);
+  --dfx-textarea-color-background: var(--dfx-color-background-surface, #ffffff);
+  --dfx-textarea-color-text: var(--dfx-color-text-dark, #1f2937);
+  --dfx-textarea-font-family: var(
+    --dfx-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif
+  );
+  --dfx-textarea-font-size: var(--dfx-font-size-m, 0.875rem);
+  --dfx-textarea-gap: var(--dfx-size-2xs, 0.5rem);
+  --dfx-textarea-height: auto;
+  --dfx-textarea-line-height: var(--dfx-line-height-m, 1.5);
+  --dfx-textarea-padding: var(--dfx-size-2xs, 0.5rem) var(--dfx-size-xs, 0.75rem);
+  --dfx-textarea-width: calc(var(--dfx-size-3xl, 2.5rem) * 5);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([disabled]) label {
+  cursor: not-allowed;
+  --dfx-textarea-color-background: var(--dfx-color-background-surface-variant, #f3f4f6);
+  --dfx-textarea-color-text: var(--dfx-color-text-light, #6b7280);
+}
+
+:host([disabled]) textarea {
+  pointer-events: none;
+}
+
+:host([disabled]) dfx-label {
+  opacity: var(--dfx-form-disabled-opacity, 0.5);
+}
+
+[part='container'] {
+  display: grid;
+  gap: var(--dfx-textarea-gap);
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--dfx-textarea-height);
+  padding: var(--dfx-textarea-padding);
+  font-family: var(--dfx-textarea-font-family);
+  color: var(--dfx-textarea-color-text);
+  font-size: var(--dfx-textarea-font-size);
+  line-height: var(--dfx-textarea-line-height);
+  background-color: var(--dfx-textarea-color-background);
+  border-radius: var(--dfx-textarea-border-radius);
+  box-shadow: var(--dfx-textarea-box-shadow);
+  resize: vertical;
+  border: none;
+  outline: 0;
+  margin: 0;
+
+  &:focus-visible {
+    --dfx-textarea-box-shadow: var(--dfx-textarea-box-shadow-active);
+  }
+
+  &::placeholder {
+    opacity: var(--dfx-form-disabled-opacity, 0.5);
+  }
+}
+
+.invalid.dirty textarea {
+  --dfx-textarea-box-shadow: var(--dfx-textarea-box-shadow-error);
+}
+
+::-webkit-resizer {
+  background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path d="M7 18L18 7M13 18L18 13" stroke="%239ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.description {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr auto;
+  gap: var(--dfx-textarea-gap);
+
+  #character-count {
+    grid-column: 2;
+  }
+}
