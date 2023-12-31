@@ -11,7 +11,6 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Configure coverage */
   coverageConfig: {
     include: ['./src/**/*.ts'],
-    reportDir: 'dist/coverage',
   },
 
   /** Filter out lit dev mode logs */
