@@ -21,7 +21,7 @@ export default defineConfig({
     rollupOptions: {
       output: [
         {
-          chunkFileNames: 'chunks/[name]-[hash].js',
+          chunkFileNames: 'assets/[name]-[hash].js',
         },
       ],
     },
