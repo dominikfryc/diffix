@@ -312,7 +312,8 @@ export class Input extends FormControlMixin(LitElement) {
             part="button"
             variant="text"
             label="Decrease value by ${step}"
-            ?disabled=${this.disabled || (this.min && Number(this.value) <= Number(this.min))}
+            ?disabled=${this.disabled ||
+            (this.min !== undefined ? Number(this.value) <= this.min : false)}
             @dfx-click="${this.#decreaseValue}"
           >
             ${unsafeSVG(minusIcon)}
@@ -324,7 +325,8 @@ export class Input extends FormControlMixin(LitElement) {
             part="button"
             variant="text"
             label="Increase value by ${step}"
-            ?disabled=${this.disabled || (this.max && Number(this.value) >= Number(this.max))}
+            ?disabled=${this.disabled ||
+            (this.max !== undefined ? Number(this.value) >= this.max : false)}
             @dfx-click="${this.#increaseValue}"
           >
             ${unsafeSVG(plusIcon)}
