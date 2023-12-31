@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   storybook:
-    name: Publish Storybook to Netlify
+    name: Storybook
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
