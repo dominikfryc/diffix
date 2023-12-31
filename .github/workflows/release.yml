@@ -53,8 +53,10 @@ jobs:
         with:
           publish-dir: ./storybook-static
           production-deploy: true
+          deploy-message: ${{ github.event.head_commit.message }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-deployment-environment: Production
+          github-deployment-description: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
