@@ -49,8 +49,7 @@
 
 label {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
   gap: var(--dfx-checkbox-gap);
 }
 

@@ -36,10 +36,10 @@
   line-height: var(--dfx-button-line-height);
   font-weight: var(--dfx-button-font-weight);
   padding: var(--dfx-button-padding);
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   align-items: center;
   text-align: center;
+  width: 100%;
   height: var(--dfx-button-height);
   transition: var(--dfx-button-transition);
   outline-offset: var(--dfx-button-focus-offset);

@@ -54,8 +54,7 @@
 }
 
 [part='control'] {
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   align-items: center;
   box-sizing: border-box;
   width: 100%;

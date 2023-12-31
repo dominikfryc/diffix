@@ -88,8 +88,7 @@ textarea {
 
 .description {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: var(--dfx-textarea-gap);
 
   #character-count {
