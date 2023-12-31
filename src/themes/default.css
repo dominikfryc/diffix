@@ -87,7 +87,11 @@
   --dfx-color-success-dark: var(--dfx-color-green-700);
   --dfx-color-success-dark-variant: var(--dfx-color-green-800);
   --dfx-color-success-light: color-mix(in srgb, var(--dfx-color-green-400) 10%, transparent);
-  --dfx-color-success-light-variant: color-mix(in srgb, var(--dfx-color-green-400) 20%, transparent);
+  --dfx-color-success-light-variant: color-mix(
+    in srgb,
+    var(--dfx-color-green-400) 20%,
+    transparent
+  );
 
   /* Color danger */
   --dfx-color-danger-dark: var(--dfx-color-red-600);
@@ -171,9 +175,4 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
-
-  /* Prevent flashing of unstyled components */
-  :not(:defined) {
-    visibility: hidden;
-  }
 }

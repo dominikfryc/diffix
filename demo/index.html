@@ -7,7 +7,10 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
     <style>
       body {
         opacity: 0;
@@ -17,10 +20,16 @@
         opacity: 1;
         transition: opacity 0.25s ease-in-out;
       }
+
+      :not(:defined) {
+        visibility: hidden;
+      }
     </style>
     <script>
       // Set theme as soon as possible to prevent flashing on page load
-      const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
       const theme = localStorage.getItem('theme') || browserTheme;
       setTheme(theme);
 
