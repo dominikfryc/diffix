@@ -105,8 +105,8 @@ Special thanks to the following projects that help make this project possible:
 
 ## Contribute
 
-As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. If you want to contribute to the code, please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/main/CONTRIBUTING.md).
+As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. If you want to contribute to the code, please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/CONTRIBUTING.md).
 
 ## License
 
-Diffix was created by [Dominik Fryč](https://github.com/dominikfryc). It's available under the [MIT license](https://github.com/dominikfryc/diffix-test/blob/main/LICENSE.md). You can use it in any project, commercial or not, with or without attribution.
+Diffix was created by [Dominik Fryč](https://github.com/dominikfryc). It's available under the [MIT license](https://github.com/dominikfryc/diffix-test/blob/next/LICENSE.md). You can use it in any project, commercial or not, with or without attribution.
