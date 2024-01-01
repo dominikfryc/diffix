@@ -52,6 +52,9 @@ devDependencies:
   '@storybook/web-components-vite':
     specifier: ^7.6.6
     version: 7.6.6(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)(vite@5.0.2)
+  '@types/js-beautify':
+    specifier: ^1.14.3
+    version: 1.14.3
   '@types/mocha':
     specifier: ^10.0.6
     version: 10.0.6
@@ -4141,6 +4144,10 @@ packages:
       '@types/istanbul-lib-report': 3.0.3
     dev: true
 
+  /@types/js-beautify@1.14.3:
+    resolution: {integrity: sha512-FMbQHz+qd9DoGvgLHxeqqVPaNRffpIu5ZjozwV8hf9JAGpIOzuAf4wGbRSo8LNITHqGjmmVjaMggTT5P4v4IHg==}
+    dev: true
+
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
@@ -4622,7 +4629,7 @@ packages:
       '@web/dev-server-core': 0.7.0
       '@web/dev-server-rollup': 0.6.1
       camelcase: 6.3.0
-      command-line-args: 5.1.2
+      command-line-args: 5.2.1
       command-line-usage: 7.0.1
       debounce: 1.2.1
       deepmerge: 4.3.1
@@ -4768,7 +4775,7 @@ packages:
       '@web/test-runner-core': 0.13.0
       '@web/test-runner-mocha': 0.9.0
       camelcase: 6.3.0
-      command-line-args: 5.1.2
+      command-line-args: 5.2.1
       command-line-usage: 7.0.1
       convert-source-map: 2.0.0
       diff: 5.1.0

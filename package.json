@@ -46,19 +46,17 @@
     "build:manifest": "cem analyze --globs 'src/components/**/!(*.stories|*.test).ts' --litelement --outdir dist",
     "build:types": "tsc --emitDeclarationOnly -p tsconfig.build.json",
     "build:storybook": "pnpm build:manifest && storybook build",
-    "check:types": "tsc --noEmit -p tsconfig.json",
     "commit": "git cz",
-    "format": "pnpm format:eslint && pnpm format:prettier",
-    "format:eslint": "eslint --ext .ts . --fix --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "format": "prettier src --write --ignore-unknown",
+    "format:check": "prettier src --check --ignore-unknown",
     "generate": "node scripts/generate/index.js",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier",
-    "lint:eslint": "eslint --ext .ts . --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "lint": "eslint src --ext js,ts --max-warnings 0",
+    "lint:fix": "eslint src --fix --ext js,ts --max-warnings 0",
     "prepare": "husky install",
     "start": "concurrently -k -r \"storybook dev -p 6006 --no-open\" \"pnpm build:manifest --watch\"",
     "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch"
+    "test:watch": "web-test-runner --watch",
+    "types:check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
     "lit": "^3.1.0"
@@ -78,6 +76,7 @@
     "@storybook/blocks": "^7.6.6",
     "@storybook/web-components": "^7.6.6",
     "@storybook/web-components-vite": "^7.6.6",
+    "@types/js-beautify": "^1.14.3",
     "@types/mocha": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
@@ -109,6 +108,11 @@
     "vite": "^5.0.2"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
     "extends": [
       "eslint:recommended",
       "plugin:wc/recommended",
@@ -119,11 +123,17 @@
       "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
     "plugins": [
       "@typescript-eslint",
       "unused-imports",
       "lit-a11y"
-    ]
+    ],
+    "reportUnusedDisableDirectives": true,
+    "root": true
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -136,10 +146,9 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint --fix --ignore-path .gitignore",
-      "prettier --write --ignore-path .gitignore"
-    ]
+    "src/*.ts": "tsc --noEmit -p tsconfig.json",
+    "src/*.{js,ts}": "eslint --fix --max-warnings 0",
+    "src/*": "prettier --write --ignore-unknown"
   },
   "commitlint": {
     "extends": [
