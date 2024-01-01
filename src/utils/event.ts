@@ -23,11 +23,10 @@ export class EventEmitter<T> {
  * @param name Name of event
  */
 export function event(name: string) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (target: any, propName: string): any => {
+  return (target: unknown, propName: string): void => {
     const descriptor = {
       get(this: HTMLElement) {
-        return new EventEmitter(this, name ?? propName);
+        return new EventEmitter(this, name);
       },
       enumerable: true,
       configurable: true,

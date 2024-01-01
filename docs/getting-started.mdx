@@ -5,7 +5,7 @@ import * as Stories from './stories/getting-started.stories';
 
 # Getting started
 
-Diffix is a modern, performant, customizable, open-source Web Component UI library based on a custom design system. Works with any JavaScript framework out-of-the-box. It's built with [Lit](https://lit.dev/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/).
+Diffix is a modern, performant, customizable, open-source Web Components UI library based on a custom design system. Works with any JavaScript framework out-of-the-box. It's built with [Lit](https://lit.dev/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/).
 
 - Build a modern, highly performant, and highly accessible web experience.
 - Integrate with popular frameworks like React, Vue, Angular, Svelte, etc.
@@ -17,49 +17,67 @@ Diffix is a modern, performant, customizable, open-source Web Component UI libra
 
 Make sure you have the latest [Node.js](https://nodejs.org/) installed on your machine. Use a package manager to install Diffix from [npm](https://www.npmjs.com/package/diffix-test):
 
-<Source language="bash" code={`
+<Source
+  language="bash"
+  code={`
 npm install diffix-test
-`} />
+`}
+/>
 
 ## Import components
 
 Import the target component from `diffix-test/components/component-name`. Import automatically registers the Web Component (causes a side effect).
 
-<Source language="ts" code={`
+<Source
+  language="ts"
+  code={`
 import 'diffix-test/components/button';
-`} />
+`}
+/>
 
 Or you can import all components at once:
 
-<Source language="ts" code={`
+<Source
+  language="ts"
+  code={`
 import 'diffix-test';
-`} />
+`}
+/>
 
 ## Import theme
 
 To use the theme, import the CSS file.
 
-1) Using an application bundler (Webpack, Rollup, Vite, etc.):
+1. Using an application bundler (Webpack, Rollup, Vite, etc.):
 
-<Source language="ts" code={`
+<Source
+  language="ts"
+  code={`
 import 'diffix-test/themes/default.css';
-`} />
+`}
+/>
 
-2) Or using a `<link>` tag:
+2. Or using a `<link>` tag:
 
-<Source language="html" code={`
+<Source
+  language="html"
+  code={`
 <link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
-`} />
+`}
+/>
 
 ## Import font
 
 To import the theme font, add the following lines to the `<head>` of your HTML document:
 
-<Source language="html" code={`
+<Source
+  language="html"
+  code={`
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-`} />
+`}
+/>
 
 ## Usage
 

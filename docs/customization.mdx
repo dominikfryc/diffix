@@ -15,35 +15,47 @@ Design tokens are accessed through CSS custom properties that are defined in the
 
 To use the default theme, import the CSS file.
 
-1) Using an application bundler (Webpack, Rollup, Vite, etc.):
+1. Using an application bundler (Webpack, Rollup, Vite, etc.):
 
-<Source language="ts" code={`
+<Source
+  language="ts"
+  code={`
 import 'diffix-test/themes/default.css';
-`} />
+`}
+/>
 
-2) Or using a `<link>` tag:
+2. Or using a `<link>` tag:
 
-<Source language="html" code={`
+<Source
+  language="html"
+  code={`
 <link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
-`} />
+`}
+/>
 
 ### Dark theme
 
 To use the dark theme, import the CSS file of the default theme and the dark theme.
 
-1) Using an application bundler (Webpack, Rollup, Vite, etc.):
+1. Using an application bundler (Webpack, Rollup, Vite, etc.):
 
-<Source language="ts" code={`
+<Source
+  language="ts"
+  code={`
 import 'diffix-test/themes/default.css';
 import 'diffix-test/themes/dark.css';
-`} />
+`}
+/>
 
-2) Or using a `<link>` tag:
+2. Or using a `<link>` tag:
 
-<Source language="html" code={`
+<Source
+  language="html"
+  code={`
 <link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
 <link href="/node_modules/diffix-test/dist/themes/dark.css" rel="stylesheet" />
-`} />
+`}
+/>
 
 Dark theme is not applied automatically. Use the `data-theme` attribute on the `<html>` element to switch between the light and dark themes. In this example, we use the attribute on other element than `<html>`, so that the theme is only applied to the inner content:
 
@@ -56,6 +68,7 @@ Dark theme is not applied automatically. Use the `data-theme` attribute on the `
     padding: 0;
   }
 `}</style>
+
 <Canvas sourceState="shown" of={Stories.DarkTheme} />
 
 If you want implement theme toggle, save the prefered theme outside the current session or auto-detect the user system preference theme, check out our [simple demo](https://github.com/dominikfryc/diffix-test/blob/next/demo/) which implements these features.
@@ -74,11 +87,14 @@ Default theme is automatically applied, because it is declared in `:root` block.
 
 Diffix is using [Inter](https://fonts.google.com/specimen/Inter) as the default font. To use it, import it from Google Fonts:
 
-<Source language="html" code={`
+<Source
+  language="html"
+  code={`
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-`} />
+`}
+/>
 
 You don't have to use Inter. If you don't import it, components will fall back to the system font stack. It uses Segoe UI on Windows, San Francisco on macOS and iOS, and Roboto on Android and Chrome OS.
 

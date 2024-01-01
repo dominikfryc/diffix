@@ -1,10 +1,10 @@
-# Diffix - Web Component UI Library
+# Diffix - Web Components UI Library
 
 [![Storybook](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/storybook-button.svg)](https://www.diffix.dev)
 [![GitHub](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/github-button.svg)](https://github.com/dominikfryc/diffix-test)
 [![npm](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/npm-button.svg)](https://www.npmjs.com/package/diffix-test)
 
-Diffix is a modern, performant, customizable, open-source Web Component UI library based on a custom design system. Works with any JavaScript framework out-of-the-box. It's built with [Lit](https://lit.dev/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/).
+Diffix is a modern, performant, customizable, open-source Web Components UI library based on a custom design system. Works with any JavaScript framework out-of-the-box. It's built with [Lit](https://lit.dev/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/).
 
 - Build a modern, highly performant, and highly accessible web experience.
 - Integrate with popular frameworks like React, Vue, Angular, Svelte, etc.

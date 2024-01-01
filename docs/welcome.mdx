@@ -1,8 +1,8 @@
 import { Meta, Unstyled } from '@storybook/blocks';
 import icon from './assets/icon.svg';
-import storybook from "./assets/storybook.svg?raw";
-import github from "./assets/github.svg?raw";
-import npm from "./assets/npm.svg?raw";
+import storybook from './assets/storybook.svg?raw';
+import github from './assets/github.svg?raw';
+import npm from './assets/npm.svg?raw';
 
 <Meta title="Welcome" />
 
@@ -12,9 +12,21 @@ import npm from "./assets/npm.svg?raw";
   <h2>Web Components</h2>
 </Unstyled>
 <div className="links">
-  <dfx-button href="https://www.diffix.dev" target="_blank" dangerouslySetInnerHTML={{__html: storybook + 'Storybook'}}></dfx-button>
-  <dfx-button href="https://github.com/dominikfryc/diffix-test" target="_blank" dangerouslySetInnerHTML={{__html: github + 'GitHub'}}></dfx-button>
-  <dfx-button href="https://www.npmjs.com/package/diffix-test" target="_blank" dangerouslySetInnerHTML={{__html: npm + 'npm'}}></dfx-button>
+  <dfx-button
+    href="https://www.diffix.dev"
+    target="_blank"
+    dangerouslySetInnerHTML={{ __html: storybook + 'Storybook' }}
+  ></dfx-button>
+  <dfx-button
+    href="https://github.com/dominikfryc/diffix-test"
+    target="_blank"
+    dangerouslySetInnerHTML={{ __html: github + 'GitHub' }}
+  ></dfx-button>
+  <dfx-button
+    href="https://www.npmjs.com/package/diffix-test"
+    target="_blank"
+    dangerouslySetInnerHTML={{ __html: npm + 'npm' }}
+  ></dfx-button>
 </div>
 
 <style>
