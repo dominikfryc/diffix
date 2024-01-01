@@ -28,5 +28,5 @@ export default defineConfig({
     target: 'esnext',
     sourcemap: true,
   },
-  plugins: [copy({ patterns: 'themes/*', rootDir: 'src' })],
+  plugins: [copy({ patterns: 'themes/*', exclude: [], rootDir: 'src' })],
 });
