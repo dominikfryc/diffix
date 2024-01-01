@@ -15,8 +15,9 @@ jobs:
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
-      statuses: write # to be able to write a GitHub status
-      deployments: write # to be able to publish a GitHub deployment
+    environment:
+      name: Production
+      url: ${{ vars.DEPLOYMENT_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,18 +47,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build Storybook
-        run: pnpm build:storybook
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1
-        with:
-          publish-dir: ./storybook-static
-          production-deploy: true
-          deploy-message: ${{ github.event.head_commit.message }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-deployment-environment: Production
-          github-deployment-description: Deploy to Netlify
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
