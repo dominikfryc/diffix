@@ -3,7 +3,7 @@
     "target": "ES2021",
     "module": "ESNext",
     "lib": ["ES2021", "DOM", "DOM.Iterable"],
-    "types": ["vite/client", "mocha"],
+    "types": ["vite/client", "mocha", "node"],
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
@@ -16,7 +16,6 @@
     "sourceMap": true,
     "inlineSources": true,
     "outDir": "dist",
-    "rootDir": "src",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -33,5 +32,5 @@
       }
     ]
   },
-  "include": ["src"]
+  "include": ["src", "docs", "scripts"]
 }

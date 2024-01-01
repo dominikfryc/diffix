@@ -1,4 +1,7 @@
-const testTemplate = component => `import { html, fixture, expect } from '@open-wc/testing';
+import { Component } from '../generate';
+
+const testTemplate = (component: Component): string => {
+  return `import { html, fixture, expect } from '@open-wc/testing';
 import { ${component.name} } from './${component.tag}';
 
 describe('${component.name}', () => {
@@ -28,4 +31,5 @@ describe('${component.name}', () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });\n`;
+};
 export { testTemplate };

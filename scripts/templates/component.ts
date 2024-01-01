@@ -1,5 +1,7 @@
-const componentTemplate =
-  component => `import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
+import { Component } from '../generate';
+
+const componentTemplate = (component: Component): string => {
+  return `import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import style from './${component.tag}.css?inline';
 
@@ -28,4 +30,5 @@ declare global {
     'dfx-${component.tag}': ${component.name};
   }
 }\n`;
+};
 export { componentTemplate };
