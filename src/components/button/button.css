@@ -1,6 +1,7 @@
 :host {
   display: inline-block;
   contain: layout;
+  width: fit-content;
 
   --dfx-button-border-radius: var(--dfx-border-radius-m, 0.375rem);
   --dfx-button-focus-offset: var(--dfx-form-outline-offset, 0.25rem);
