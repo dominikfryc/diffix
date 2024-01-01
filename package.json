@@ -47,6 +47,7 @@
     "build:types": "tsc --emitDeclarationOnly -p tsconfig.build.json",
     "build:storybook": "pnpm build:manifest && storybook build",
     "check:types": "tsc --noEmit -p tsconfig.json",
+    "commit": "git cz",
     "format": "pnpm format:eslint && pnpm format:prettier",
     "format:eslint": "eslint --ext .ts . --fix --ignore-path .gitignore",
     "format:prettier": "prettier \"**/*.ts\" --write --ignore-path .gitignore",
@@ -65,6 +66,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cz-commitlint": "^18.4.3",
     "@custom-elements-manifest/analyzer": "^0.9.0",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
@@ -85,7 +87,6 @@
     "@web/test-runner-playwright": "^0.11.0",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-lit": "^1.10.1",
@@ -147,10 +148,17 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "@commitlint/cz-commitlint"
     }
   },
   "release": {
+    "branches": [
+      "main",
+      {
+        "name": "next",
+        "prerelease": true
+      }
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       [
@@ -211,13 +219,6 @@
       ],
       "@semantic-release/npm",
       "@semantic-release/github"
-    ],
-    "branches": [
-      "main",
-      {
-        "name": "next",
-        "prerelease": true
-      }
     ]
   }
 }
