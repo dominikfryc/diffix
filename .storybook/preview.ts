@@ -4,6 +4,7 @@ import customElements from '../dist/custom-elements.json';
 import { html } from 'js-beautify';
 import '../src/themes/default.css';
 import '../src/themes/dark.css';
+import './assets/styles.css';
 import '../src/index';
 
 setCustomElementsManifest(customElements);
