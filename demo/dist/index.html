@@ -7,7 +7,10 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
     <style>
       body {
         opacity: 0;
@@ -17,33 +20,11 @@
         opacity: 1;
         transition: opacity 0.25s ease-in-out;
       }
+
+      :not(:defined) {
+        visibility: hidden;
+      }
     </style>
-    <script>
-      // Set theme as soon as possible to prevent flashing on page load
-      const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      const theme = localStorage.getItem('theme') || browserTheme;
-      setTheme(theme);
-
-      // Save theme to html element attribute and local storage
-      function setTheme(theme) {
-        document.documentElement.dataset.theme = theme;
-        localStorage.setItem('theme', theme);
-        setButtonIcon(theme);
-      }
-
-      // Show/hide svg icon inside toggle button based on theme
-      function setButtonIcon(theme) {
-        const toggleDark = document.getElementById('toggle-dark');
-        const toggleLight = document.getElementById('toggle-light');
-        if (toggleDark && toggleLight) {
-          toggleDark.style.display = theme === 'light' ? 'block' : 'none';
-          toggleLight.style.display = theme === 'dark' ? 'block' : 'none';
-        }
-      }
-
-      // Fade in body content after custom elements are defined
-      customElements.whenDefined('dfx-button').then(() => document.body.classList.add('ready'));
-    </script>
     <script type="module" crossorigin src="/assets/index.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index.css">
   </head>
