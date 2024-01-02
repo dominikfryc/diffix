@@ -4,10 +4,10 @@
 [![GitHub](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/github-button.svg)](https://github.com/dominikfryc/diffix-test)
 [![npm](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/npm-button.svg)](https://www.npmjs.com/package/diffix-test)
 
-Diffix Web Components is a modern, performant, customizable, open-source UI library. Provides a set of reusable components to build web applications with consistent user experience. Works with any JavaScript framework.
+Diffix Web Components is a modern, performant, customizable, open-source UI library. Provides a set of reusable components to build web applications with consistent user experience.
 
 - Build a modern, highly performant, and highly accessible web experience.
-- Integrate with popular frameworks like React, Vue, Angular, Svelte, etc.
+- Integrate with any JavaScript framework such as React, Vue, Angular, Svelte, etc.
 - Build a standards-based user interface following W3C Web Component standards.
 - Customize the design language for your project by modifying design tokens.
 - Use the components out-of-the-box in existing front-end projects.
