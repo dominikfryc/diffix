@@ -58,7 +58,7 @@ Diffix components are designed to be used as Web Components. This means you impo
 <dfx-button theme="primary" variant="filled">Button</dfx-button>
 ```
 
-Form controls should be automatically detectable inside the `form` element. You can use the `FormData` to serialize data from the form. Client-side validation uses [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation). You can activate it using attributes such as `required`, `minlength`, `maxlength`, `pattern`, etc.
+Form controls should be automatically detectable inside the `form` element. You can use the `FormData` to serialize data from the form. Client-side validation uses [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation). You can activate it using attributes such as `required`, `min`, `max`, `pattern`, etc.
 
 ```html
 <form>
