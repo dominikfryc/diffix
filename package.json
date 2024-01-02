@@ -15,7 +15,10 @@
   "license": "MIT",
   "author": "Dominik Fryč <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
   "funding": "https://ko-fi.com/dominikfryc",
-  "repository": "github:dominikfryc/diffix-test",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominikfryc/diffix-test.git"
+  },
   "publishConfig": {
     "access": "public",
     "provenance": true
@@ -214,6 +217,11 @@
                 "type": "test",
                 "section": "Tests",
                 "hidden": false
+              },
+              {
+                "type": "style",
+                "section": "Styles",
+                "hidden": true
               },
               {
                 "type": "build",
