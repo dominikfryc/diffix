@@ -17,7 +17,8 @@
   "funding": "https://ko-fi.com/dominikfryc",
   "repository": "github:dominikfryc/diffix-test",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "files": [
     "dist"
