@@ -152,9 +152,8 @@
     }
   },
   "lint-staged": {
-    "src/*.ts": "tsc --noEmit -p tsconfig.json",
-    "src/*.{js,ts}": "eslint --fix --max-warnings 0",
-    "src/*": "prettier --write --ignore-unknown"
+    "*.{js,ts}": "eslint --fix --max-warnings 0",
+    "*": "prettier --write --ignore-unknown"
   },
   "commitlint": {
     "extends": [
