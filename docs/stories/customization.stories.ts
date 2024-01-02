@@ -55,9 +55,10 @@ export const CustomTheme: Story = {
 
     <style>
       [data-theme='custom'] {
-        --dfx-font-family: Verdana, Arial, sans-serif;
-        --dfx-color-primary-dark: #9333ea;
-        --dfx-color-primary-dark-variant: #7e22ce;
+        --dfx-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        --dfx-color-primary-dark: #fbbf24;
+        --dfx-color-primary-dark-variant: #f59e0b;
+        --dfx-color-contrast-text: #09090b;
         --dfx-border-radius-m: 0;
       }
     </style>

@@ -71,7 +71,7 @@ Dark theme is not applied automatically. Use the `data-theme` attribute on the `
 
 <Canvas sourceState="shown" of={Stories.DarkTheme} />
 
-If you want implement theme toggle, save the prefered theme outside the current session or auto-detect the user system preference theme, check out our [simple demo](https://github.com/dominikfryc/diffix-test/blob/next/demo/) which implements these features.
+If you want implement theme toggle, save the prefered theme outside the current session or auto-detect the user system preference theme, check out our [simple demo](https://github.com/dominikfryc/diffix-test/tree/next/demo/) which implements these features.
 
 ## Custom theme
 
@@ -85,22 +85,28 @@ Default theme is automatically applied, because it is declared in `:root` block.
 
 ### Font
 
-Diffix is using [Inter](https://fonts.google.com/specimen/Inter) as the default font. To use it, import it from Google Fonts:
+Diffix is using [Inter](https://fonts.google.com/specimen/Inter) as the default font. It is imported in the default theme.
+
+However, you don't have to use Inter. You can use any font you want, but it is recommend using a font that is optimized for the web. There are many options:
+
+1. Use a font that is widely available in browsers, such as system fonts (e.g. Arial) or the system font stack. It uses Segoe UI on Windows, San Francisco on macOS and iOS, and Roboto on Android and Chrome OS. If you don't import the default theme, components will fall back to the system font stack.
+
+2. Import your local hosted font. You can use the `@font-face` rule to import your font. That's the way the default theme imports Inter.
+
+3. Use external font service such as [Google Fonts](https://fonts.google.com/). Most effective way is to import the font using the `<link>` tag in the `<head>` of your HTML document.
+
+To use the selected font in the theme, define the `--dfx-font-family` CSS custom property inside your theme styles. For example, you can you the system font stack:
 
 <Source
-  language="html"
+  language="css"
   code={`
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+:root {
+  --dfx-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
 `}
 />
 
-You don't have to use Inter. If you don't import it, components will fall back to the system font stack. It uses Segoe UI on Windows, San Francisco on macOS and iOS, and Roboto on Android and Chrome OS.
-
-You can use any font you want, but we recommend using a font that is optimized for the web. You can use any font widely available in browsers, import your local hosted font or use external font service such as [Google Fonts](https://fonts.google.com/). To use the imported font in the theme, define the `--dfx-font-family` CSS custom property inside your theme styles.
-
-In this example, you can see a custom theme with a customized font, primary colors, and border radius:
+In this example, you can see a custom theme with a customized font, colors, and border radius:
 
 <Canvas sourceState="shown" of={Stories.CustomTheme} />
 

@@ -50,19 +50,6 @@ import 'diffix-test/themes/default.css';
 <link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
 ```
 
-## Import font
-
-To import the theme font, add the following lines to the `<head>` of your HTML document:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-/>
-```
-
 ## Usage
 
 Diffix components are designed to be used as Web Components. This means you import the target component in the script and use it in the HTML.
@@ -90,7 +77,7 @@ Form controls should be automatically detectable inside the `form` element. To s
 
 Components are published as ES modules, so they can be used in all modern browsers with no build step. That's good for prototyping, but for performance reasons, components in production should be bundled, tree-shaken, and optimized by individual applications using bundlers like Webpack, Rollup, or Vite.
 
-There is a [simple demo](https://github.com/dominikfryc/diffix-test/blob/next/demo/) using Vite to showcase the usage of individual components.
+There is a [simple demo](https://github.com/dominikfryc/diffix-test/tree/next/demo/) using Vite to showcase the usage of individual components.
 
 ## Attribution
 
