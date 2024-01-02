@@ -2,7 +2,7 @@
 
 Thank you for submitting a pull request!
 
-Please provide a detailed explanation of the changes, why they were necessary, and their benefits or impact. Explain the problem you are fixing or the feature you are adding.
+Please explain the changes, why they were necessary, and their benefits or impact. Explain the problem you are fixing or the feature you are adding.
 
 -->
 
@@ -25,6 +25,6 @@ Please verify that:
 
 ## Related Issue(s)
 
-<!-- Please link the issue being fixed so it gets closed when this is merged. -->
+<!-- Please link the fixed issue so it gets closed when this is merged. -->
 
 - Fixes #[number]

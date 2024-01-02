@@ -4,7 +4,7 @@
 [![GitHub](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/github-button.svg)](https://github.com/dominikfryc/diffix-test)
 [![npm](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/npm-button.svg)](https://www.npmjs.com/package/diffix-test)
 
-Diffix is a modern, performant, customizable, open-source Web Components UI library based on a custom design system. Works with any JavaScript framework out-of-the-box. It's built with Lit, Vite, and TypeScript.
+Diffix Web Components is a modern, performant, customizable, open-source UI library. Provides a set of reusable components to build web applications with consistent user experience. Works with any JavaScript framework.
 
 - Build a modern, highly performant, and highly accessible web experience.
 - Integrate with popular frameworks like React, Vue, Angular, Svelte, etc.
@@ -14,7 +14,7 @@ Diffix is a modern, performant, customizable, open-source Web Components UI libr
 
 ## Instalation
 
-Make sure you have the latest [Node.js](https://nodejs.org/) installed on your machine. Use a package manager to install Diffix from [npm](https://www.npmjs.com/package/diffix-test):
+Ensure you have the latest [Node.js](https://nodejs.org/) installed on your machine. Use a package manager to install Diffix from [npm](https://www.npmjs.com/package/diffix-test):
 
 ```bash
 npm install diffix-test
@@ -36,7 +36,7 @@ import 'diffix-test';
 
 ## Import theme
 
-To use the theme, import the CSS file. There are two ways to do this:
+To use the default theme, import the CSS file. There are two ways to do this:
 
 1. Using an application bundler (Webpack, Rollup, Vite, etc.):
 
@@ -44,7 +44,7 @@ To use the theme, import the CSS file. There are two ways to do this:
 import 'diffix-test/themes/default.css';
 ```
 
-2. Using a `<link>` tag:
+2. Or using a `<link>` tag:
 
 ```html
 <link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
@@ -52,22 +52,22 @@ import 'diffix-test/themes/default.css';
 
 ## Usage
 
-Diffix components are designed to be used as Web Components. This means you import the target component in the script and use it in the HTML.
+Diffix components are designed to be used as Web Components. This means you import the target component in the script and then use it in the HTML.
 
 ```html
 <dfx-button theme="primary" variant="filled">Button</dfx-button>
 ```
 
-Form controls should be automatically detectable inside the `form` element. To serialize data from the form, you can use the `FormData`. Client-side validation uses [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation). You can activate it by using attributes such as `required`, `minlength`, `maxlength`, `pattern`, etc.
+Form controls should be automatically detectable inside the `form` element. You can use the `FormData` to serialize data from the form. Client-side validation uses [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation). You can activate it using attributes such as `required`, `minlength`, `maxlength`, `pattern`, etc.
 
 ```html
-<form id="form" style="display: grid; gap: 1rem">
+<form>
   <dfx-input label="Name" name="name" required></dfx-input>
   <dfx-button type="submit" variant="filled">Submit</dfx-button>
 </form>
 
 <script>
-  document.querySelector('#form').addEventListener('submit', event => {
+  document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
     const formData = new FormData(event.target);
     alert(JSON.stringify(Object.fromEntries(formData)));
@@ -75,7 +75,7 @@ Form controls should be automatically detectable inside the `form` element. To s
 </script>
 ```
 
-Components are published as ES modules, so they can be used in all modern browsers with no build step. That's good for prototyping, but for performance reasons, components in production should be bundled, tree-shaken, and optimized by individual applications using bundlers like Webpack, Rollup, or Vite.
+Components are published as ES modules so that they can be used in all modern browsers with no build step. That's good for prototyping, but for performance reasons, components in production should be bundled, tree-shaken, and optimized by individual applications using bundlers like Webpack, Rollup, or Vite.
 
 There is a [simple demo](https://github.com/dominikfryc/diffix-test/tree/next/demo/) using Vite to showcase the usage of individual components.
 
@@ -85,14 +85,14 @@ Special thanks to the following projects that help make this project possible:
 
 - Components are built with [Lit](https://lit.dev/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/).
 - Component tests run on [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) and [Playwright](https://playwright.dev/).
-- Documentation is built with [Storybook](https://storybook.js.org/) and is hosted on [Netlify](https://www.netlify.com/).
-- Components are linted and formatted with [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/).
+- Documentation is built with [Storybook](https://storybook.js.org/) and hosted on [Netlify](https://www.netlify.com/).
+- Components are linted with [ESLint](https://eslint.org/) and formatted with [Prettier](https://prettier.io/).
 - Component metadata is generated by the [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/).
 - Components are published to [npm](https://www.npmjs.com/) with [Semantic Release](https://semantic-release.gitbook.io/semantic-release/) and [GitHub Actions](https://github.com/features/actions).
 
 ## Contribute
 
-As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. If you want to contribute to the code, please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/CONTRIBUTING.md).
+As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. Please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/CONTRIBUTING.md) if you want to contribute to the code.
 
 ## License
 

@@ -1,6 +1,6 @@
 # Demo application
 
-This demo application showcases usage of Diffix Web Components. It's build with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).
+This demo application showcases the usage of Diffix Web Components. It's built with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/).
 
 ## Instalation
 
@@ -40,7 +40,7 @@ cd demo
 npm install
 ```
 
-7. Link the local library from parent folder:
+7. Link the local library from the parent folder:
 
 ```bash
 npm link ..
