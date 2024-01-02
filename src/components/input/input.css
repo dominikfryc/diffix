@@ -66,10 +66,10 @@
   background-color: var(--dfx-input-color-background);
   border: none;
   margin: 0;
+}
 
-  &:has(*:focus, *:active) {
-    --dfx-input-box-shadow: var(--dfx-input-box-shadow-active);
-  }
+:host(:not([disabled])) [part='control']:has(*:focus, *:active) {
+  --dfx-input-box-shadow: var(--dfx-input-box-shadow-active);
 }
 
 .invalid.dirty [part='control'] {

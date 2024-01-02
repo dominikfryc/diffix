@@ -230,7 +230,7 @@ export const HideLabel: Story = {
  * - `start`: Content before the input.
  * - `end`: Content after the input.
  *
- * Slots have styles for `<svg>` icons, `<dfx-button>` buttons and `<span>` text elements.
+ * Slots have predefined styles for `<svg>` icons, `<dfx-button>` buttons and `<span>` text elements.
  */
 export const Slots: Story = {
   args: {
