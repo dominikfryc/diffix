@@ -92,7 +92,7 @@ Special thanks to the following projects that help make this project possible:
 
 ## Contribute
 
-As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. Please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/CONTRIBUTING.md) if you want to contribute to the code.
+As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. Please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/.github/CONTRIBUTING.md) if you want to contribute to the code.
 
 ## License
 
