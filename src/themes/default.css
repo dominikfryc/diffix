@@ -1,34 +1,4 @@
-@font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/inter-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  src: url('./fonts/inter-500.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  src: url('./fonts/inter-600.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  src: url('./fonts/inter-700.woff2') format('woff2');
-}
+@import url('@fontsource-variable/inter');
 
 :root {
   /* Color gray */
@@ -132,7 +102,8 @@
   --dfx-color-danger-light-variant: color-mix(in srgb, var(--dfx-color-red-400) 20%, transparent);
 
   /* Typography */
-  --dfx-font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --dfx-font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial,
+    sans-serif;
 
   /* Font sizes */
   --dfx-font-size-xs: 0.625rem; /* 10px */

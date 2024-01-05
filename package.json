@@ -70,6 +70,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/cz-commitlint": "^18.4.3",
     "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@fontsource-variable/inter": "^5.0.16",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
     "@open-wc/testing": "^4.0.0",
