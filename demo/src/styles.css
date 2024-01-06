@@ -41,3 +41,7 @@ article {
     gap: var(--dfx-size-2xs);
   }
 }
+
+#toggle-theme {
+  --dfx-button-shadow: none;
+}
