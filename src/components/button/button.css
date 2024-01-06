@@ -90,7 +90,7 @@
 
 :host([variant='outlined']) {
   --dfx-button-color-text: var(--dfx-button-color-dark);
-  --dfx-button-color-background: var(--dfx-color-background-surface, #ffffff);
+  --dfx-button-color-background: transparent;
   --dfx-button-color-background-hover: var(--dfx-button-color-light);
   --dfx-button-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
     var(--dfx-color-background-border, #d4d4d8);
