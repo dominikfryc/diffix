@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@open-wc/form-control':
+    specifier: ^1.0.0
+    version: 1.0.0
   lit:
     specifier: ^3.1.0
     version: 3.1.0
@@ -25,12 +28,6 @@ devDependencies:
   '@fontsource-variable/inter':
     specifier: ^5.0.16
     version: 5.0.16
-  '@open-wc/form-control':
-    specifier: ^1.0.0
-    version: 1.0.0
-  '@open-wc/form-helpers':
-    specifier: ^1.0.0
-    version: 1.0.0
   '@open-wc/testing':
     specifier: ^4.0.0
     version: 4.0.0
@@ -3410,14 +3407,7 @@ packages:
       {
         integrity: sha512-4QW7FZcq1r7vKzs+ULAqc8vcjs+15kiGksoLiNMi1lbHX52MC+jonveEhvzX1rs0QUXv57V7F6rGt/q+UZh61Q==,
       }
-    dev: true
-
-  /@open-wc/form-helpers@1.0.0:
-    resolution:
-      {
-        integrity: sha512-+xA7Q+khUhiuwcxL88wbPBP7AT8phun42uMRWeVHJ1X9CzEHYJNHhRsp9wfk1EM8CceLJOM+sR+ExE4L2+nejQ==,
-      }
-    dev: true
+    dev: false
 
   /@open-wc/scoped-elements@3.0.3:
     resolution:

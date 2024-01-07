@@ -4,7 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { live } from 'lit/directives/live.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { submit } from '@open-wc/form-helpers';
 import { event, EventEmitter } from '../../utils/event';
 import { innerInputValidators } from '../../utils/validators';
 import style from './input.css?inline';
@@ -217,8 +216,8 @@ export class Input extends FormControlMixin(LitElement) {
 
   /** @ignore */
   #onKeydown = (event: KeyboardEvent): void => {
-    if (this.form && event.code === 'Enter') {
-      submit(this.form);
+    if (event.code === 'Enter') {
+      this.form?.requestSubmit();
     }
   };
 

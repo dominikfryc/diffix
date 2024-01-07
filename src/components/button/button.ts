@@ -1,6 +1,5 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { submit } from '@open-wc/form-helpers';
 import { event, EventEmitter } from '../../utils/event';
 import style from './button.css?inline';
 import '../spinner';
@@ -107,7 +106,7 @@ export class Button extends LitElement {
         form.reset();
       }
       if (this.type === 'submit') {
-        submit(form);
+        form.requestSubmit();
       }
     }
 
