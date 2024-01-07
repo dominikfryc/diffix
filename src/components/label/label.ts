@@ -1,6 +1,6 @@
 import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import style from './label.css?inline';
+import style from './label.css?raw';
 
 /**
  * Displays label for form field

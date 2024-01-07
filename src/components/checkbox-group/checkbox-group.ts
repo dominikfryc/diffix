@@ -5,7 +5,7 @@ import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event';
 import { groupRequiredValidator } from '../../utils/validators';
 import { Checkbox } from '../checkbox';
-import style from './checkbox-group.css?inline';
+import style from './checkbox-group.css?raw';
 import '../label';
 
 /**

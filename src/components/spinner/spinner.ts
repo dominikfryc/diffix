@@ -2,7 +2,7 @@ import { LitElement, TemplateResult, unsafeCSS, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import icon from '../../assets/spinner.svg?raw';
-import style from './spinner.css?inline';
+import style from './spinner.css?raw';
 
 /**
  * Symbolizes that user action is being processed

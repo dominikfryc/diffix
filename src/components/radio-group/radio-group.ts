@@ -5,7 +5,7 @@ import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event';
 import { groupRequiredValidator } from '../../utils/validators';
 import { Radio } from '../radio';
-import style from './radio-group.css?inline';
+import style from './radio-group.css?raw';
 import '../label';
 
 /**

@@ -2,7 +2,7 @@ import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { event, EventEmitter } from '../../utils/event';
-import style from './alert.css?inline';
+import style from './alert.css?raw';
 import questionIcon from '../../assets/question-circle.svg?raw';
 import informationIcon from '../../assets/information-circle.svg?raw';
 import checkIcon from '../../assets/check-circle.svg?raw';

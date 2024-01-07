@@ -6,7 +6,7 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event';
 import { innerInputValidators } from '../../utils/validators';
-import style from './input.css?inline';
+import style from './input.css?raw';
 import eyeClosedIcon from '../../assets/eye-closed.svg?raw';
 import eyeOpenedIcon from '../../assets/eye-opened.svg?raw';
 import minusIcon from '../../assets/minus.svg?raw';

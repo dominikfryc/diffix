@@ -1,7 +1,7 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { event, EventEmitter } from '../../utils/event';
-import style from './button.css?inline';
+import style from './button.css?raw';
 import '../spinner';
 
 /**

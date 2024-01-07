@@ -5,7 +5,7 @@ import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event';
 import { innerInputValidators } from '../../utils/validators';
-import style from './textarea.css?inline';
+import style from './textarea.css?raw';
 import '../label';
 
 /**

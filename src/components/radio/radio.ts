@@ -3,7 +3,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event';
-import style from './radio.css?inline';
+import style from './radio.css?raw';
 import '../label';
 
 /**
