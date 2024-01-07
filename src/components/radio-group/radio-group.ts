@@ -192,7 +192,7 @@ export class RadioGroup extends FormControlMixin(LitElement) {
         : 0;
   }
 
-  formResetCallback(): void {
+  override resetFormControl(): void {
     this.dirty = false;
     this.value = this.getAttribute('value') || null;
     this.#resetFocusedOptionIndex();

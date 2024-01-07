@@ -135,7 +135,7 @@ export class Checkbox extends FormControlMixin(LitElement) {
     }
   }
 
-  formResetCallback(): void {
+  override resetFormControl(): void {
     this.dirty = false;
     this.checked = this.hasAttribute('checked');
   }

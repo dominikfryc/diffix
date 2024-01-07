@@ -187,7 +187,7 @@ export class Textarea extends FormControlMixin(LitElement) {
     }
   }
 
-  formResetCallback(): void {
+  override resetFormControl(): void {
     this.dirty = false;
     this.value = this.getAttribute('value') ?? '';
   }

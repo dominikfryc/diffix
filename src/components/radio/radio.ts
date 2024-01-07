@@ -78,7 +78,7 @@ export class Radio extends FormControlMixin(LitElement) {
     }
   }
 
-  formResetCallback(): void {
+  override resetFormControl(): void {
     this.checked = this.hasAttribute('checked');
   }
 

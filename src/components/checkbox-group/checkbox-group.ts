@@ -135,7 +135,7 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
     return this.checkValidity();
   }
 
-  formResetCallback(): void {
+  override resetFormControl(): void {
     this.dirty = false;
     this.value = this.getAttribute('value') || null;
   }
