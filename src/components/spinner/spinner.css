@@ -43,7 +43,7 @@ svg {
   padding: var(--dfx-spinner-padding);
   animation: rotate 2s linear infinite;
 
-  & circle {
+  circle {
     stroke: var(--dfx-spinner-color);
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;

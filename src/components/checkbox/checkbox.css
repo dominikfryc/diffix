@@ -33,14 +33,10 @@
   display: none;
 }
 
-:host([disabled]) label {
-  cursor: not-allowed;
-}
-
 :host([disabled]) input {
   background-color: var(--dfx-color-background-border, #d1d5db);
   box-shadow: var(--dfx-checkbox-box-shadow);
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
 :host([disabled]) [part='label'] {
@@ -104,7 +100,7 @@ input {
   line-height: var(--dfx-checkbox-line-height);
 }
 
-.dirty input:invalid {
+.invalid input {
   --dfx-checkbox-box-shadow: var(--dfx-checkbox-box-shadow-error);
 }
 

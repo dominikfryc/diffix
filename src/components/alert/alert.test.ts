@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Alert } from './alert';
+import { Alert } from './alert.js';
 
 describe('Alert', () => {
   it('is defined', () => {

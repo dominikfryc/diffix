@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Label } from './label';
+import { Label } from './label.js';
 
 type Component = Label & {
   slot: string;
@@ -34,9 +34,10 @@ export const Default: Story = {
  * - `helper`: Label for helper message.
  */
 export const Types: Story = {
-  decorators: [story => html`<div style="display: grid; gap: 16px">${story()}</div>`],
-  render: args =>
-    html`${LabelTemplate({ ...args, slot: 'Control label', type: 'control' })}
+  decorators: [story => html`<div style="display: grid; gap: 1rem">${story()}</div>`],
+  render: args => html`
+    ${LabelTemplate({ ...args, slot: 'Control label', type: 'control' })}
     ${LabelTemplate({ ...args, slot: 'Error label', type: 'error' })}
-    ${LabelTemplate({ ...args, slot: 'Helper label', type: 'helper' })}`,
+    ${LabelTemplate({ ...args, slot: 'Helper label', type: 'helper' })}
+  `,
 };

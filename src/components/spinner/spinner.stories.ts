@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { Spinner } from './spinner';
 import { TemplateResult, html, nothing } from 'lit';
+import { Spinner } from './spinner.js';
 
 type Component = Spinner;
 
@@ -14,7 +14,7 @@ const meta: Meta<Component> = {
       control: { type: 'select' },
     },
   },
-  decorators: [story => html`<div style="display: grid; gap: 16px">${story()}</div>`],
+  decorators: [story => html`<div style="display: grid; gap: 1rem">${story()}</div>`],
 };
 
 export default meta;
@@ -36,17 +36,19 @@ export const Default: Story = {
  * Size can be overwritten by `--dfx-spinner-size` CSS variable.
  */
 export const Sizes: Story = {
-  render: args =>
-    html`${SpinnerTemplate({ ...args, size: 'small' })}
-    ${SpinnerTemplate({ ...args, size: 'medium' })} ${SpinnerTemplate({ ...args, size: 'large' })}`,
+  render: args => html`
+    ${SpinnerTemplate({ ...args, size: 'small' })} ${SpinnerTemplate({ ...args, size: 'medium' })}
+    ${SpinnerTemplate({ ...args, size: 'large' })}
+  `,
 };
 
 /**
  * Spinner can set a label to describe the action being processed.
  */
 export const Label: Story = {
-  render: args =>
-    html`${SpinnerTemplate({ ...args, size: 'small', label: 'Loading...' })}
+  render: args => html`
+    ${SpinnerTemplate({ ...args, size: 'small', label: 'Loading...' })}
     ${SpinnerTemplate({ ...args, size: 'medium', label: 'Loading...' })}
-    ${SpinnerTemplate({ ...args, size: 'large', label: 'Loading...' })}`,
+    ${SpinnerTemplate({ ...args, size: 'large', label: 'Loading...' })}
+  `,
 };

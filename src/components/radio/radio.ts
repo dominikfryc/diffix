@@ -2,9 +2,9 @@ import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } 
 import { customElement, property, query } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
+import { event, EventEmitter } from '../../utils/event.js';
 import style from './radio.css?raw';
-import '../label';
+import '../label/index.js';
 
 /**
  * Allows user to select a single option
@@ -67,12 +67,12 @@ export class Radio extends FormControlMixin(LitElement) {
   @event('dfx-change')
   private onChange: EventEmitter<boolean>;
 
-  #handleChange(event: Event) {
-    this.checked = (event.target as HTMLInputElement).checked;
+  #handleChange(event: Event & { target: HTMLInputElement }) {
+    this.checked = event.target.checked;
     this.onChange.emit(this.checked, { bubbles: true });
   }
 
-  protected updated(changedProperties: PropertyValues): void {
+  override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('value') || changedProperties.has('checked')) {
       this.setValue(this.checked ? this.value : null);
     }
@@ -82,20 +82,20 @@ export class Radio extends FormControlMixin(LitElement) {
     this.checked = this.hasAttribute('checked');
   }
 
-  focus(): void {
+  override focus(): void {
     this.validationTarget.tabIndex = 0;
     this.validationTarget.focus();
   }
 
-  blur(): void {
+  override blur(): void {
     this.validationTarget.tabIndex = -1;
   }
 
-  render(): TemplateResult {
-    const helperMessage = this.helperText
-      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
-      : nothing;
+  #renderHelper(): TemplateResult {
+    return html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`;
+  }
 
+  render(): TemplateResult {
     return html`<label part="container">
       <input
         part="input"
@@ -111,7 +111,7 @@ export class Radio extends FormControlMixin(LitElement) {
       />
       <div part="label">
         <slot></slot>
-        ${helperMessage}
+        ${this.helperText ? this.#renderHelper() : nothing}
       </div>
     </label>`;
   }

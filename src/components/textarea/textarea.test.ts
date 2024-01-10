@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Textarea } from './textarea';
+import { Textarea } from './textarea.js';
 
 describe('Textarea', () => {
   it('is defined', () => {

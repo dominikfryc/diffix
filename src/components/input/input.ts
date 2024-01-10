@@ -1,19 +1,18 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { live } from 'lit/directives/live.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
-import { innerInputValidators } from '../../utils/validators';
+import { event, EventEmitter } from '../../utils/event.js';
+import { innerInputValidators } from '../../utils/validators.js';
 import style from './input.css?raw';
 import eyeClosedIcon from '../../assets/eye-closed.svg?raw';
 import eyeOpenedIcon from '../../assets/eye-opened.svg?raw';
 import minusIcon from '../../assets/minus.svg?raw';
 import plusIcon from '../../assets/plus.svg?raw';
-import '../button';
-import '../label';
-import '../spinner';
+import '../button/index.js';
+import '../label/index.js';
+import '../spinner/index.js';
 
 /**
  * Allows user to provide text input
@@ -201,76 +200,83 @@ export class Input extends FormControlMixin(LitElement) {
   @event('dfx-invalid')
   private onInvalid: EventEmitter<ValidityState>;
 
+  /**
+   * Signals that value of input changed
+   * @ignore
+   */
+  @state()
+  private dirty = false;
+
+  /**
+   * Sets visibility of password
+   * @ignore
+   */
+  @state()
+  private passwordVisible = false;
+
   connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener('keydown', this.#onKeydown);
-    this.form?.addEventListener('submit', () => {
-      this.reportValidity();
-    });
+    this.addEventListener('invalid', this.#handleInvalid);
+    this.addEventListener('keydown', this.#handleKeydown);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.removeEventListener('keydown', this.#onKeydown);
+    this.removeEventListener('invalid', this.#handleInvalid);
+    this.removeEventListener('keydown', this.#handleKeydown);
   }
 
-  /** @ignore */
-  #onKeydown = (event: KeyboardEvent): void => {
+  #handleInvalid(): void {
+    this.dirty = true;
+  }
+
+  #handleKeydown(event: KeyboardEvent): void {
     if (event.code === 'Enter') {
       this.form?.requestSubmit();
     }
-  };
+  }
 
-  /** @ignore */
-  @state()
-  private dirty = false;
+  #handleInput(event: Event & { target: HTMLInputElement }): void {
+    this.value = event.target.value;
+    this.onInput.emit(this.value);
+  }
 
-  /** @ignore */
-  @state()
-  private passwordVisible = false;
+  #handleChange(event: Event & { target: HTMLInputElement }): void {
+    this.dirty = true;
+    this.value = event.target.value;
+    this.onChange.emit(this.value);
+  }
 
-  #passwordVisibilityToggle(): void {
-    this.passwordVisible = !this.passwordVisible;
+  #setValueFromInput(): void {
+    this.value = this.validationTarget.value;
+    this.dirty = true;
+    this.onInput.emit(this.value);
+    this.onChange.emit(this.value);
+    this.validationTarget.focus();
   }
 
   #decreaseValue(): void {
     this.validationTarget.stepDown();
-    this.value = this.validationTarget.value;
-    this.dirty = true;
-    this.onInput.emit(this.value);
-    this.onChange.emit(this.value);
+    this.#setValueFromInput();
   }
 
   #increaseValue(): void {
     this.validationTarget.stepUp();
-    this.value = this.validationTarget.value;
-    this.dirty = true;
-    this.onInput.emit(this.value);
-    this.onChange.emit(this.value);
+    this.#setValueFromInput();
   }
 
-  validityCallback(): string | void {
+  async #togglePasswordVisibility(): Promise<void> {
+    this.passwordVisible = !this.passwordVisible;
+    await this.updateComplete;
+    this.validationTarget.focus();
+  }
+
+  override validityCallback(): string {
     this.onInvalid.emit(this.internals.validity);
     return this.validationTarget?.validationMessage;
   }
 
-  reportValidity(): boolean {
-    this.dirty = true;
-    return this.checkValidity();
-  }
-
-  #handleChange(event: Event) {
-    this.dirty = true;
-    this.value = (event.target as HTMLInputElement).value;
-    this.onChange.emit(this.value);
-  }
-
-  #handleInput(event: Event) {
-    this.value = (event.target as HTMLInputElement).value;
-    this.onInput.emit(this.value);
-  }
-
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
+  override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('value')) {
       this.setValue(this.value);
       await this.validationComplete;
@@ -283,96 +289,130 @@ export class Input extends FormControlMixin(LitElement) {
     this.value = this.getAttribute('value') ?? '';
   }
 
-  render(): TemplateResult {
-    const invalidMessage = html`<dfx-label type="error" id="label"
-      >${this.validationMessage}</dfx-label
-    >`;
-    const helperMessage = this.helperText
-      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
-      : nothing;
-    const passwordInput = this.type === 'password';
-    const passwordType = this.passwordVisible ? 'text' : 'password';
-    const inputType = passwordInput ? passwordType : this.type;
-    const togglePasswordButton = passwordInput
-      ? html`<dfx-button
-          part="button"
-          variant="text"
-          label="Toggle password visibility"
-          ?disabled=${this.disabled}
-          @dfx-click="${this.#passwordVisibilityToggle}"
-        >
-          ${unsafeSVG(this.passwordVisible ? eyeClosedIcon : eyeOpenedIcon)}
-        </dfx-button>`
-      : nothing;
-    const step = this.step ?? 1;
-    const decreaseButton =
-      this.type === 'number'
-        ? html`<dfx-button
-            part="button"
-            variant="text"
-            label="Decrease value by ${step}"
-            ?disabled=${this.disabled ||
-            (this.min !== undefined ? Number(this.value) <= this.min : false)}
-            @dfx-click="${this.#decreaseValue}"
-          >
-            ${unsafeSVG(minusIcon)}
-          </dfx-button>`
-        : nothing;
-    const increaseButton =
-      this.type === 'number'
-        ? html`<dfx-button
-            part="button"
-            variant="text"
-            label="Increase value by ${step}"
-            ?disabled=${this.disabled ||
-            (this.max !== undefined ? Number(this.value) >= this.max : false)}
-            @dfx-click="${this.#increaseValue}"
-          >
-            ${unsafeSVG(plusIcon)}
-          </dfx-button>`
-        : nothing;
-    const label =
-      this.label && !this.hideLabel ? html`<dfx-label>${this.label}</dfx-label>` : nothing;
-    const loadingSpinner = this.loading ? html`<dfx-spinner size="small"></dfx-spinner>` : nothing;
-    const leftButton = decreaseButton;
-    const rightButton = html`${increaseButton}${togglePasswordButton}`;
-    const classes = {
-      dirty: this.dirty,
-      invalid: !this.checkValidity(),
-    };
+  #renderError(): TemplateResult {
+    return html`<dfx-label type="error" id="label">${this.validationMessage}</dfx-label>`;
+  }
 
-    return html`<label part="container" class=${classMap(classes)}>
-      ${label}
-      <div part="control">
-        <slot name="start"> ${leftButton} </slot>
-        <input
-          part="input"
-          .value=${live(this.value)}
-          type=${inputType}
-          inputmode="${this.inputmode ?? nothing}"
-          autocomplete="${this.autocomplete ?? nothing}"
-          placeholder="${this.placeholder ?? nothing}"
-          minlength="${this.minlength ?? nothing}"
-          maxlength="${this.maxlength ?? nothing}"
-          min="${this.min ?? nothing}"
-          max="${this.max ?? nothing}"
-          pattern="${this.pattern ?? nothing}"
-          step="${this.step ?? nothing}"
-          ?required=${this.required}
-          ?disabled=${this.disabled}
-          ?readonly=${this.readonly}
-          @change=${this.#handleChange}
-          @input=${this.#handleInput}
-          aria-label=${this.label && this.hideLabel ? this.label : nothing}
-          aria-invalid=${this.checkValidity() ? 'false' : 'true'}
-          aria-describedby=${this.helperText || (!this.checkValidity() && this.dirty)
-            ? 'label'
-            : nothing}
-        />
-        <slot name="end"> ${loadingSpinner} ${rightButton} </slot>
+  #renderHelper(): TemplateResult {
+    return this.helperText
+      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
+      : html``;
+  }
+
+  #renderDecreaseButton(): TemplateResult {
+    return html`
+      <dfx-button
+        part="button"
+        variant="text"
+        label="Decrease value by ${this.step ?? 1}"
+        ?disabled=${this.disabled ||
+        (this.min !== undefined ? Number(this.value) <= this.min : false)}
+        @dfx-click="${this.#decreaseValue}"
+      >
+        ${unsafeSVG(minusIcon)}
+      </dfx-button>
+    `;
+  }
+
+  #renderIncreaseButton(): TemplateResult {
+    return html`
+      <dfx-button
+        part="button"
+        variant="text"
+        label="Increase value by ${this.step ?? 1}"
+        ?disabled=${this.disabled ||
+        (this.max !== undefined ? Number(this.value) >= this.max : false)}
+        @dfx-click="${this.#increaseValue}"
+      >
+        ${unsafeSVG(plusIcon)}
+      </dfx-button>
+    `;
+  }
+
+  #renderTogglePasswordButton(): TemplateResult {
+    return html`
+      <dfx-button
+        part="button"
+        variant="text"
+        label="Toggle password visibility"
+        ?disabled=${this.disabled}
+        @dfx-click="${this.#togglePasswordVisibility}"
+      >
+        ${unsafeSVG(this.passwordVisible ? eyeClosedIcon : eyeOpenedIcon)}
+      </dfx-button>
+    `;
+  }
+
+  #renderLeftButton(): TemplateResult {
+    if (this.type === 'number') {
+      return this.#renderDecreaseButton();
+    }
+    return html``;
+  }
+
+  #renderRightButton(): TemplateResult {
+    if (this.type === 'password') {
+      return this.#renderTogglePasswordButton();
+    }
+    if (this.type === 'number') {
+      return this.#renderIncreaseButton();
+    }
+    return html``;
+  }
+
+  #renderSpinner(): TemplateResult {
+    return this.loading ? html`<dfx-spinner size="small"></dfx-spinner>` : html``;
+  }
+
+  #renderLabel(): TemplateResult {
+    return html`<label for=${this.#id}><dfx-label>${this.label}</dfx-label></label>`;
+  }
+
+  /** @ignore */
+  get #showError(): boolean {
+    return !this.validity.valid && this.dirty;
+  }
+
+  /** @ignore */
+  #id = Math.random().toString(36).substring(2);
+
+  render(): TemplateResult {
+    const passwordType = this.passwordVisible ? 'text' : 'password';
+    const inputType = this.type === 'password' ? passwordType : this.type;
+
+    return html`
+      <div part="container" class=${this.#showError ? 'invalid' : nothing}>
+        ${this.label && !this.hideLabel ? this.#renderLabel() : nothing}
+        <div part="control">
+          <slot name="start"> ${this.#renderLeftButton()} </slot>
+          <input
+            id=${this.#id}
+            part="input"
+            .value=${live(this.value)}
+            type=${inputType}
+            inputmode="${this.inputmode ?? nothing}"
+            autocomplete="${this.autocomplete ?? nothing}"
+            placeholder="${this.placeholder ?? nothing}"
+            minlength="${this.minlength ?? nothing}"
+            maxlength="${this.maxlength ?? nothing}"
+            min="${this.min ?? nothing}"
+            max="${this.max ?? nothing}"
+            pattern="${this.pattern ?? nothing}"
+            step="${this.step ?? nothing}"
+            ?required=${this.required}
+            ?disabled=${this.disabled}
+            ?readonly=${this.readonly}
+            @input=${this.#handleInput}
+            @change=${this.#handleChange}
+            aria-label=${this.label && this.hideLabel ? this.label : nothing}
+            aria-invalid=${this.#showError}
+            aria-describedby=${this.helperText || this.#showError ? 'label' : nothing}
+          />
+          <slot name="end"> ${this.#renderSpinner()} ${this.#renderRightButton()} </slot>
+        </div>
+        ${this.#showError ? this.#renderError() : this.#renderHelper()}
       </div>
-      ${!this.checkValidity() && this.dirty ? invalidMessage : helperMessage}
-    </label>`;
+    `;
   }
 }
 

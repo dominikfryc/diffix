@@ -31,13 +31,9 @@
   display: none;
 }
 
-:host([disabled]) label {
-  cursor: not-allowed;
-}
-
 :host([disabled]) input {
   box-shadow: var(--dfx-radio-box-shadow-disabled);
-  pointer-events: none;
+  cursor: not-allowed;
 
   &:not(:checked) {
     --dfx-radio-color: var(--dfx-color-background-border, #d1d5db);

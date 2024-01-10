@@ -1,14 +1,14 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { event, EventEmitter } from '../../utils/event';
+import { event, EventEmitter } from '../../utils/event.js';
 import style from './alert.css?raw';
 import questionIcon from '../../assets/question-circle.svg?raw';
 import informationIcon from '../../assets/information-circle.svg?raw';
 import checkIcon from '../../assets/check-circle.svg?raw';
 import closeCircleIcon from '../../assets/close-circle.svg?raw';
 import closeIcon from '../../assets/close.svg?raw';
-import '../button';
+import '../button/index.js';
 
 /**
  * Informs user about important change or result of an operation
@@ -76,16 +76,20 @@ export class Alert extends LitElement {
     this.onClose.emit(event);
   }
 
-  render(): TemplateResult {
-    const closeButton = html`<dfx-button
-      class="close-button"
-      part="close-button"
-      label="Close alert"
-      variant="text"
-      @click=${this.#handleClick}
-    >
-      ${unsafeSVG(closeIcon)}
-    </dfx-button>`;
+  #renderCloseButton(): TemplateResult {
+    return html`
+      <dfx-button
+        part="close-button"
+        label="Close alert"
+        variant="text"
+        @click=${this.#handleClick}
+      >
+        ${unsafeSVG(closeIcon)}
+      </dfx-button>
+    `;
+  }
+
+  #renderIcon(): TemplateResult {
     let icon = questionIcon;
     switch (this.theme) {
       case 'primary':
@@ -98,17 +102,23 @@ export class Alert extends LitElement {
         icon = closeCircleIcon;
         break;
     }
-    const iconSlot = html`<div class="icon" part="icon-slot">
-      <slot name="icon">${unsafeSVG(icon)}</slot>
-    </div>`;
-
-    return html`<div role="alert" part="alert">
-      ${this.hideIcon ? nothing : iconSlot}
-      <div class="content" part="content">
-        <slot></slot>
+    return html`
+      <div part="icon-slot">
+        <slot name="icon">${unsafeSVG(icon)}</slot>
       </div>
-      ${this.closable ? closeButton : nothing}
-    </div>`;
+    `;
+  }
+
+  render(): TemplateResult {
+    return html`
+      <div role="alert" part="alert">
+        ${!this.hideIcon ? this.#renderIcon() : nothing}
+        <div part="content">
+          <slot></slot>
+        </div>
+        ${this.closable ? this.#renderCloseButton() : nothing}
+      </div>
+    `;
   }
 }
 

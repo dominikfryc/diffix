@@ -24,9 +24,11 @@ export class Label extends LitElement {
   type: 'control' | 'error' | 'helper' = 'control';
 
   render(): TemplateResult {
-    return html`<div aria-live=${this.type === 'error' ? 'polite' : 'off'}>
-      <slot></slot>
-    </div>`;
+    return html`
+      <div aria-live=${this.type === 'error' ? 'polite' : 'off'}>
+        <slot></slot>
+      </div>
+    `;
   }
 }
 

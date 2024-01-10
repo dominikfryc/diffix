@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { TemplateResult, html, nothing } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Input } from './input';
+import { Input } from './input.js';
 
 type Component = Input & {
   start: string;
@@ -96,26 +96,28 @@ export const Default: Story = {
  * - `week`: Control for entering week number.
  */
 export const Types: Story = {
-  render: args =>
-    html`<div style="display: flex; flex-wrap: wrap; gap: 12px">
-      ${InputTemplate({ ...args, type: 'date', label: 'Date', value: '2024-01-01' })}
-      ${InputTemplate({
-        ...args,
-        type: 'datetime-local',
-        label: 'Date and time',
-        value: '2024-01-01T08:00',
-      })}
-      ${InputTemplate({ ...args, type: 'email', label: 'Email', value: 'john@doe.com' })}
-      ${InputTemplate({ ...args, type: 'month', label: 'Month', value: '2024-01' })}
-      ${InputTemplate({ ...args, type: 'number', label: 'Number', value: '4' })}
-      ${InputTemplate({ ...args, type: 'password', label: 'Password', value: 'password' })}
-      ${InputTemplate({ ...args, type: 'search', label: 'Search', value: 'News' })}
-      ${InputTemplate({ ...args, type: 'tel', label: 'Tel', value: '+1 785-156-8965' })}
-      ${InputTemplate({ ...args, type: 'text', label: 'Text', value: 'Note' })}
-      ${InputTemplate({ ...args, type: 'time', label: 'Time', value: '08:00' })}
-      ${InputTemplate({ ...args, type: 'url', label: 'URL', value: 'https://www.google.com' })}
-      ${InputTemplate({ ...args, type: 'week', label: 'Week', value: '2024-W01' })}
-    </div>`,
+  decorators: [
+    story => html`<div style="display: flex; flex-wrap: wrap; gap: 1rem">${story()}</div>`,
+  ],
+  render: args => html`
+    ${InputTemplate({ ...args, type: 'date', label: 'Date', value: '2024-01-01' })}
+    ${InputTemplate({
+      ...args,
+      type: 'datetime-local',
+      label: 'Date and time',
+      value: '2024-01-01T08:00',
+    })}
+    ${InputTemplate({ ...args, type: 'email', label: 'Email', value: 'john@doe.com' })}
+    ${InputTemplate({ ...args, type: 'month', label: 'Month', value: '2024-01' })}
+    ${InputTemplate({ ...args, type: 'number', label: 'Number', value: '4' })}
+    ${InputTemplate({ ...args, type: 'password', label: 'Password', value: 'password' })}
+    ${InputTemplate({ ...args, type: 'search', label: 'Search', value: 'News' })}
+    ${InputTemplate({ ...args, type: 'tel', label: 'Tel', value: '+1 785-156-8965' })}
+    ${InputTemplate({ ...args, type: 'text', label: 'Text', value: 'Note' })}
+    ${InputTemplate({ ...args, type: 'time', label: 'Time', value: '08:00' })}
+    ${InputTemplate({ ...args, type: 'url', label: 'URL', value: 'https://www.google.com' })}
+    ${InputTemplate({ ...args, type: 'week', label: 'Week', value: '2024-W01' })}
+  `,
 };
 
 /**
@@ -190,17 +192,18 @@ export const ReadOnly: Story = {
  */
 export const InputMode: Story = {
   decorators: [
-    story => html`<div style="display: flex; flex-wrap: wrap; gap: 12px">${story()}</div>`,
+    story => html`<div style="display: flex; flex-wrap: wrap; gap: 1rem">${story()}</div>`,
   ],
-  render: args =>
-    html`${InputTemplate({ ...args, inputmode: 'none', label: 'None' })}
+  render: args => html`
+    ${InputTemplate({ ...args, inputmode: 'none', label: 'None' })}
     ${InputTemplate({ ...args, inputmode: 'text', label: 'Text' })}
     ${InputTemplate({ ...args, inputmode: 'decimal', label: 'Decimal' })}
     ${InputTemplate({ ...args, inputmode: 'numeric', label: 'Numeric' })}
     ${InputTemplate({ ...args, inputmode: 'tel', label: 'Tel' })}
     ${InputTemplate({ ...args, inputmode: 'search', label: 'Search' })}
     ${InputTemplate({ ...args, inputmode: 'email', label: 'Email' })}
-    ${InputTemplate({ ...args, inputmode: 'url', label: 'URL' })}`,
+    ${InputTemplate({ ...args, inputmode: 'url', label: 'URL' })}
+  `,
 };
 
 /**
@@ -264,19 +267,37 @@ export const Validation: Story = {
     'helper-text':
       'Must be long at least 8 characters, contain at least one lowercase letter, one uppercase letter and one number.',
   },
-  render: args =>
-    html`<form onsubmit="submitForm(event)" style="display: flex; gap: 8px">
-        ${InputTemplate(args)}
-        <dfx-button type="reset" style="margin-top: 28px">Reset</dfx-button>
-        <dfx-button type="submit" variant="filled" style="margin-top: 28px">Check</dfx-button>
-      </form>
-
-      <script>
-        var submitForm = event => {
-          event.preventDefault();
-          if (event.target.checkValidity()) {
-            alert('Form is valid');
+  decorators: [
+    story => html`
+      <style>
+        #input-validation {
+          form {
+            display: flex;
+            gap: 0.5rem;
           }
-        };
-      </script>`,
+
+          dfx-button {
+            margin-top: 29px;
+          }
+        }
+      </style>
+      <div id="input-validation">${story()}</div>
+    `,
+  ],
+  render: args => html`
+    <form onsubmit="submitForm(event)">
+      ${InputTemplate(args)}
+      <dfx-button type="reset">Reset</dfx-button>
+      <dfx-button type="submit" variant="filled">Check</dfx-button>
+    </form>
+
+    <script>
+      var submitForm = event => {
+        event.preventDefault();
+        if (event.target.checkValidity()) {
+          alert('Form is valid');
+        }
+      };
+    </script>
+  `,
 };

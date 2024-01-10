@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Radio } from './radio';
+import { Radio } from './radio.js';
 
 type Component = Radio & {
   slot: string;
@@ -58,9 +58,11 @@ export const Disabled: Story = {
     value: 'value',
     disabled: true,
   },
-  render: args =>
-    html`${RadioTemplate({ ...args, slot: 'Unchecked', checked: false })}<br />
-      ${RadioTemplate({ ...args, slot: 'Checked', checked: true })}`,
+  decorators: [story => html`<div style="display: grid; gap: 0.5rem">${story()}</div>`],
+  render: args => html`
+    ${RadioTemplate({ ...args, slot: 'Unchecked', checked: false })}
+    ${RadioTemplate({ ...args, slot: 'Checked', checked: true })}
+  `,
 };
 
 /**

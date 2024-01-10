@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TemplateResult, html, nothing } from 'lit';
-import { Alert } from './alert';
+import { Alert } from './index.js';
 
 type Component = Alert & {
   slot: string;
@@ -68,15 +68,13 @@ export const Themes: Story = {
   args: {
     closable: true,
   },
-  render: args =>
-    html`${AlertTemplate({
-        ...args,
-        theme: 'primary',
-        slot: 'This is a primary alert',
-      })}<br />
-      ${AlertTemplate({ ...args, theme: 'neutral', slot: 'This is a neutral alert' })}<br />
-      ${AlertTemplate({ ...args, theme: 'success', slot: 'This is a success alert' })}<br />
-      ${AlertTemplate({ ...args, theme: 'danger', slot: 'This is a danger alert' })}`,
+  decorators: [story => html`<div style="display: grid; gap: 1rem">${story()}</div>`],
+  render: args => html`
+    ${AlertTemplate({ ...args, theme: 'primary', slot: 'This is a primary alert' })}
+    ${AlertTemplate({ ...args, theme: 'neutral', slot: 'This is a neutral alert' })}
+    ${AlertTemplate({ ...args, theme: 'success', slot: 'This is a success alert' })}
+    ${AlertTemplate({ ...args, theme: 'danger', slot: 'This is a danger alert' })}
+  `,
 };
 
 /**
@@ -100,8 +98,8 @@ export const Slots: Story = {
   args: {
     closable: true,
   },
-  render: args =>
-    html`${AlertTemplate({
+  render: args => html`
+    ${AlertTemplate({
       ...args,
       theme: 'success',
       slot: `<div>
@@ -110,5 +108,6 @@ export const Slots: Story = {
              </div>
              <dfx-button variant="filled" theme="success">Show result</dfx-button>`,
       icon: '<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
-    })}`,
+    })}
+  `,
 };

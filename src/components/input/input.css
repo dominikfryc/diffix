@@ -34,18 +34,18 @@
   display: none;
 }
 
-:host([disabled]) label {
-  cursor: not-allowed;
+:host([disabled]) [part='container'] {
   --dfx-input-color-background: var(--dfx-color-background-surface-variant, #f3f4f6);
   --dfx-input-color-text: var(--dfx-color-text-light, #6b7280);
+  opacity: var(--dfx-form-disabled-opacity, 0.5);
 }
 
 :host([disabled]) [part='control'] {
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
-:host([disabled]) dfx-label {
-  opacity: var(--dfx-form-disabled-opacity, 0.5);
+:host([disabled]) input {
+  pointer-events: none;
 }
 
 [part='container'] {
@@ -68,11 +68,11 @@
   margin: 0;
 }
 
-:host(:not([disabled])) [part='control']:has(*:focus, *:active) {
+:host(:not([disabled])) :not(.invalid) [part='control']:has(:focus, :active) {
   --dfx-input-box-shadow: var(--dfx-input-box-shadow-active);
 }
 
-.invalid.dirty [part='control'] {
+.invalid [part='control'] {
   --dfx-input-box-shadow: var(--dfx-input-box-shadow-error);
 }
 
@@ -89,6 +89,7 @@ input {
   background-color: transparent;
 
   &::placeholder {
+    color: var(--dfx-color-text-dark);
     opacity: var(--dfx-form-disabled-opacity, 0.5);
   }
 }

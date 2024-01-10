@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import { Spinner } from './spinner';
+import { Spinner } from './spinner.js';
 
 describe('Spinner', () => {
   it('is defined', () => {

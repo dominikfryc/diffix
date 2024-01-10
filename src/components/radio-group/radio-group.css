@@ -12,11 +12,7 @@
   display: none;
 }
 
-:host([disabled]) {
-  cursor: not-allowed;
-}
-
-:host([disabled]) legend {
+:host([disabled]) dfx-label {
   opacity: var(--dfx-form-disabled-opacity, 0.5);
 }
 
@@ -38,6 +34,7 @@ legend {
   gap: var(--dfx-radio-group-gap) calc(var(--dfx-radio-group-gap) * 2);
 }
 
-dfx-label[type='error'] {
+dfx-label[type='error'],
+dfx-label[type='helper'] {
   margin-top: var(--dfx-radio-group-gap);
 }

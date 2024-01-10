@@ -33,18 +33,15 @@
   display: none;
 }
 
-:host([disabled]) label {
-  cursor: not-allowed;
+:host([disabled]) [part='container'] {
   --dfx-textarea-color-background: var(--dfx-color-background-surface-variant, #f3f4f6);
   --dfx-textarea-color-text: var(--dfx-color-text-light, #6b7280);
+  opacity: var(--dfx-form-disabled-opacity, 0.5);
+  cursor: not-allowed;
 }
 
 :host([disabled]) textarea {
   pointer-events: none;
-}
-
-:host([disabled]) dfx-label {
-  opacity: var(--dfx-form-disabled-opacity, 0.5);
 }
 
 [part='container'] {
@@ -78,7 +75,7 @@ textarea {
   }
 }
 
-.invalid.dirty textarea {
+.invalid textarea {
   --dfx-textarea-box-shadow: var(--dfx-textarea-box-shadow-error);
 }
 

@@ -1,12 +1,11 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
-import { groupRequiredValidator } from '../../utils/validators';
-import { Radio } from '../radio';
+import { event, EventEmitter } from '../../utils/event.js';
+import { groupRequiredValidator } from '../../utils/validators.js';
+import { Radio } from '../radio/index.js';
 import style from './radio-group.css?raw';
-import '../label';
+import '../label/index.js';
 
 /**
  * Creates a form group of radios
@@ -58,6 +57,12 @@ export class RadioGroup extends FormControlMixin(LitElement) {
   disabled = false;
 
   /**
+   * Sets helper text of input
+   */
+  @property({ type: String, attribute: 'helper-text', reflect: true })
+  helperText: string;
+
+  /**
    * Fires when value of radio group changes
    * @ignore
    */
@@ -71,13 +76,34 @@ export class RadioGroup extends FormControlMixin(LitElement) {
   @event('dfx-invalid')
   private onInvalid: EventEmitter<ValidityState>;
 
-  /** @ignore */
+  /**
+   * Signals that value of radio group changed
+   * @ignore
+   */
   @state()
   private dirty = false;
 
-  /** @ignore */
+  /**
+   * Signals which option is focused
+   * @ignore
+   */
   @state()
   private focusedOptionIndex = 0;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#resetFocusedOptionIndex();
+    this.addEventListener('focus', this.#handleFocus);
+    this.addEventListener('invalid', this.#handleInvalid);
+    this.addEventListener('keydown', this.#handleKeyDown);
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('focus', this.#handleFocus);
+    this.removeEventListener('invalid', this.#handleInvalid);
+    this.removeEventListener('keydown', this.#handleKeyDown);
+  }
 
   #options(): Radio[] {
     return [...this.querySelectorAll('dfx-radio')];
@@ -99,31 +125,17 @@ export class RadioGroup extends FormControlMixin(LitElement) {
     return this.#availableOptions()[this.focusedOptionIndex];
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.#resetFocusedOptionIndex();
-    this.addEventListener('focus', this.#handleFocus);
-    this.addEventListener('keydown', this.#handleKeyDown);
-    this.form?.addEventListener('submit', () => {
-      this.reportValidity();
-    });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener('focus', this.#handleFocus);
-    this.removeEventListener('keydown', this.#handleKeyDown);
-  }
-
-  /** @ignore */
-  #handleFocus = (event: FocusEvent): void => {
+  #handleFocus(event: FocusEvent): void {
     if (event.relatedTarget !== this.#focusedOption()) {
       this.#focusedOption()?.focus();
     }
-  };
+  }
 
-  /** @ignore */
-  #handleKeyDown = (event: KeyboardEvent) => {
+  #handleInvalid(): void {
+    this.dirty = true;
+  }
+
+  #handleKeyDown(event: KeyboardEvent) {
     if (['ArrowDown', 'ArrowRight'].includes(event.key)) {
       this.focusedOptionIndex++;
     } else if (['ArrowUp', 'ArrowLeft'].includes(event.key)) {
@@ -145,38 +157,17 @@ export class RadioGroup extends FormControlMixin(LitElement) {
     }
 
     event.preventDefault();
-  };
+  }
 
-  #handleOptionChange(event: CustomEvent<boolean>): void {
+  #handleOptionChange(event: CustomEvent<boolean> & { target: Radio }): void {
     this.dirty = true;
     if (event.detail) {
-      this.#setChecked((event.target as Radio).value);
-      this.focusedOptionIndex = this.#availableOptions().indexOf(event.target as Radio);
+      this.#setChecked(event.target.value);
+      this.focusedOptionIndex = this.#availableOptions().indexOf(event.target);
     }
     this.value = this.#checkedOptionsValues().join(',') || null;
     this.onChange.emit(this.value);
     event.stopPropagation();
-  }
-
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
-    if (changedProperties.has('value') || changedProperties.has('required')) {
-      this.setValue(this.value);
-      await this.validationComplete;
-      this.requestUpdate();
-    }
-    if (changedProperties.has('disabled')) {
-      this.#options().forEach(option => (option.disabled = this.disabled));
-    }
-  }
-
-  validityCallback(): string | void {
-    this.onInvalid.emit(this.internals.validity);
-    return this.validationMessage;
-  }
-
-  reportValidity(): boolean {
-    this.dirty = true;
-    return this.checkValidity();
   }
 
   #setChecked(value: string) {
@@ -192,13 +183,29 @@ export class RadioGroup extends FormControlMixin(LitElement) {
         : 0;
   }
 
+  override validityCallback(): string {
+    this.onInvalid.emit(this.internals.validity);
+    return this.validationMessage;
+  }
+
+  override async updated(changedProperties: PropertyValues): Promise<void> {
+    if (changedProperties.has('value') || changedProperties.has('required')) {
+      this.setValue(this.value);
+      await this.validationComplete;
+      this.requestUpdate();
+    }
+    if (changedProperties.has('disabled')) {
+      this.#options().forEach(option => (option.disabled = this.disabled));
+    }
+  }
+
   override resetFormControl(): void {
     this.dirty = false;
     this.value = this.getAttribute('value') || null;
     this.#resetFocusedOptionIndex();
   }
 
-  protected firstUpdated(): void {
+  override firstUpdated(): void {
     this.tabIndex = 0;
     this.#options().forEach(option => {
       this.value?.split(',').includes(option.value)
@@ -207,23 +214,33 @@ export class RadioGroup extends FormControlMixin(LitElement) {
     });
   }
 
-  render(): TemplateResult {
-    const labelText = this.label
-      ? html`<legend><dfx-label>${this.label}</dfx-label></legend>`
-      : nothing;
-    const invalidMessage = html`<dfx-label type="error">${this.validationMessage}</dfx-label>`;
-    const classes = {
-      dirty: this.dirty,
-      invalid: !this.checkValidity(),
-    };
+  #renderLabel(): TemplateResult {
+    return html`<legend><dfx-label>${this.label}</dfx-label></legend>`;
+  }
 
-    return html`<fieldset part="fieldset" class=${classMap(classes)}>
-      ${labelText}
-      <div part="container" @dfx-change=${this.#handleOptionChange}>
-        <slot></slot>
-      </div>
-      ${!this.checkValidity() && this.dirty ? invalidMessage : nothing}
-    </fieldset>`;
+  #renderError(): TemplateResult {
+    return html`<dfx-label type="error">${this.validationMessage}</dfx-label>`;
+  }
+
+  #renderHelper(): TemplateResult {
+    return this.helperText ? html`<dfx-label type="helper">${this.helperText}</dfx-label>` : html``;
+  }
+
+  /** @ignore */
+  get #showError(): boolean {
+    return !this.validity.valid && this.dirty;
+  }
+
+  render(): TemplateResult {
+    return html`
+      <fieldset part="fieldset">
+        ${this.label ? this.#renderLabel() : nothing}
+        <div part="container" @dfx-change=${this.#handleOptionChange}>
+          <slot></slot>
+        </div>
+        ${this.#showError ? this.#renderError() : this.#renderHelper()}
+      </fieldset>
+    `;
   }
 }
 

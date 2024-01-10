@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import { Label } from './label';
+import { Label } from './label.js';
 
 describe('Label', () => {
   it('is defined', () => {

@@ -1,6 +1,6 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { RadioGroup } from './radio-group';
-import '../radio';
+import { RadioGroup } from './radio-group.js';
+import '../radio/index.js';
 
 describe('RadioGroup', () => {
   it('is defined', () => {
@@ -17,6 +17,7 @@ describe('RadioGroup', () => {
     expect(el.name).to.be.undefined;
     expect(el.required).to.be.false;
     expect(el.disabled).to.be.false;
+    expect(el.helperText).to.be.undefined;
   });
 
   it('renders with custom attributes correctly', async () => {
@@ -25,6 +26,7 @@ describe('RadioGroup', () => {
     const name = 'options';
     const required = true;
     const disabled = true;
+    const helperText = 'Helper text';
 
     const el = await fixture<RadioGroup>(html`
       <dfx-radio-group
@@ -33,6 +35,7 @@ describe('RadioGroup', () => {
         name=${name}
         ?required=${required}
         ?disabled=${disabled}
+        helper-text=${helperText}
       ></dfx-radio-group>
     `);
 
@@ -41,6 +44,7 @@ describe('RadioGroup', () => {
     expect(el.name).to.equal(name);
     expect(el.required).to.equal(required);
     expect(el.disabled).to.equal(disabled);
+    expect(el.helperText).to.equal(helperText);
   });
 
   it('fires dfx-change event on change', async () => {

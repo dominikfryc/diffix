@@ -1,12 +1,11 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
-import { innerInputValidators } from '../../utils/validators';
+import { event, EventEmitter } from '../../utils/event.js';
+import { innerInputValidators } from '../../utils/validators.js';
 import style from './checkbox.css?raw';
-import '../label';
+import '../label/index.js';
 
 /**
  * Allows user to select an option
@@ -100,34 +99,39 @@ export class Checkbox extends FormControlMixin(LitElement) {
   @event('dfx-invalid')
   private onInvalid: EventEmitter<ValidityState>;
 
-  /** @ignore */
+  /**
+   * Signals that value of checkbox changed
+   * @ignore
+   */
   @state()
   private dirty = false;
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.form?.addEventListener('submit', () => {
-      this.reportValidity();
-    });
+    this.addEventListener('invalid', this.#handleInvalid);
   }
 
-  validityCallback(): string | void {
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('invalid', this.#handleInvalid);
+  }
+
+  #handleInvalid(): void {
+    this.dirty = true;
+  }
+
+  #handleChange(event: Event & { target: HTMLInputElement }) {
+    this.dirty = true;
+    this.checked = event.target.checked;
+    this.onChange.emit(this.checked, { bubbles: true });
+  }
+
+  override validityCallback(): string {
     this.onInvalid.emit(this.internals.validity);
     return this.validationTarget?.validationMessage;
   }
 
-  reportValidity(): boolean {
-    this.dirty = true;
-    return this.checkValidity();
-  }
-
-  #handleChange(event: Event) {
-    this.dirty = true;
-    this.checked = (event.target as HTMLInputElement).checked;
-    this.onChange.emit(this.checked, { bubbles: true });
-  }
-
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
+  override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('value') || changedProperties.has('checked')) {
       this.setValue(this.checked ? this.value : null);
       await this.validationComplete;
@@ -140,42 +144,46 @@ export class Checkbox extends FormControlMixin(LitElement) {
     this.checked = this.hasAttribute('checked');
   }
 
-  focus(): void {
+  override focus(): void {
     this.validationTarget.focus();
   }
 
-  render(): TemplateResult {
-    const invalidMessage = html`<dfx-label type="error" id="label"
-      >${this.validationMessage}</dfx-label
-    >`;
-    const helperMessage = this.helperText
-      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
-      : nothing;
-    const classes = {
-      dirty: this.dirty,
-      invalid: !this.checkValidity(),
-    };
+  #renderError(): TemplateResult {
+    return html`<dfx-label type="error" id="label">${this.validationMessage}</dfx-label>`;
+  }
 
-    return html`<label part="container" class=${classMap(classes)}>
-      <input
-        part="input"
-        type="checkbox"
-        .checked=${live(this.checked)}
-        name=${this.name ?? nothing}
-        value=${this.value ?? nothing}
-        role=${this.type === 'switch' ? 'switch' : nothing}
-        ?required=${this.required}
-        ?disabled=${this.disabled}
-        @change=${this.#handleChange}
-        aria-describedby=${this.helperText || (!this.checkValidity() && this.dirty)
-          ? 'label'
-          : nothing}
-      />
-      <div part="label">
-        <slot></slot>
-        ${!this.checkValidity() && this.dirty ? invalidMessage : helperMessage}
-      </div>
-    </label>`;
+  #renderHelper(): TemplateResult {
+    return this.helperText
+      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
+      : html``;
+  }
+
+  /** @ignore */
+  get #showError(): boolean {
+    return !this.validity.valid && this.dirty;
+  }
+
+  render(): TemplateResult {
+    return html`
+      <label part="container" class=${this.#showError ? 'invalid' : nothing}>
+        <input
+          part="input"
+          type="checkbox"
+          .checked=${live(this.checked)}
+          name=${this.name ?? nothing}
+          value=${this.value ?? nothing}
+          role=${this.type === 'switch' ? 'switch' : nothing}
+          ?required=${this.required}
+          ?disabled=${this.disabled}
+          @change=${this.#handleChange}
+          aria-describedby=${this.helperText || this.#showError ? 'label' : nothing}
+        />
+        <div part="label">
+          <slot></slot>
+          ${this.#showError ? this.#renderError() : this.#renderHelper()}
+        </div>
+      </label>
+    `;
   }
 }
 

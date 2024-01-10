@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TemplateResult, html, nothing } from 'lit';
-import { Button } from './button';
+import { Button } from './button.js';
 
 type Component = Button & {
   slot: string;
@@ -64,11 +64,12 @@ export const Default: Story = {
  * - `text`: Transparent background with dark text.
  */
 export const Variants: Story = {
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'Filled', variant: 'filled' })}
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'Filled', variant: 'filled' })}
     ${ButtonTemplate({ ...args, slot: 'Tonal', variant: 'tonal' })}
     ${ButtonTemplate({ ...args, slot: 'Outlined', variant: 'outlined' })}
-    ${ButtonTemplate({ ...args, slot: 'Text', variant: 'text' })}`,
+    ${ButtonTemplate({ ...args, slot: 'Text', variant: 'text' })}
+  `,
 };
 
 /**
@@ -82,11 +83,12 @@ export const Themes: Story = {
   args: {
     variant: 'filled',
   },
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'Primary', theme: 'primary' })}
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'Primary', theme: 'primary' })}
     ${ButtonTemplate({ ...args, slot: 'Neutral', theme: 'neutral' })}
     ${ButtonTemplate({ ...args, slot: 'Success', theme: 'success' })}
-    ${ButtonTemplate({ ...args, slot: 'Danger', theme: 'danger' })}`,
+    ${ButtonTemplate({ ...args, slot: 'Danger', theme: 'danger' })}
+  `,
 };
 
 /**
@@ -96,8 +98,8 @@ export const Loading: Story = {
   args: {
     loading: true,
   },
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'Button', variant: 'filled' })}
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'Button', variant: 'filled' })}
     ${ButtonTemplate({ ...args, slot: 'Button', variant: 'tonal', 'loading-text': 'Loading...' })}
     ${ButtonTemplate({
       ...args,
@@ -105,7 +107,8 @@ export const Loading: Story = {
       variant: 'outlined',
       'loading-text': '',
       label: 'Label',
-    })}`,
+    })}
+  `,
 };
 
 /**
@@ -115,11 +118,12 @@ export const Disabled: Story = {
   args: {
     disabled: true,
   },
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'Filled', variant: 'filled' })}
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'Filled', variant: 'filled' })}
     ${ButtonTemplate({ ...args, slot: 'Tonal', variant: 'tonal' })}
     ${ButtonTemplate({ ...args, slot: 'Outlined', variant: 'outlined' })}
-    ${ButtonTemplate({ ...args, slot: 'Text', variant: 'text' })}`,
+    ${ButtonTemplate({ ...args, slot: 'Text', variant: 'text' })}
+  `,
 };
 
 /**
@@ -129,9 +133,10 @@ export const Link: Story = {
   args: {
     href: 'https://google.com',
   },
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'This tab', variant: 'filled' })}
-    ${ButtonTemplate({ ...args, slot: 'New tab', variant: 'outlined', target: '_blank' })}`,
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'This tab', variant: 'filled' })}
+    ${ButtonTemplate({ ...args, slot: 'New tab', variant: 'outlined', target: '_blank' })}
+  `,
 };
 
 const iconPlus =
@@ -150,11 +155,12 @@ const iconStar =
  * If default slot is not set or it does not contain text, attribute `label` should be set for accessibility.
  */
 export const Slots: Story = {
-  decorators: [story => html`<div style="display: flex; gap: 4px">${story()}</div>`],
-  render: args =>
-    html`${ButtonTemplate({ ...args, slot: 'Create', start: iconPlus, variant: 'filled' })}
+  decorators: [story => html`<div style="display: flex; gap: 0.25rem">${story()}</div>`],
+  render: args => html`
+    ${ButtonTemplate({ ...args, slot: 'Create', start: iconPlus, variant: 'filled' })}
     ${ButtonTemplate({ ...args, slot: 'Dropdown', end: iconDown })}
-    ${ButtonTemplate({ ...args, slot: iconStar, variant: 'tonal', label: 'Star button' })}`,
+    ${ButtonTemplate({ ...args, slot: iconStar, variant: 'tonal', label: 'Star button' })}
+  `,
 };
 
 /**
@@ -164,18 +170,36 @@ export const Slots: Story = {
  * - `submit`: Submits parent form if all its inputs are valid.
  */
 export const Form: Story = {
-  render: args =>
-    html`<form onsubmit="submitForm(event)" style="display: flex; gap: 4px">
-        <dfx-input name="text" label="Label" hide-label></dfx-input>
-        ${ButtonTemplate({ ...args, type: 'reset', slot: 'Reset' })}
-        ${ButtonTemplate({ ...args, type: 'submit', slot: 'Submit', variant: 'filled' })}
-      </form>
+  decorators: [
+    story => html`
+      <style>
+        #button-form {
+          form {
+            display: flex;
+            gap: 0.25rem;
+          }
 
-      <script>
-        var submitForm = event => {
-          event.preventDefault();
-          const formData = new FormData(event.target);
-          alert('The value is "' + formData.get('text') + '"');
-        };
-      </script>`,
+          dfx-button {
+            margin-top: 29px;
+          }
+        }
+      </style>
+      <div id="button-form">${story()}</div>
+    `,
+  ],
+  render: args => html`
+    <form onsubmit="submitForm(event)">
+      <dfx-input name="text" label="Label"></dfx-input>
+      ${ButtonTemplate({ ...args, type: 'reset', slot: 'Reset' })}
+      ${ButtonTemplate({ ...args, type: 'submit', slot: 'Submit', variant: 'filled' })}
+    </form>
+
+    <script>
+      var submitForm = event => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        alert('The value is "' + formData.get('text') + '"');
+      };
+    </script>
+  `,
 };

@@ -1,8 +1,8 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { event, EventEmitter } from '../../utils/event';
+import { event, EventEmitter } from '../../utils/event.js';
 import style from './button.css?raw';
-import '../spinner';
+import '../spinner/spinner.js';
 
 /**
  * Clickable element used to perform an action
@@ -31,7 +31,7 @@ import '../spinner';
  * @cssprop [--dfx-button-padding=var(--dfx-size-2xs, 0.5rem)] - Padding
  * @cssprop [--dfx-button-scale-active=0.95] - Scale factor on active
  * @cssprop [--dfx-button-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #d4d4d8)] - Outline shadow
- * @cssprop [--dfx-button-transition=all var(--dfx-transition-medium, 0.2s ease-in-out)] - Transition
+ * @cssprop [--dfx-button-transition=all var(--dfx-transition-fast, 0.1s ease-in-out)] - Transition
  * @csspart button - Button element
  */
 @customElement('dfx-button')
@@ -102,6 +102,7 @@ export class Button extends LitElement {
   #handleClick(event: Event): void {
     if (this.type !== 'button') {
       const form = this.closest('form') as HTMLFormElement;
+
       if (this.type === 'reset') {
         form.reset();
       }
@@ -113,38 +114,55 @@ export class Button extends LitElement {
     this.onClick.emit(event);
   }
 
-  render(): TemplateResult {
-    const defaultSlot = html`<slot></slot>`;
-    const startSlot = html`<slot name="start"></slot>`;
-    const endSlot = html`<slot name="end"></slot>`;
-    const spinner = html`<div class=${this.loadingText !== '' ? 'spinner-left' : 'spinner-only'}>
-      <dfx-spinner size="small" aria-hidden="true"></dfx-spinner>
-    </div>`;
-    const loadingContent = html`${this.loadingText !== '' ? this.loadingText : nothing}`;
-    const loading = html`${spinner} ${this.loadingText !== undefined ? loadingContent : defaultSlot}`;
-    const slots = html`${startSlot} ${defaultSlot} ${endSlot}`;
+  #renderDefaultSlot(): TemplateResult {
+    return html`<slot></slot>`;
+  }
 
+  #renderSlots(): TemplateResult {
+    return html`<slot name="start"></slot> ${this.#renderDefaultSlot()} <slot name="end"></slot>`;
+  }
+
+  #renderSpinner(): TemplateResult {
+    return html`
+      <div class=${this.loadingText !== '' ? 'spinner-start' : 'spinner-only'}>
+        <dfx-spinner size="small" aria-hidden="true"></dfx-spinner>
+      </div>
+    `;
+  }
+
+  #renderLoadingContent(): TemplateResult {
+    return html`
+      ${this.#renderSpinner()}
+      ${this.loadingText !== undefined ? this.loadingText : this.#renderDefaultSlot()}
+    `;
+  }
+
+  render(): TemplateResult {
     return this.href
-      ? html`<a
-          part="button"
-          role="button"
-          href=${this.href!}
-          target=${this.target ?? nothing}
-          rel=${this.target ? 'noreferrer noopener' : nothing}
-          aria-label=${this.label ?? nothing}
-          aria-disabled=${(this.disabled || this.loading) ?? nothing}
-        >
-          ${this.loading ? loading : slots}
-        </a>`
-      : html`<button
-          part="button"
-          ?disabled=${this.disabled || this.loading}
-          @click=${this.#handleClick}
-          aria-label=${this.label ?? nothing}
-          aria-disabled=${(this.disabled || this.loading) ?? nothing}
-        >
-          ${this.loading ? loading : slots}
-        </button>`;
+      ? html`
+          <a
+            part="button"
+            role="button"
+            href=${this.href!}
+            target=${this.target ?? nothing}
+            rel=${this.target ? 'noreferrer noopener' : nothing}
+            aria-label=${this.label ?? nothing}
+            aria-disabled=${(this.disabled || this.loading) ?? nothing}
+          >
+            ${this.loading ? this.#renderLoadingContent() : this.#renderSlots()}
+          </a>
+        `
+      : html`
+          <button
+            part="button"
+            ?disabled=${this.disabled || this.loading}
+            @click=${this.#handleClick}
+            aria-label=${this.label ?? nothing}
+            aria-disabled=${(this.disabled || this.loading) ?? nothing}
+          >
+            ${this.loading ? this.#renderLoadingContent() : this.#renderSlots()}
+          </button>
+        `;
   }
 }
 

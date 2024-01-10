@@ -1,6 +1,6 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { CheckboxGroup } from './checkbox-group';
-import '../checkbox';
+import { CheckboxGroup } from './checkbox-group.js';
+import '../checkbox/index.js';
 
 describe('CheckboxGroup', () => {
   it('is defined', () => {
@@ -17,6 +17,7 @@ describe('CheckboxGroup', () => {
     expect(el.name).to.be.undefined;
     expect(el.required).to.be.false;
     expect(el.disabled).to.be.false;
+    expect(el.helperText).to.be.undefined;
   });
 
   it('renders with custom attributes correctly', async () => {
@@ -25,6 +26,7 @@ describe('CheckboxGroup', () => {
     const name = 'options';
     const required = true;
     const disabled = true;
+    const helperText = 'Helper text';
 
     const el = await fixture<CheckboxGroup>(html`
       <dfx-checkbox-group
@@ -33,6 +35,7 @@ describe('CheckboxGroup', () => {
         name=${name}
         ?required=${required}
         ?disabled=${disabled}
+        helper-text=${helperText}
       ></dfx-checkbox-group>
     `);
 
@@ -41,6 +44,7 @@ describe('CheckboxGroup', () => {
     expect(el.name).to.equal(name);
     expect(el.required).to.equal(required);
     expect(el.disabled).to.equal(disabled);
+    expect(el.helperText).to.equal(helperText);
   });
 
   it('fires dfx-change event on change', async () => {

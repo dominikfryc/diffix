@@ -22,7 +22,7 @@
   --dfx-button-line-height: var(--dfx-size-l, 1.25rem);
   --dfx-button-padding: var(--dfx-size-2xs, 0.5rem);
   --dfx-button-scale-active: 0.95;
-  --dfx-button-transition: all var(--dfx-transition-medium, 0.2s ease-in-out);
+  --dfx-button-transition: all var(--dfx-transition-fast, 0.1s ease-in-out);
 }
 
 :is(a, button) {
@@ -150,7 +150,7 @@ slot:not([name])::slotted(svg) {
   margin-inline: calc(var(--dfx-button-gap) * -1);
 }
 
-.spinner-left,
+.spinner-start,
 slot[name='start']::slotted(*) {
   margin-inline-start: calc(var(--dfx-button-gap) * -0.5);
 }

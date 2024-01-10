@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { TemplateResult, html, nothing } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Checkbox } from './checkbox';
+import { Checkbox } from './checkbox.js';
 
 type Component = Checkbox & {
   slot: string;
@@ -54,9 +54,11 @@ export const Type: Story = {
   args: {
     value: 'value',
   },
-  render: args =>
-    html`${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}<br />
-      ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}`,
+  decorators: [story => html`<div style="display: grid; gap: 0.5rem">${story()}</div>`],
+  render: args => html`
+    ${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}
+    ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}
+  `,
 };
 
 /**
@@ -67,9 +69,11 @@ export const Checked: Story = {
     value: 'value',
     checked: true,
   },
-  render: args =>
-    html`${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}<br />
-      ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}`,
+  decorators: [story => html`<div style="display: grid; gap: 0.5rem">${story()}</div>`],
+  render: args => html`
+    ${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}
+    ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}
+  `,
 };
 
 /**
@@ -80,11 +84,13 @@ export const Disabled: Story = {
     value: 'value',
     disabled: true,
   },
-  render: args =>
-    html`${CheckboxTemplate({ ...args, slot: 'Unchecked', type: 'checkbox' })}<br />
-      ${CheckboxTemplate({ ...args, slot: 'Checked', type: 'checkbox', checked: true })}<br />
-      ${CheckboxTemplate({ ...args, slot: 'Unchecked', type: 'switch' })}<br />
-      ${CheckboxTemplate({ ...args, slot: 'Checked', type: 'switch', checked: true })}`,
+  decorators: [story => html`<div style="display: grid; gap: 0.5rem">${story()}</div>`],
+  render: args => html`
+    ${CheckboxTemplate({ ...args, slot: 'Unchecked', type: 'checkbox' })}
+    ${CheckboxTemplate({ ...args, slot: 'Checked', type: 'checkbox', checked: true })}
+    ${CheckboxTemplate({ ...args, slot: 'Unchecked', type: 'switch' })}
+    ${CheckboxTemplate({ ...args, slot: 'Checked', type: 'switch', checked: true })}
+  `,
 };
 
 /**
@@ -95,7 +101,7 @@ export const HelperText: Story = {
     value: 'value',
     'helper-text': 'Additional information',
   },
-  decorators: [story => html`<div style="display: grid; gap: 16px">${story()}</div>`],
+  decorators: [story => html`<div style="display: grid; gap: 1rem">${story()}</div>`],
   render: args =>
     html`${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}
     ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}`,
@@ -109,22 +115,41 @@ export const Required: Story = {
     value: 'value',
     required: true,
   },
-  render: args =>
-    html`<form onsubmit="submitForm(event)" style="display: grid; gap: 16px">
-        ${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}
-        ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}
-        <div style="display: flex; gap: 8px">
-          <dfx-button type="submit" variant="filled">Check</dfx-button>
-          <dfx-button type="reset">Reset</dfx-button>
-        </div>
-      </form>
+  decorators: [
+    story => html`
+      <style>
+        #checkbox-required {
+          form {
+            display: grid;
+            gap: 1rem;
 
-      <script>
-        var submitForm = event => {
-          event.preventDefault();
-          if (event.target.checkValidity()) {
-            alert('Form is valid');
+            div {
+              display: flex;
+              gap: 0.5rem;
+            }
           }
-        };
-      </script>`,
+        }
+      </style>
+      <div id="checkbox-required">${story()}</div>
+    `,
+  ],
+  render: args => html`
+    <form onsubmit="submitForm(event)">
+      ${CheckboxTemplate({ ...args, slot: 'Checkbox', type: 'checkbox' })}
+      ${CheckboxTemplate({ ...args, slot: 'Switch', type: 'switch' })}
+      <div>
+        <dfx-button type="submit" variant="filled">Check</dfx-button>
+        <dfx-button type="reset">Reset</dfx-button>
+      </div>
+    </form>
+
+    <script>
+      var submitForm = event => {
+        event.preventDefault();
+        if (event.target.checkValidity()) {
+          alert('Form is valid');
+        }
+      };
+    </script>
+  `,
 };

@@ -1,16 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { RadioGroup } from './radio-group';
+import { RadioGroup } from './radio-group.js';
 
 type Component = RadioGroup & {
   slot: string;
+  'helper-text': string;
 };
 
 const meta: Meta<Component> = {
   title: 'Components/Radio Group',
   component: 'dfx-radio-group',
   tags: ['autodocs'],
+  argTypes: {
+    helperText: {
+      table: { disable: true },
+    },
+  },
 };
 
 export default meta;
@@ -23,6 +29,7 @@ const RadioGroupTemplate = (args: Partial<Component>): TemplateResult =>
     name=${args.name ?? nothing}
     ?required=${args.required}
     ?disabled=${args.disabled}
+    helper-text=${args['helper-text'] ?? nothing}
   >
     ${unsafeHTML(args.slot)}
   </dfx-radio-group>`;
@@ -69,6 +76,21 @@ export const Disabled: Story = {
 };
 
 /**
+ * Radio group can show a helper text containing additional information. It disappears when there is an error.
+ */
+export const HelperText: Story = {
+  args: {
+    label: 'Radio group label',
+    name: 'options',
+    'helper-text': 'Helper text',
+    slot: `<dfx-radio value="1">Option 1</dfx-radio>
+           <dfx-radio value="2">Option 2</dfx-radio>
+           <dfx-radio value="3">Option 3</dfx-radio>`,
+  },
+  render: args => RadioGroupTemplate(args),
+};
+
+/**
  * Radio group can set `required` attribute for validation.
  */
 export const Required: Story = {
@@ -80,21 +102,40 @@ export const Required: Story = {
            <dfx-radio value="2">Option 2</dfx-radio>
            <dfx-radio value="3">Option 3</dfx-radio>`,
   },
-  render: args =>
-    html`<form onsubmit="submitForm(event)" style="display: grid; gap: 16px">
-        ${RadioGroupTemplate(args)}
-        <div style="display: flex; gap: 8px">
-          <dfx-button type="submit" variant="filled">Submit</dfx-button>
-          <dfx-button type="reset">Reset</dfx-button>
-        </div>
-      </form>
+  decorators: [
+    story => html`
+      <style>
+        #radio-group-required {
+          form {
+            display: grid;
+            gap: 1rem;
 
-      <script>
-        var submitForm = event => {
-          event.preventDefault();
-          if (event.target.checkValidity()) {
-            alert('Form is valid');
+            div {
+              display: flex;
+              gap: 0.5rem;
+            }
           }
-        };
-      </script>`,
+        }
+      </style>
+      <div id="radio-group-required">${story()}</div>
+    `,
+  ],
+  render: args => html`
+    <form onsubmit="submitForm(event)">
+      ${RadioGroupTemplate(args)}
+      <div>
+        <dfx-button type="submit" variant="filled">Submit</dfx-button>
+        <dfx-button type="reset">Reset</dfx-button>
+      </div>
+    </form>
+
+    <script>
+      var submitForm = event => {
+        event.preventDefault();
+        if (event.target.checkValidity()) {
+          alert('Form is valid');
+        }
+      };
+    </script>
+  `,
 };

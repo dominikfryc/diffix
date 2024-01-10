@@ -1,12 +1,11 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
-import { innerInputValidators } from '../../utils/validators';
+import { event, EventEmitter } from '../../utils/event.js';
+import { innerInputValidators } from '../../utils/validators.js';
 import style from './textarea.css?raw';
-import '../label';
+import '../label/index.js';
 
 /**
  * Allows user to provide multi-line text input
@@ -147,39 +146,44 @@ export class Textarea extends FormControlMixin(LitElement) {
   @event('dfx-invalid')
   private onInvalid: EventEmitter<ValidityState>;
 
-  /** @ignore */
+  /**
+   * Signals that value of input changed
+   * @ignore
+   */
   @state()
   private dirty = false;
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.form?.addEventListener('submit', () => {
-      this.reportValidity();
-    });
+    this.addEventListener('invalid', this.#handleInvalid);
   }
 
-  validityCallback(): string | void {
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('invalid', this.#handleInvalid);
+  }
+
+  #handleInvalid(): void {
+    this.dirty = true;
+  }
+
+  #handleInput(event: Event & { target: HTMLInputElement }): void {
+    this.value = event.target.value;
+    this.onInput.emit(this.value);
+  }
+
+  #handleChange(event: Event & { target: HTMLInputElement }): void {
+    this.dirty = true;
+    this.value = event.target.value;
+    this.onChange.emit(this.value);
+  }
+
+  override validityCallback(): string {
     this.onInvalid.emit(this.internals.validity);
     return this.validationTarget?.validationMessage;
   }
 
-  reportValidity(): boolean {
-    this.dirty = true;
-    return this.checkValidity();
-  }
-
-  #handleChange(event: Event): void {
-    this.dirty = true;
-    this.value = (event.target as HTMLInputElement).value;
-    this.onChange.emit(this.value);
-  }
-
-  #handleInput(event: Event): void {
-    this.value = (event.target as HTMLInputElement).value;
-    this.onInput.emit(this.value);
-  }
-
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
+  override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('value')) {
       this.setValue(this.value);
       await this.validationComplete;
@@ -192,56 +196,64 @@ export class Textarea extends FormControlMixin(LitElement) {
     this.value = this.getAttribute('value') ?? '';
   }
 
-  render(): TemplateResult {
-    const invalidMessage = html`<dfx-label type="error" id="label">
-      ${this.validationMessage}
-    </dfx-label>`;
-    const helperMessage = this.helperText
-      ? html`<dfx-label type="helper" id="label"> ${this.helperText} </dfx-label>`
-      : nothing;
-    const maxLength = html`/${this.maxlength}`;
-    const characterCounter = html`<dfx-label
-      type="${(this.maxlength && this.value.length > this.maxlength) ||
-      (this.minlength && this.dirty && this.value.length < this.minlength)
-        ? 'error'
-        : 'helper'}"
-      id="character-count"
-    >
-      ${this.value.length}${this.maxlength ? maxLength : nothing}
-    </dfx-label>`;
-    const label =
-      this.label && !this.hideLabel ? html`<dfx-label> ${this.label} </dfx-label>` : nothing;
-    const classes = {
-      dirty: this.dirty,
-      invalid: !this.checkValidity(),
-    };
+  #renderError(): TemplateResult {
+    return html`<dfx-label type="error" id="label">${this.validationMessage}</dfx-label>`;
+  }
 
-    return html`<label part="container" class=${classMap(classes)}>
-      ${label}
-      <textarea
-        part="textarea"
-        .value=${live(this.value)}
-        rows="${this.rows}"
-        placeholder="${this.placeholder ?? nothing}"
-        minlength="${this.minlength ?? nothing}"
-        maxlength="${this.maxlength ?? nothing}"
-        ?required=${this.required}
-        ?disabled=${this.disabled}
-        ?readonly=${this.readonly}
-        spellcheck="${this.spellchecker}"
-        @change=${this.#handleChange}
-        @input=${this.#handleInput}
-        aria-label=${this.label && this.hideLabel ? this.label : nothing}
-        aria-invalid=${this.checkValidity() ? 'false' : 'true'}
-        aria-describedby=${this.helperText || (!this.checkValidity() && this.dirty)
-          ? 'label'
-          : nothing}
-      ></textarea>
-      <div class="description">
-        ${!this.checkValidity() && this.dirty ? invalidMessage : helperMessage}
-        ${this.characterCounter ? characterCounter : nothing}
+  #renderHelper(): TemplateResult {
+    return this.helperText
+      ? html`<dfx-label type="helper" id="label">${this.helperText}</dfx-label>`
+      : html``;
+  }
+
+  #renderLabel(): TemplateResult {
+    return html`<label for=${this.#id}><dfx-label>${this.label}</dfx-label></label>`;
+  }
+
+  #renderCharacterCounter(): TemplateResult {
+    return html`
+      <dfx-label type=${this.#showError ? 'error' : 'helper'} id="character-count">
+        ${this.value.length}${this.maxlength ? '/' + this.maxlength : nothing}
+      </dfx-label>
+    `;
+  }
+
+  /** @ignore */
+  get #showError(): boolean {
+    return !this.validity.valid && this.dirty;
+  }
+
+  /** @ignore */
+  #id = Math.random().toString(36).substring(2);
+
+  render(): TemplateResult {
+    return html`
+      <div part="container" class=${this.#showError ? 'invalid' : nothing}>
+        ${this.label && !this.hideLabel ? this.#renderLabel() : nothing}
+        <textarea
+          id=${this.#id}
+          part="textarea"
+          .value=${live(this.value)}
+          rows="${this.rows}"
+          placeholder="${this.placeholder ?? nothing}"
+          minlength="${this.minlength ?? nothing}"
+          maxlength="${this.maxlength ?? nothing}"
+          ?required=${this.required}
+          ?disabled=${this.disabled}
+          ?readonly=${this.readonly}
+          spellcheck="${this.spellchecker}"
+          @change=${this.#handleChange}
+          @input=${this.#handleInput}
+          aria-label=${this.label && this.hideLabel ? this.label : nothing}
+          aria-invalid=${this.#showError}
+          aria-describedby=${this.helperText || this.#showError ? 'label' : nothing}
+        ></textarea>
+        <div class="description">
+          ${this.#showError ? this.#renderError() : this.#renderHelper()}
+          ${this.characterCounter ? this.#renderCharacterCounter() : nothing}
+        </div>
       </div>
-    </label>`;
+    `;
   }
 }
 

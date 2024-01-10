@@ -1,12 +1,11 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { FormControlMixin } from '@open-wc/form-control';
-import { event, EventEmitter } from '../../utils/event';
-import { groupRequiredValidator } from '../../utils/validators';
-import { Checkbox } from '../checkbox';
+import { event, EventEmitter } from '../../utils/event.js';
+import { groupRequiredValidator } from '../../utils/validators.js';
+import { Checkbox } from '../checkbox/index.js';
 import style from './checkbox-group.css?raw';
-import '../label';
+import '../label/index.js';
 
 /**
  * Creates a form group of checkboxes or switches
@@ -58,6 +57,12 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
   disabled = false;
 
   /**
+   * Sets helper text of input
+   */
+  @property({ type: String, attribute: 'helper-text', reflect: true })
+  helperText: string;
+
+  /**
    * Fires when value of checkbox group changes
    * @ignore
    */
@@ -71,9 +76,24 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
   @event('dfx-invalid')
   private onInvalid: EventEmitter<ValidityState>;
 
-  /** @ignore */
+  /**
+   * Signals that value of checkbox group changed
+   * @ignore
+   */
   @state()
   private dirty = false;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.addEventListener('focus', this.#handleFocus);
+    this.addEventListener('invalid', this.#handleInvalid);
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('focus', this.#handleFocus);
+    this.removeEventListener('invalid', this.#handleInvalid);
+  }
 
   #options(): Checkbox[] {
     return [...this.querySelectorAll('dfx-checkbox')];
@@ -87,25 +107,15 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
     return this.#checkedOptions().map(option => option.value);
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.addEventListener('focus', this.#handleFocus);
-    this.form?.addEventListener('submit', () => {
-      this.reportValidity();
-    });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener('focus', this.#handleFocus);
-  }
-
-  /** @ignore */
-  #handleFocus = (event: FocusEvent): void => {
+  #handleFocus(event: FocusEvent): void {
     if (event.relatedTarget !== this.#options()[0]) {
       this.#options()[0]?.focus();
     }
-  };
+  }
+
+  #handleInvalid(): void {
+    this.dirty = true;
+  }
 
   #handleOptionChange(event: CustomEvent<boolean>): void {
     this.dirty = true;
@@ -114,7 +124,12 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
     event.stopPropagation();
   }
 
-  protected async updated(changedProperties: PropertyValues): Promise<void> {
+  override validityCallback(): string {
+    this.onInvalid.emit(this.internals.validity);
+    return this.validationMessage;
+  }
+
+  override async updated(changedProperties: PropertyValues): Promise<void> {
     if (changedProperties.has('value') || changedProperties.has('required')) {
       this.setValue(this.value);
       await this.validationComplete;
@@ -125,22 +140,12 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
     }
   }
 
-  validityCallback(): string | void {
-    this.onInvalid.emit(this.internals.validity);
-    return this.validationMessage;
-  }
-
-  reportValidity(): boolean {
-    this.dirty = true;
-    return this.checkValidity();
-  }
-
   override resetFormControl(): void {
     this.dirty = false;
     this.value = this.getAttribute('value') || null;
   }
 
-  protected firstUpdated(): void {
+  override firstUpdated(): void {
     this.tabIndex = 0;
     this.#options().forEach(option => {
       this.value?.split(',').includes(option.value)
@@ -149,23 +154,33 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
     });
   }
 
-  render(): TemplateResult {
-    const labelText = this.label
-      ? html`<legend><dfx-label>${this.label}</dfx-label></legend>`
-      : nothing;
-    const invalidMessage = html`<dfx-label type="error">${this.validationMessage}</dfx-label>`;
-    const classes = {
-      dirty: this.dirty,
-      invalid: !this.checkValidity(),
-    };
+  #renderLabel(): TemplateResult {
+    return html`<legend><dfx-label>${this.label}</dfx-label></legend>`;
+  }
 
-    return html`<fieldset part="fieldset" class=${classMap(classes)}>
-      ${labelText}
-      <div part="container" @dfx-change=${this.#handleOptionChange}>
-        <slot></slot>
-      </div>
-      ${!this.checkValidity() && this.dirty ? invalidMessage : nothing}
-    </fieldset>`;
+  #renderError(): TemplateResult {
+    return html`<dfx-label type="error">${this.validationMessage}</dfx-label>`;
+  }
+
+  #renderHelper(): TemplateResult {
+    return this.helperText ? html`<dfx-label type="helper">${this.helperText}</dfx-label>` : html``;
+  }
+
+  /** @ignore */
+  get #showError(): boolean {
+    return !this.validity.valid && this.dirty;
+  }
+
+  render(): TemplateResult {
+    return html`
+      <fieldset part="fieldset">
+        ${this.label ? this.#renderLabel() : nothing}
+        <div part="container" @dfx-change=${this.#handleOptionChange}>
+          <slot></slot>
+        </div>
+        ${this.#showError ? this.#renderError() : this.#renderHelper()}
+      </fieldset>
+    `;
   }
 }
 

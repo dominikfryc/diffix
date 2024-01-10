@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
-import { Textarea } from './textarea';
+import { Textarea } from './textarea.js';
 
 type Component = Textarea & {
   'helper-text': string;
@@ -128,9 +128,11 @@ export const CharacterCounter: Story = {
     label: 'Label',
     'character-counter': true,
   },
-  render: args =>
-    html`${TextareaTemplate({ ...args, label: 'Character counter' })}
-    ${TextareaTemplate({ ...args, label: 'With maxlength', maxlength: 100 })}`,
+  decorators: [story => html`<div style="display: grid; gap: 1rem">${story()}</div>`],
+  render: args => html`
+    ${TextareaTemplate({ ...args, label: 'Character counter' })}
+    ${TextareaTemplate({ ...args, label: 'With maxlength', maxlength: 100 })}
+  `,
 };
 
 /**
