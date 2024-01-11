@@ -1,12 +1,12 @@
 import { Meta, Unstyled } from '@storybook/blocks';
-import icon from './assets/icon.svg';
+import icon from './assets/icon.svg?raw';
 import storybook from './assets/storybook.svg?raw';
 import github from './assets/github.svg?raw';
 import npm from './assets/npm.svg?raw';
 
 <Meta title="Welcome" />
 
-<img src={icon} alt="Diffix Icon" width="72" />
+<div className="icon" dangerouslySetInnerHTML={{ __html: icon }}></div>
 <Unstyled>
   <h1>Diffix</h1>
   <h2>Web Components</h2>
@@ -37,6 +37,16 @@ import npm from './assets/npm.svg?raw';
     align-content: center;
   }
 
+  .icon {
+    color: var(--dfx-color-text-dark-variant);
+    display: contents;
+
+    svg {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
   h1,
   h2 {
     font-family: var(--dfx-font-family);
@@ -45,13 +55,14 @@ import npm from './assets/npm.svg?raw';
   }
 
   h1 {
+    color: var(--dfx-color-text-dark-variant);
     font-size: 8rem;
     letter-spacing: -0.45rem;
     padding-right: 1rem;
   }
 
   h2 {
-    color: #6C7793;
+    color: var(--dfx-color-text-light);
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 0.5rem;
