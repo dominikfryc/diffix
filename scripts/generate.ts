@@ -5,11 +5,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import templates
-import { globalIndexTemplate, componentIndexTemplate } from './templates/index';
-import { styleTemplate } from './templates/styles';
-import { componentTemplate } from './templates/component';
-import { testTemplate } from './templates/tests';
-import { storiesTemplate } from './templates/stories';
+import { globalIndexTemplate, componentIndexTemplate } from './templates/index.js';
+import { styleTemplate } from './templates/styles.js';
+import { componentTemplate } from './templates/component.js';
+import { testTemplate } from './templates/tests.js';
+import { storiesTemplate } from './templates/stories.js';
 
 // Component type
 export type Component = {
@@ -42,7 +42,7 @@ if (args[0].startsWith('dfx-')) {
 const component: Component = {
   name: toPascalCase(args[0]),
   tag: args[0].toLowerCase(),
-  path: path.join(__dirname, '..', '..', 'src', 'components', args[0].toLowerCase()),
+  path: path.join(__dirname, '..', 'src', 'components', args[0].toLowerCase()),
 };
 
 // Create new folder in components directory if component does not exist already
@@ -88,7 +88,7 @@ function createComponentFolder(component: Component) {
   try {
     fs.mkdirSync(component.path);
   } catch {
-    console.error(`Component "${component.tag}" already exists`);
+    console.error(`Component "${component.tag}" already exists.`);
     process.exit(1);
   }
 }
@@ -96,7 +96,7 @@ function createComponentFolder(component: Component) {
 // Add new component to src/index.ts, sort alphabetically with empty line at the end
 function addComponentToGlobalIndex(component: Component) {
   try {
-    const indexFile = path.join(__dirname, '..', '..', 'src', 'index.ts');
+    const indexFile = path.join(__dirname, '..', 'src', 'index.ts');
     const fileContent = fs.readFileSync(indexFile, 'utf8');
     const lines = fileContent.split('\n');
     lines.push(globalIndexTemplate(component));
@@ -114,7 +114,7 @@ function addComponentToGlobalIndex(component: Component) {
 
 // Create new file in component folder
 function createComponentFile(filename: string, content: string) {
-  const filePath = path.join('src', 'components', component.tag, filename);
+  const filePath = path.join(__dirname, '..', 'src', 'components', component.tag, filename);
   try {
     fs.writeFileSync(filePath, content);
   } catch (error) {

@@ -1,4 +1,4 @@
-import { Component } from '../generate';
+import { Component } from '../generate.js';
 
 const componentTemplate = (component: Component): string => {
   return `import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';

@@ -1,4 +1,4 @@
-import { Component } from '../generate';
+import { Component } from '../generate.js';
 
 const globalIndexTemplate = (component: Component): string =>
   `export { ${component.name} } from './components/${component.tag}';`;

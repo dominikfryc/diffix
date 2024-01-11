@@ -1,8 +1,8 @@
-import { Component } from '../generate';
+import { Component } from '../generate.js';
 
 const testTemplate = (component: Component): string => {
   return `import { html, fixture, expect } from '@open-wc/testing';
-import { ${component.name} } from './${component.tag}';
+import { ${component.name} } from './index.js';
 
 describe('${component.name}', () => {
   it('is defined', () => {
