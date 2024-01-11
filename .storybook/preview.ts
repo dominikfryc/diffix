@@ -5,7 +5,7 @@ import { html } from 'js-beautify';
 import '../src/themes/default.css';
 import '../src/themes/dark.css';
 import './assets/styles.css';
-import '../src/index';
+import '../src/index.js';
 
 setCustomElementsManifest(customElements);
 
@@ -13,6 +13,7 @@ const preview: Preview = {
   parameters: {
     docs: {
       source: {
+        excludeDecorators: true,
         transform: (input: string) => {
           const text = input
             .replace(/></g, '>\n<')
