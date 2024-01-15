@@ -13,10 +13,10 @@ import '../label/index.js';
  * @slot {html} slot - Default slot for label
  * @fires {boolean} dfx-change - Fires when radio is checked
  * @cssprop [--dfx-radio-border-radius=var(--dfx-border-radius-full, 62.438rem)] - Border radius
- * @cssprop [--dfx-radio-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #d4d4d8)] - Default box shadow
+ * @cssprop [--dfx-radio-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Default box shadow
  * @cssprop [--dfx-radio-box-shadow-checked=inset 0 0 0 calc(var(--dfx-size-xs, 0.75rem) / 2) var(--dfx-radio-color)] - Box shadow for checked state
- * @cssprop [--dfx-radio-box-shadow-disabled=inset 0 0 0 calc(var(--dfx-size-xs, 0.75rem) / 2) var(--dfx-color-background-border, #d1d5db)] - Box shadow for error state
- * @cssprop [--dfx-radio-color=var(--dfx-color-primary-dark, #2563eb)] - Checked state color
+ * @cssprop [--dfx-radio-box-shadow-disabled=inset 0 0 0 calc(var(--dfx-size-xs, 0.75rem) / 2) var(--dfx-color-background-border, #aeb5bf)] - Box shadow for error state
+ * @cssprop [--dfx-radio-color=var(--dfx-color-primary-dark, #0063eb)] - Checked state color
  * @cssprop [--dfx-radio-focus-offset=var(--dfx-form-outline-offset, 0.25rem)] - Radio focus offset
  * @cssprop [--dfx-radio-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Label font family
  * @cssprop [--dfx-radio-font-size=var(--dfx-font-size-m, 0.875rem)] - Label font size

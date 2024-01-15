@@ -7,7 +7,7 @@ import style from './label.css?raw';
  *
  * @element dfx-label
  * @slot {html} slot - Default slot for label content
- * @cssprop [--dfx-label-color=var(--dfx-color-text-dark, #1f2937)] - Label color
+ * @cssprop [--dfx-label-color=var(--dfx-color-text-dark, #383d46)] - Label color
  * @cssprop [--dfx-label-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Label font family
  * @cssprop [--dfx-label-font-size=var(--dfx-font-size-m, 0.875rem)] - Label font size
  * @cssprop [--dfx-label-font-weight=var(--dfx-font-weight-semibold, 600)] - Label font weight

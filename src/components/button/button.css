@@ -89,46 +89,46 @@
 }
 
 :host([variant='outlined']) {
-  --dfx-button-color-text: var(--dfx-button-color-dark);
+  --dfx-button-color-text: var(--dfx-button-color-dark-variant);
   --dfx-button-color-background: transparent;
   --dfx-button-color-background-hover: var(--dfx-button-color-light);
   --dfx-button-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
-    var(--dfx-color-background-border, #d4d4d8);
+    var(--dfx-color-background-border, #aeb5bf);
 }
 
 :host([variant='text']) {
-  --dfx-button-color-text: var(--dfx-button-color-dark);
+  --dfx-button-color-text: var(--dfx-button-color-dark-variant);
   --dfx-button-color-background: transparent;
   --dfx-button-color-background-hover: var(--dfx-button-color-light);
   --dfx-button-shadow: none;
 }
 
 :host([theme='primary']) {
-  --dfx-button-color-dark: var(--dfx-color-primary-dark, #2563eb);
-  --dfx-button-color-dark-variant: var(--dfx-color-primary-dark-variant, #1d4ed8);
-  --dfx-button-color-light: var(--dfx-color-primary-light, #60a5fa1a);
-  --dfx-button-color-light-variant: var(--dfx-color-primary-light-variant, #60a5fa33);
+  --dfx-button-color-dark: var(--dfx-color-primary-dark, #0063eb);
+  --dfx-button-color-dark-variant: var(--dfx-color-primary-dark-variant, #044cb6);
+  --dfx-button-color-light: var(--dfx-color-primary-light, #3f82f01a);
+  --dfx-button-color-light-variant: var(--dfx-color-primary-light-variant, #3f82f033);
 }
 
 :host([theme='neutral']) {
-  --dfx-button-color-dark: var(--dfx-color-neutral-dark, #374151);
-  --dfx-button-color-dark-variant: var(--dfx-color-neutral-dark-variant, #1f2937);
-  --dfx-button-color-light: var(--dfx-color-neutral-light, #a1a1aa1a);
-  --dfx-button-color-light-variant: var(--dfx-color-neutral-light-variant, #a1a1aa33);
+  --dfx-button-color-dark: var(--dfx-color-neutral-dark, #4f5661);
+  --dfx-button-color-dark-variant: var(--dfx-color-neutral-dark-variant, #383d46);
+  --dfx-button-color-light: var(--dfx-color-neutral-light, #7e87951a);
+  --dfx-button-color-light-variant: var(--dfx-color-neutral-light-variant, #7e879533);
 }
 
 :host([theme='success']) {
-  --dfx-button-color-dark: var(--dfx-color-success-dark, #15803d);
-  --dfx-button-color-dark-variant: var(--dfx-color-success-dark-variant, #166534);
-  --dfx-button-color-light: var(--dfx-color-success-light, #4ade801a);
-  --dfx-button-color-light-variant: var(--dfx-color-success-light-variant, #4ade8033);
+  --dfx-button-color-dark: var(--dfx-color-success-dark, #17843f);
+  --dfx-button-color-dark-variant: var(--dfx-color-success-dark-variant, #09672e);
+  --dfx-button-color-light: var(--dfx-color-success-light, #20a04e1a);
+  --dfx-button-color-light-variant: var(--dfx-color-success-light-variant, #20a04e33);
 }
 
 :host([theme='danger']) {
-  --dfx-button-color-dark: var(--dfx-color-danger-dark, #dc2626);
-  --dfx-button-color-dark-variant: var(--dfx-color-danger-dark-variant, #b91c1c);
-  --dfx-button-color-light: var(--dfx-color-danger-light, #f871711a);
-  --dfx-button-color-light-variant: var(--dfx-color-danger-light-variant, #f8717133);
+  --dfx-button-color-dark: var(--dfx-color-danger-dark, #c91f3a);
+  --dfx-button-color-dark-variant: var(--dfx-color-danger-dark-variant, #9a1c2e);
+  --dfx-button-color-light: var(--dfx-color-danger-light, #dd4d571a);
+  --dfx-button-color-light-variant: var(--dfx-color-danger-light-variant, #dd4d5733);
 }
 
 dfx-spinner {

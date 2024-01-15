@@ -16,10 +16,10 @@ import '../spinner/spinner.js';
  * @cssprop [--dfx-button-color-text=var(--dfx-button-color-dark)] - Text color
  * @cssprop [--dfx-button-color-background=var(--dfx-color-background-surface, #ffffff)] - Background color
  * @cssprop [--dfx-button-color-background-hover=var(--dfx-button-color-light)] - Background color on hover
- * @cssprop [--dfx-button-color-dark=var(--dfx-color-neutral-dark, #374151)] - Dark color
- * @cssprop [--dfx-button-color-dark-variant=var(--dfx-color-neutral-dark-variant, #1f2937)] - Dark variant color
- * @cssprop [--dfx-button-color-light=var(--dfx-color-neutral-light, #a1a1aa1a)] - Light color
- * @cssprop [--dfx-button-color-light-variant=var(--dfx-color-neutral-light-variant, #a1a1aa33)] - Light variant color
+ * @cssprop [--dfx-button-color-dark=var(--dfx-color-neutral-dark, #4f5661)] - Dark color
+ * @cssprop [--dfx-button-color-dark-variant=var(--dfx-color-neutral-dark-variant, #383d46)] - Dark variant color
+ * @cssprop [--dfx-button-color-light=var(--dfx-color-neutral-light, #7e87951a)] - Light color
+ * @cssprop [--dfx-button-color-light-variant=var(--dfx-color-neutral-light-variant, #7e879533)] - Light variant color
  * @cssprop [--dfx-button-focus-offset=var(--dfx-form-outline-offset, 0.25rem)] - Focus offset
  * @cssprop [--dfx-button-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Font family
  * @cssprop [--dfx-button-font-size=var(--dfx-font-size-m, 0.875rem)] - Font size
@@ -30,7 +30,7 @@ import '../spinner/spinner.js';
  * @cssprop [--dfx-button-line-height=var(--dfx-size-l, 1.25rem)] - Line height
  * @cssprop [--dfx-button-padding=var(--dfx-size-2xs, 0.5rem)] - Padding
  * @cssprop [--dfx-button-scale-active=0.95] - Scale factor on active
- * @cssprop [--dfx-button-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #d4d4d8)] - Outline shadow
+ * @cssprop [--dfx-button-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Outline shadow
  * @cssprop [--dfx-button-transition=all var(--dfx-transition-fast, 0.1s ease-in-out)] - Transition
  * @csspart button - Button element
  */

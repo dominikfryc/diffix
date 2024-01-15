@@ -15,11 +15,11 @@ import '../label/index.js';
  * @fires {string} dfx-change - Fires when value changed and textarea is blurred
  * @fires {ValidityState} dfx-invalid - Fires when value is invalid
  * @cssprop [--dfx-textarea-border-radius=var(--dfx-border-radius-m, 0.375rem)] - Border radius
- * @cssprop [--dfx-textarea-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #d4d4d8)] - Default box shadow
- * @cssprop [--dfx-textarea-box-shadow-active=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border-variant, #9ca3af)] - Active box shadow
- * @cssprop [--dfx-textarea-box-shadow-error=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-danger-dark, #dc2626)] - Error box shadow
+ * @cssprop [--dfx-textarea-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Default box shadow
+ * @cssprop [--dfx-textarea-box-shadow-active=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border-variant, #7e8795)] - Active box shadow
+ * @cssprop [--dfx-textarea-box-shadow-error=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-danger-dark, #c91f3a)] - Error box shadow
  * @cssprop [--dfx-textarea-color-background=var(--dfx-color-background-surface, #ffffff)] - Textarea background
- * @cssprop [--dfx-textarea-color-text=var(--dfx-color-text-dark, #1f2937)] - Textarea text color
+ * @cssprop [--dfx-textarea-color-text=var(--dfx-color-text-dark, #383d46)] - Textarea text color
  * @cssprop [--dfx-textarea-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Textarea font family
  * @cssprop [--dfx-textarea-font-size=var(--dfx-font-size-m, 0.875rem)] - Textarea font size
  * @cssprop [--dfx-textarea-gap=var(--dfx-size-2xs, 0.5rem)] - Gap between textarea and label

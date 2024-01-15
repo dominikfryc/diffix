@@ -19,10 +19,10 @@ import '../button/index.js';
  * @fires {Event} dfx-close - Fires when close button is clicked
  * @cssprop [--dfx-alert-border-radius=var(--dfx-border-radius-l, 0.5rem)] - Border radius
  * @cssprop [--dfx-alert-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-alert-color-light-variant)] - Box shadow
- * @cssprop [--dfx-alert-color-dark=var(--dfx-color-neutral-dark, #374151)] - Dark color
- * @cssprop [--dfx-alert-color-dark-variant=var(--dfx-color-neutral-dark-variant, #1f2937)] - Dark variant color
- * @cssprop [--dfx-alert-color-light=var(--dfx-color-neutral-light, #a1a1aa1a)] - Light color
- * @cssprop [--dfx-alert-color-light-variant=var(--dfx-color-neutral-light-variant, #a1a1aa33)] - Light variant color
+ * @cssprop [--dfx-alert-color-dark=var(--dfx-color-neutral-dark, #4f5661)] - Dark color
+ * @cssprop [--dfx-alert-color-dark-variant=var(--dfx-color-neutral-dark-variant, #383d46)] - Dark variant color
+ * @cssprop [--dfx-alert-color-light=var(--dfx-color-neutral-light, #7e87951a)] - Light color
+ * @cssprop [--dfx-alert-color-light-variant=var(--dfx-color-neutral-light-variant, #7e879533)] - Light variant color
  * @cssprop [--dfx-alert-color-icon=var(--dfx-alert-color-dark)] - Icon color
  * @cssprop [--dfx-alert-color-background=var(--dfx-alert-color-light)] - Background color
  * @cssprop [--dfx-alert-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Font family

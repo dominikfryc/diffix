@@ -4,12 +4,12 @@
 
   --dfx-radio-border-radius: var(--dfx-border-radius-full, 62.438rem);
   --dfx-radio-box-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
-    var(--dfx-color-background-border, #d4d4d8);
+    var(--dfx-color-background-border, #aeb5bf);
   --dfx-radio-box-shadow-checked: inset 0 0 0 calc(var(--dfx-size-xs, 0.75rem) / 2)
     var(--dfx-radio-color);
   --dfx-radio-box-shadow-disabled: inset 0 0 0 calc(var(--dfx-size-xs, 0.75rem) / 2)
-    var(--dfx-color-background-border, #d1d5db);
-  --dfx-radio-color: var(--dfx-color-primary-dark, #2563eb);
+    var(--dfx-color-background-border, #aeb5bf);
+  --dfx-radio-color: var(--dfx-color-primary-dark, #0063eb);
   --dfx-radio-focus-offset: var(--dfx-form-outline-offset, 0.25rem);
   --dfx-radio-font-family: var(
     --dfx-font-family,
@@ -36,7 +36,7 @@
   cursor: not-allowed;
 
   &:not(:checked) {
-    --dfx-radio-color: var(--dfx-color-background-border, #d1d5db);
+    --dfx-radio-color: var(--dfx-color-background-border, #aeb5bf);
     background-color: var(--dfx-radio-color);
   }
 }

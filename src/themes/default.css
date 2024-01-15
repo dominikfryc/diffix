@@ -1,73 +1,79 @@
 @import url('@fontsource-variable/inter');
 
 :root {
+  color-scheme: light;
+
   /* Color gray */
-  --dfx-color-gray-50: #fafafa;
-  --dfx-color-gray-100: #f4f4f5;
-  --dfx-color-gray-200: #e4e4e7;
-  --dfx-color-gray-300: #d4d4d8;
-  --dfx-color-gray-400: #a1a1aa;
-  --dfx-color-gray-500: #71717a;
-  --dfx-color-gray-600: #52525b;
-  --dfx-color-gray-700: #3f3f46;
-  --dfx-color-gray-800: #27272a;
-  --dfx-color-gray-900: #18181b;
-  --dfx-color-gray-950: #09090b;
-
-  /* Color red */
-  --dfx-color-red-50: #fef2f2;
-  --dfx-color-red-100: #fee2e2;
-  --dfx-color-red-200: #fecaca;
-  --dfx-color-red-300: #fca5a5;
-  --dfx-color-red-400: #f87171;
-  --dfx-color-red-500: #ef4444;
-  --dfx-color-red-600: #dc2626;
-  --dfx-color-red-700: #b91c1c;
-  --dfx-color-red-800: #991b1b;
-  --dfx-color-red-900: #7f1d1d;
-  --dfx-color-red-950: #450a0a;
-
-  /* Color green */
-  --dfx-color-green-50: #f0fdf4;
-  --dfx-color-green-100: #dcfce7;
-  --dfx-color-green-200: #bbf7d0;
-  --dfx-color-green-300: #86efac;
-  --dfx-color-green-400: #4ade80;
-  --dfx-color-green-500: #22c55e;
-  --dfx-color-green-600: #16a34a;
-  --dfx-color-green-700: #15803d;
-  --dfx-color-green-800: #166534;
-  --dfx-color-green-900: #14532d;
-  --dfx-color-green-950: #052e16;
+  --dfx-color-gray-hue: 260;
+  --dfx-color-gray-50: oklch(96% 0.004 var(--dfx-color-gray-hue));
+  --dfx-color-gray-100: oklch(90% 0.008 var(--dfx-color-gray-hue));
+  --dfx-color-gray-200: oklch(84% 0.012 var(--dfx-color-gray-hue));
+  --dfx-color-gray-300: oklch(77% 0.016 var(--dfx-color-gray-hue));
+  --dfx-color-gray-400: oklch(70% 0.02 var(--dfx-color-gray-hue));
+  --dfx-color-gray-500: oklch(62% 0.024 var(--dfx-color-gray-hue));
+  --dfx-color-gray-600: oklch(54% 0.024 var(--dfx-color-gray-hue));
+  --dfx-color-gray-700: oklch(45% 0.02 var(--dfx-color-gray-hue));
+  --dfx-color-gray-800: oklch(36% 0.016 var(--dfx-color-gray-hue));
+  --dfx-color-gray-900: oklch(26% 0.016 var(--dfx-color-gray-hue));
+  --dfx-color-gray-950: oklch(16% 0.016 var(--dfx-color-gray-hue));
 
   /* Color blue */
-  --dfx-color-blue-50: #eff6ff;
-  --dfx-color-blue-100: #dbeafe;
-  --dfx-color-blue-200: #bfdbfe;
-  --dfx-color-blue-300: #93c5fd;
-  --dfx-color-blue-400: #60a5fa;
-  --dfx-color-blue-500: #3b82f6;
-  --dfx-color-blue-600: #2563eb;
-  --dfx-color-blue-700: #1d4ed8;
-  --dfx-color-blue-800: #1e40af;
-  --dfx-color-blue-900: #1e3a8a;
-  --dfx-color-blue-950: #172554;
+  --dfx-color-blue-hue: 260;
+  --dfx-color-blue-50: oklch(96% 0.01 var(--dfx-color-blue-hue));
+  --dfx-color-blue-100: oklch(90% 0.04 var(--dfx-color-blue-hue));
+  --dfx-color-blue-200: oklch(84% 0.06 var(--dfx-color-blue-hue));
+  --dfx-color-blue-300: oklch(77% 0.1 var(--dfx-color-blue-hue));
+  --dfx-color-blue-400: oklch(70% 0.14 var(--dfx-color-blue-hue));
+  --dfx-color-blue-500: oklch(62% 0.18 var(--dfx-color-blue-hue));
+  --dfx-color-blue-600: oklch(54% 0.22 var(--dfx-color-blue-hue));
+  --dfx-color-blue-700: oklch(45% 0.18 var(--dfx-color-blue-hue));
+  --dfx-color-blue-800: oklch(36% 0.14 var(--dfx-color-blue-hue));
+  --dfx-color-blue-900: oklch(26% 0.1 var(--dfx-color-blue-hue));
+  --dfx-color-blue-950: oklch(16% 0.06 var(--dfx-color-blue-hue));
+
+  /* Color green */
+  --dfx-color-green-hue: 150;
+  --dfx-color-green-50: oklch(96% 0.01 var(--dfx-color-green-hue));
+  --dfx-color-green-100: oklch(90% 0.04 var(--dfx-color-green-hue));
+  --dfx-color-green-200: oklch(84% 0.08 var(--dfx-color-green-hue));
+  --dfx-color-green-300: oklch(77% 0.1 var(--dfx-color-green-hue));
+  --dfx-color-green-400: oklch(70% 0.14 var(--dfx-color-green-hue));
+  --dfx-color-green-500: oklch(62% 0.16 var(--dfx-color-green-hue));
+  --dfx-color-green-600: oklch(54% 0.14 var(--dfx-color-green-hue));
+  --dfx-color-green-700: oklch(45% 0.12 var(--dfx-color-green-hue));
+  --dfx-color-green-800: oklch(36% 0.08 var(--dfx-color-green-hue));
+  --dfx-color-green-900: oklch(26% 0.06 var(--dfx-color-green-hue));
+  --dfx-color-green-950: oklch(16% 0.04 var(--dfx-color-green-hue));
+
+  /* Color red */
+  --dfx-color-red-hue: 20;
+  --dfx-color-red-50: oklch(96% 0.01 var(--dfx-color-red-hue));
+  --dfx-color-red-100: oklch(90% 0.04 var(--dfx-color-red-hue));
+  --dfx-color-red-200: oklch(84% 0.08 var(--dfx-color-red-hue));
+  --dfx-color-red-300: oklch(77% 0.1 var(--dfx-color-red-hue));
+  --dfx-color-red-400: oklch(70% 0.14 var(--dfx-color-red-hue));
+  --dfx-color-red-500: oklch(62% 0.18 var(--dfx-color-red-hue));
+  --dfx-color-red-600: oklch(54% 0.2 var(--dfx-color-red-hue));
+  --dfx-color-red-700: oklch(45% 0.16 var(--dfx-color-red-hue));
+  --dfx-color-red-800: oklch(36% 0.12 var(--dfx-color-red-hue));
+  --dfx-color-red-900: oklch(26% 0.08 var(--dfx-color-red-hue));
+  --dfx-color-red-950: oklch(16% 0.04 var(--dfx-color-red-hue));
 
   /* Color background */
-  --dfx-color-background-body: var(--dfx-color-gray-100);
-  --dfx-color-background-body-variant: var(--dfx-color-gray-200);
+  --dfx-color-background-body: var(--dfx-color-gray-50);
+  --dfx-color-background-body-variant: var(--dfx-color-gray-100);
   --dfx-color-background-surface: #ffffff;
-  --dfx-color-background-surface-variant: var(--dfx-color-gray-100);
+  --dfx-color-background-surface-variant: var(--dfx-color-gray-50);
   --dfx-color-background-popover: #ffffff;
-  --dfx-color-background-popover-variant: var(--dfx-color-gray-100);
+  --dfx-color-background-popover-variant: var(--dfx-color-gray-50);
   --dfx-color-background-border: var(--dfx-color-gray-300);
-  --dfx-color-background-border-variant: var(--dfx-color-gray-400);
+  --dfx-color-background-border-variant: var(--dfx-color-gray-500);
 
   /* Color text */
   --dfx-color-text-dark: var(--dfx-color-gray-800);
-  --dfx-color-text-dark-variant: var(--dfx-color-gray-950);
-  --dfx-color-text-light: var(--dfx-color-gray-500);
-  --dfx-color-text-light-variant: var(--dfx-color-gray-600);
+  --dfx-color-text-dark-variant: var(--dfx-color-gray-900);
+  --dfx-color-text-light: var(--dfx-color-gray-600);
+  --dfx-color-text-light-variant: var(--dfx-color-gray-700);
 
   /* Color contrast */
   --dfx-color-contrast-text: #ffffff;
@@ -76,30 +82,30 @@
   /* Color primary */
   --dfx-color-primary-dark: var(--dfx-color-blue-600);
   --dfx-color-primary-dark-variant: var(--dfx-color-blue-700);
-  --dfx-color-primary-light: color-mix(in srgb, var(--dfx-color-blue-400) 10%, transparent);
-  --dfx-color-primary-light-variant: color-mix(in srgb, var(--dfx-color-blue-400) 20%, transparent);
+  --dfx-color-primary-light: color-mix(in srgb, var(--dfx-color-blue-500) 10%, transparent);
+  --dfx-color-primary-light-variant: color-mix(in srgb, var(--dfx-color-blue-500) 20%, transparent);
 
   /* Color neutral */
   --dfx-color-neutral-dark: var(--dfx-color-gray-700);
   --dfx-color-neutral-dark-variant: var(--dfx-color-gray-800);
-  --dfx-color-neutral-light: color-mix(in srgb, var(--dfx-color-gray-400) 10%, transparent);
-  --dfx-color-neutral-light-variant: color-mix(in srgb, var(--dfx-color-gray-400) 20%, transparent);
+  --dfx-color-neutral-light: color-mix(in srgb, var(--dfx-color-gray-500) 10%, transparent);
+  --dfx-color-neutral-light-variant: color-mix(in srgb, var(--dfx-color-gray-500) 20%, transparent);
 
   /* Color success */
-  --dfx-color-success-dark: var(--dfx-color-green-700);
-  --dfx-color-success-dark-variant: var(--dfx-color-green-800);
-  --dfx-color-success-light: color-mix(in srgb, var(--dfx-color-green-400) 10%, transparent);
+  --dfx-color-success-dark: var(--dfx-color-green-600);
+  --dfx-color-success-dark-variant: var(--dfx-color-green-700);
+  --dfx-color-success-light: color-mix(in srgb, var(--dfx-color-green-500) 10%, transparent);
   --dfx-color-success-light-variant: color-mix(
     in srgb,
-    var(--dfx-color-green-400) 20%,
+    var(--dfx-color-green-500) 20%,
     transparent
   );
 
   /* Color danger */
   --dfx-color-danger-dark: var(--dfx-color-red-600);
   --dfx-color-danger-dark-variant: var(--dfx-color-red-700);
-  --dfx-color-danger-light: color-mix(in srgb, var(--dfx-color-red-400) 10%, transparent);
-  --dfx-color-danger-light-variant: color-mix(in srgb, var(--dfx-color-red-400) 20%, transparent);
+  --dfx-color-danger-light: color-mix(in srgb, var(--dfx-color-red-500) 10%, transparent);
+  --dfx-color-danger-light-variant: color-mix(in srgb, var(--dfx-color-red-500) 20%, transparent);
 
   /* Typography */
   --dfx-font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial,

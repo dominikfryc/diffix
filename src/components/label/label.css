@@ -23,21 +23,21 @@
 }
 
 :host([type='control']) {
-  --dfx-label-color: var(--dfx-color-text-dark, #1f2937);
+  --dfx-label-color: var(--dfx-color-text-dark, #383d46);
   --dfx-label-font-size: var(--dfx-font-size-m, 0.875rem);
   --dfx-label-font-weight: var(--dfx-font-weight-semibold, 600);
   --dfx-label-line-height: var(--dfx-line-height-m, 1.5);
 }
 
 :host([type='error']) {
-  --dfx-label-color: var(--dfx-color-danger-dark, #dc2626);
+  --dfx-label-color: var(--dfx-color-danger-dark, #c91f3a);
   --dfx-label-font-size: var(--dfx-font-size-s, 0.75rem);
   --dfx-label-font-weight: var(--dfx-font-weight-regular, 400);
   --dfx-label-line-height: var(--dfx-line-height-m, 1.5);
 }
 
 :host([type='helper']) {
-  --dfx-label-color: var(--dfx-color-text-light, #6b7280);
+  --dfx-label-color: var(--dfx-color-text-light, #676f7d);
   --dfx-label-font-size: var(--dfx-font-size-s, 0.75rem);
   --dfx-label-font-weight: var(--dfx-font-weight-regular, 400);
   --dfx-label-line-height: var(--dfx-line-height-m, 1.5);
