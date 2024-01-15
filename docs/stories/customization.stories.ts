@@ -59,7 +59,6 @@ export const CustomTheme: Story = {
         --dfx-color-primary-dark: #fbbf24;
         --dfx-color-primary-dark-variant: #f59e0b;
         --dfx-color-contrast-text: #09090b;
-        --dfx-border-radius-m: 0;
       }
     </style>
   `,

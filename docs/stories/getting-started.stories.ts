@@ -16,8 +16,19 @@ export const Usage: Story = {
 };
 
 export const Forms: Story = {
+  decorators: [
+    story => html`
+      <style>
+        form {
+          display: grid;
+          gap: 1rem;
+        }
+      </style>
+      ${story()}
+    `,
+  ],
   render: () => html`
-    <form id="form" style="display: grid; gap: 1rem">
+    <form id="form" novalidate>
       <dfx-input label="Name" name="name" required></dfx-input>
       <dfx-button type="submit" variant="filled">Submit</dfx-button>
     </form>
@@ -25,8 +36,10 @@ export const Forms: Story = {
     <script>
       document.querySelector('#form').addEventListener('submit', event => {
         event.preventDefault();
-        const formData = new FormData(event.target);
-        alert(JSON.stringify(Object.fromEntries(formData)));
+        if (event.target.checkValidity()) {
+          const formData = new FormData(event.target);
+          alert(JSON.stringify(Object.fromEntries(formData)));
+        }
       });
     </script>
   `,
