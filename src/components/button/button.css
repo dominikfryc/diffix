@@ -138,6 +138,7 @@ dfx-spinner {
 ::slotted(svg) {
   width: var(--dfx-button-icon-size);
   height: var(--dfx-button-icon-size);
+  pointer-events: none;
 }
 
 :is(a, button) {

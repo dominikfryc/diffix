@@ -252,7 +252,6 @@ export class Input extends FormControlMixin(LitElement) {
     this.dirty = true;
     this.onInput.emit(this.value);
     this.onChange.emit(this.value);
-    this.validationTarget.focus();
   }
 
   #decreaseValue(): void {
@@ -265,10 +264,8 @@ export class Input extends FormControlMixin(LitElement) {
     this.#setValueFromInput();
   }
 
-  async #togglePasswordVisibility(): Promise<void> {
+  #togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
-    await this.updateComplete;
-    this.validationTarget.focus();
   }
 
   override validityCallback(): string {
