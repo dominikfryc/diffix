@@ -15,7 +15,7 @@ import '../label/index.js';
 import '../spinner/index.js';
 
 /**
- * Allows user to provide text input
+ * Allows user to provide text input.
  *
  * @element dfx-input
  * @slot {html} start - Optional slot at the start of the control

@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import style from './label.css?raw';
 
 /**
- * Displays label for form field
+ * Displays label for form field.
  *
  * @element dfx-label
  * @slot {html} slot - Default slot for label content

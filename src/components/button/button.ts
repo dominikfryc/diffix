@@ -5,7 +5,7 @@ import style from './button.css?raw';
 import '../spinner/spinner.js';
 
 /**
- * Clickable element used to perform an action
+ * Clickable element used to perform an action.
  *
  * @element dfx-button
  * @slot {html} slot - Default slot for button content

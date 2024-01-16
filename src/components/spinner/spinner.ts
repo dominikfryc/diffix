@@ -5,7 +5,7 @@ import icon from '../../assets/spinner.svg?raw';
 import style from './spinner.css?raw';
 
 /**
- * Symbolizes that user action is being processed
+ * Symbolizes that user action is being processed.
  *
  * @element dfx-spinner
  * @cssprop [--dfx-spinner-color=currentColor] - Spinner color

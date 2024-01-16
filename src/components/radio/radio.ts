@@ -7,7 +7,7 @@ import style from './radio.css?raw';
 import '../label/index.js';
 
 /**
- * Allows user to select a single option
+ * Allows user to select a single option.
  *
  * @element dfx-radio
  * @slot {html} slot - Default slot for label

@@ -8,7 +8,7 @@ import style from './textarea.css?raw';
 import '../label/index.js';
 
 /**
- * Allows user to provide multi-line text input
+ * Allows user to provide multi-line text input.
  *
  * @element dfx-textarea
  * @fires {string} dfx-input - Fires when value changed on keyup

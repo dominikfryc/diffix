@@ -8,7 +8,7 @@ import style from './checkbox.css?raw';
 import '../label/index.js';
 
 /**
- * Allows user to select an option
+ * Allows user to select an option.
  *
  * @element dfx-checkbox
  * @slot {html} slot - Default slot for label

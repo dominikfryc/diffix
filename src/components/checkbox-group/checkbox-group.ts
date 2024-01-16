@@ -8,7 +8,7 @@ import style from './checkbox-group.css?raw';
 import '../label/index.js';
 
 /**
- * Creates a form group of checkboxes or switches
+ * Creates a form group of checkboxes or switches.
  *
  * @element dfx-checkbox-group
  * @slot {html} slot - Default slot for `<dfx-checkbox>` elements

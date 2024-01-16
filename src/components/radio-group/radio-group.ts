@@ -8,7 +8,7 @@ import style from './radio-group.css?raw';
 import '../label/index.js';
 
 /**
- * Creates a form group of radios
+ * Creates a form group of radios.
  *
  * @element dfx-radio-group
  * @slot {html} slot - Default slot for `<dfx-radio>` elements

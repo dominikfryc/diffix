@@ -11,7 +11,7 @@ import closeIcon from '../../assets/close.svg?raw';
 import '../button/index.js';
 
 /**
- * Informs user about important change or result of an operation
+ * Informs user about important change or result of an operation.
  *
  * @element dfx-alert
  * @slot {html} slot - Default slot for content
