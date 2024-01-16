@@ -2,7 +2,7 @@
 
 html {
   color: var(--dfx-color-text-dark);
-  background-color: var(--dfx-color-background-body);
+  background-color: var(--dfx-color-background-dark);
 }
 
 body {
@@ -27,7 +27,7 @@ h2 {
 }
 
 article {
-  background-color: var(--dfx-color-background-surface);
+  background-color: var(--dfx-color-background-light);
   border-radius: var(--dfx-border-radius-l);
   padding: var(--dfx-size-2xl);
   margin-bottom: var(--dfx-size-2xl);

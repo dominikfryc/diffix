@@ -15,10 +15,7 @@ import '../label/index.js';
  * @fires {string} dfx-change - Fires when value changed and textarea is blurred
  * @fires {ValidityState} dfx-invalid - Fires when value is invalid
  * @cssprop [--dfx-textarea-border-radius=var(--dfx-border-radius-m, 0.375rem)] - Border radius
- * @cssprop [--dfx-textarea-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Default box shadow
- * @cssprop [--dfx-textarea-box-shadow-active=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border-variant, #7e8795)] - Active box shadow
- * @cssprop [--dfx-textarea-box-shadow-error=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-danger-dark, #c91f3a)] - Error box shadow
- * @cssprop [--dfx-textarea-color-background=var(--dfx-color-background-surface, #ffffff)] - Textarea background
+ * @cssprop [--dfx-textarea-color-background=var(--dfx-color-background-light, #ffffff)] - Textarea background
  * @cssprop [--dfx-textarea-color-text=var(--dfx-color-text-dark, #383d46)] - Textarea text color
  * @cssprop [--dfx-textarea-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Textarea font family
  * @cssprop [--dfx-textarea-font-size=var(--dfx-font-size-m, 0.875rem)] - Textarea font size
@@ -26,6 +23,7 @@ import '../label/index.js';
  * @cssprop [--dfx-textarea-height=auto] - Textarea height
  * @cssprop [--dfx-textarea-line-height=var(--dfx-line-height-m, 1.5)] - Textarea line height
  * @cssprop [--dfx-textarea-padding=var(--dfx-size-2xs, 0.5rem) var(--dfx-size-xs, 0.75rem)] - Textarea padding
+ * @cssprop [--dfx-textarea-transition=all var(--dfx-transition-medium, 0.2s ease-in-out)] - Textarea transition
  * @cssprop [--dfx-textarea-width=calc(var(--dfx-size-3xl, 2.5rem) * 5)] - Component width
  * @csspart textarea - Textarea element
  * @csspart container - Container element

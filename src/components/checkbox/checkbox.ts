@@ -15,12 +15,9 @@ import '../label/index.js';
  * @fires {boolean} dfx-change - Fires when checkbox is checked
  * @fires {ValidityState} dfx-invalid - Fires when state of checkbox is invalid
  * @cssprop [--dfx-checkbox-border-radius=var(--dfx-border-radius-m, 0.375rem)] - Border radius
- * @cssprop [--dfx-checkbox-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Default box shadow
- * @cssprop [--dfx-checkbox-box-shadow-checked=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-checkbox-color)] - Box shadow for checked state
- * @cssprop [--dfx-checkbox-box-shadow-error=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-danger-dark, #c91f3a)] - Box shadow for error state
  * @cssprop [--dfx-checkbox-color=var(--dfx-color-primary-dark, #0063eb)] - Checked state color
  * @cssprop [--dfx-checkbox-check-size=var(--dfx-size-xs, 0.75rem)] - Size of checkmark icon
- * @cssprop [--dfx-checkbox-focus-offset=var(--dfx-form-outline-offset, 0.25rem)] - Checkbox focus offset
+ * @cssprop [--dfx-checkbox-focus-offset=var(--dfx-form-outline-offset, 0.2rem)] - Checkbox focus offset
  * @cssprop [--dfx-checkbox-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Label font family
  * @cssprop [--dfx-checkbox-font-size=var(--dfx-font-size-m, 0.875rem)] - Label font size
  * @cssprop [--dfx-checkbox-gap=var(--dfx-size-2xs, 0.5rem)] - Gap between checkbox and label

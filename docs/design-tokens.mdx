@@ -18,8 +18,6 @@ Color is a vital part of any design system. It helps communicate the brand, esta
 
 The design system is built on a foundation of color primitives. These are the core colors that are used throughout the system. Primitives should only be used for theme definition and not directly in components.
 
-Diffix Design System is inspired by selected colors from [Tailwind CSS](https://tailwindcss.com/docs/customizing-colors).
-
 <ColorPalette>
   <ColorItem
     title="Gray color"
@@ -100,14 +98,30 @@ Aliases are used to provide semantic meaning to colors. They are used to communi
     title="Color background"
     subtitle="--dfx-color-background-<value>"
     colors={{
-      body: 'var(--dfx-color-gray-50)',
-      'body-variant': 'var(--dfx-color-gray-100)',
-      surface: '#ffffff',
-      'surface-variant': 'var(--dfx-color-gray-50)',
-      popover: '#ffffff',
-      'popover-variant': 'var(--dfx-color-gray-50)',
-      border: 'var(--dfx-color-gray-300)',
-      'border-variant': 'var(--dfx-color-gray-500)',
+      dark: 'var(--dfx-color-gray-50)',
+      'dark-variant': 'var(--dfx-color-gray-100)',
+      light: '#ffffff',
+      'light-variant': 'var(--dfx-color-gray-50)',
+    }}
+  />
+  <ColorItem
+    title="Color popover"
+    subtitle="--dfx-color-popover-<value>"
+    colors={{
+      dark: '#ffffff',
+      'dark-variant': 'var(--dfx-color-gray-50)',
+      light: '#ffffff',
+      'light-variant': 'var(--dfx-color-gray-50)',
+    }}
+  />
+  <ColorItem
+    title="Color border"
+    subtitle="--dfx-color-border-<value>"
+    colors={{
+      dark: 'var(--dfx-color-gray-400)',
+      'dark-variant': 'var(--dfx-color-gray-500)',
+      light: 'var(--dfx-color-gray-200)',
+      'light-variant': 'var(--dfx-color-gray-300)',
     }}
   />
   <ColorItem
@@ -125,17 +139,9 @@ Aliases are used to provide semantic meaning to colors. They are used to communi
     subtitle="--dfx-color-contrast-<value>"
     colors={{
       text: '#ffffff',
+      'text-variant': 'var(--dfx-color-gray-50)',
       background: 'var(--dfx-color-gray-900)',
-    }}
-  />
-  <ColorItem
-    title="Color primary"
-    subtitle="--dfx-color-primary-<value>"
-    colors={{
-      dark: 'var(--dfx-color-blue-600)',
-      'dark-variant': 'var(--dfx-color-blue-700)',
-      light: 'color-mix(in srgb, var(--dfx-color-blue-500) 10%, transparent)',
-      'light-variant': 'color-mix(in srgb, var(--dfx-color-blue-500) 20%, transparent)',
+      'background-variant': 'var(--dfx-color-gray-800)',
     }}
   />
   <ColorItem
@@ -146,6 +152,16 @@ Aliases are used to provide semantic meaning to colors. They are used to communi
       'dark-variant': 'var(--dfx-color-gray-800)',
       light: 'color-mix(in srgb, var(--dfx-color-gray-500) 10%, transparent)',
       'light-variant': 'color-mix(in srgb, var(--dfx-color-gray-500) 20%, transparent)',
+    }}
+  />
+  <ColorItem
+    title="Color primary"
+    subtitle="--dfx-color-primary-<value>"
+    colors={{
+      dark: 'var(--dfx-color-blue-600)',
+      'dark-variant': 'var(--dfx-color-blue-700)',
+      light: 'color-mix(in srgb, var(--dfx-color-blue-500) 10%, transparent)',
+      'light-variant': 'color-mix(in srgb, var(--dfx-color-blue-500) 20%, transparent)',
     }}
   />
   <ColorItem
@@ -800,12 +816,32 @@ Variables are adjusting styles for form controls.
     <tr>
       <td>`--dfx-form-disabled-opacity`</td>
       <td>0.5</td>
-      <td>Opacity of disabled form control fields.</td>
+      <td>Opacity of disabled form control field.</td>
     </tr>
     <tr>
       <td>`--dfx-form-outline-offset`</td>
-      <td>0.125rem (2px)</td>
-      <td>Outline offset of focused form control fields.</td>
+      <td>0.2rem</td>
+      <td>Outline offset of focused form control field.</td>
+    </tr>
+    <tr>
+      <td>`--dfx-form-border`</td>
+      <td>inset 0 0 0 0.05rem var(--dfx-color-border-dark)</td>
+      <td>Box shadow of form control field.</td>
+    </tr>
+    <tr>
+      <td>`--dfx-form-border-active`</td>
+      <td>inset 0 0 0 0.1rem var(--dfx-color-contrast-background)</td>
+      <td>Box shadow of active form control field.</td>
+    </tr>
+    <tr>
+      <td>`--dfx-form-border-error`</td>
+      <td>inset 0 0 0 0.05rem var(--dfx-color-danger-dark)</td>
+      <td>Box shadow of form control field with error.</td>
+    </tr>
+    <tr>
+      <td>`--dfx-form-border-error-active`</td>
+      <td>inset 0 0 0 0.1rem var(--dfx-color-danger-dark)</td>
+      <td>Box shadow of active form control field with error.</td>
     </tr>
   </tbody>
 </table>
@@ -860,7 +896,7 @@ The z-index is used to control the stacking order of elements. It could be used 
   @media (width >= 1200px) {
     th:first-child,
     td:first-child {
-      width: 25%;
+      width: 30%;
     }
 
     th:last-child,
@@ -873,6 +909,16 @@ The z-index is used to control the stacking order of elements. It could be used 
     width: 3rem;
     height: 3rem;
     background-color: #d9e0e8;
+  }
+
+  .docblock-colorpalette {
+    div:has(> span) {
+      color: #2E3438;
+    }
+
+    span {
+      color: rgba(46,52,56,0.6);
+    }
   }
   `}
 </style>

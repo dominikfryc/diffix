@@ -32,7 +32,7 @@ export const DarkTheme: Story = {
 
     <style>
       article {
-        background-color: var(--dfx-color-background-surface);
+        background-color: var(--dfx-color-background-light);
         color: var(--dfx-color-text-dark);
         display: grid;
         gap: var(--dfx-size-m);

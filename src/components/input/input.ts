@@ -24,10 +24,7 @@ import '../spinner/index.js';
  * @fires {string} dfx-change - Fires when value changed and input is blurred
  * @fires {ValidityState} dfx-invalid - Fires when value is invalid
  * @cssprop [--dfx-input-border-radius=var(--dfx-border-radius-m, 0.375rem)] - Border radius
- * @cssprop [--dfx-input-box-shadow=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border, #aeb5bf)] - Default box shadow
- * @cssprop [--dfx-input-box-shadow-active=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-background-border-variant, #7e8795)] - Active box shadow
- * @cssprop [--dfx-input-box-shadow-error=inset 0 0 0 var(--dfx-size-5xs, 0.0625rem) var(--dfx-color-danger-dark, #c91f3a)] - Error box shadow
- * @cssprop [--dfx-input-color-background=var(--dfx-color-background-surface, #ffffff)] - Input background
+ * @cssprop [--dfx-input-color-background=var(--dfx-color-background-light, #ffffff)] - Input background
  * @cssprop [--dfx-input-color-text=var(--dfx-color-text-dark, #383d46)] - Input color
  * @cssprop [--dfx-input-font-family=var(--dfx-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif)] - Input font family
  * @cssprop [--dfx-input-font-size=var(--dfx-font-size-m, 0.875rem)] - Input font size
@@ -36,6 +33,7 @@ import '../spinner/index.js';
  * @cssprop [--dfx-input-icon-size=var(--dfx-size-xl, 1.5rem)] - Icon size
  * @cssprop [--dfx-input-padding=calc(var(--dfx-size-xs, 0.75rem) / 2)] - Control padding
  * @cssprop [--dfx-input-text-align=start] - Input text align
+ * @cssprop [--dfx-input-transition=all var(--dfx-transition-medium, 0.2s ease-in-out)] - Input transition
  * @cssprop [--dfx-input-width=calc(var(--dfx-size-3xl, 2.5rem) * 5)] - Component width
  * @csspart input - Input element
  * @csspart control - Control element

@@ -60,14 +60,22 @@
   --dfx-color-red-950: oklch(16% 0.04 var(--dfx-color-red-hue));
 
   /* Color background */
-  --dfx-color-background-body: var(--dfx-color-gray-50);
-  --dfx-color-background-body-variant: var(--dfx-color-gray-100);
-  --dfx-color-background-surface: #ffffff;
-  --dfx-color-background-surface-variant: var(--dfx-color-gray-50);
-  --dfx-color-background-popover: #ffffff;
-  --dfx-color-background-popover-variant: var(--dfx-color-gray-50);
-  --dfx-color-background-border: var(--dfx-color-gray-300);
-  --dfx-color-background-border-variant: var(--dfx-color-gray-500);
+  --dfx-color-background-dark: var(--dfx-color-gray-50);
+  --dfx-color-background-dark-variant: var(--dfx-color-gray-100);
+  --dfx-color-background-light: #ffffff;
+  --dfx-color-background-light-variant: var(--dfx-color-gray-50);
+
+  /* Color popover */
+  --dfx-color-popover-dark: #ffffff;
+  --dfx-color-popover-dark-variant: var(--dfx-color-gray-50);
+  --dfx-color-popover-light: #ffffff;
+  --dfx-color-popover-light-variant: var(--dfx-color-gray-50);
+
+  /* Color border */
+  --dfx-color-border-dark: var(--dfx-color-gray-400);
+  --dfx-color-border-dark-variant: var(--dfx-color-gray-500);
+  --dfx-color-border-light: var(--dfx-color-gray-200);
+  --dfx-color-border-light-variant: var(--dfx-color-gray-300);
 
   /* Color text */
   --dfx-color-text-dark: var(--dfx-color-gray-800);
@@ -77,19 +85,21 @@
 
   /* Color contrast */
   --dfx-color-contrast-text: #ffffff;
+  --dfx-color-contrast-text-variant: var(--dfx-color-gray-50);
   --dfx-color-contrast-background: var(--dfx-color-gray-900);
-
-  /* Color primary */
-  --dfx-color-primary-dark: var(--dfx-color-blue-600);
-  --dfx-color-primary-dark-variant: var(--dfx-color-blue-700);
-  --dfx-color-primary-light: color-mix(in srgb, var(--dfx-color-blue-500) 10%, transparent);
-  --dfx-color-primary-light-variant: color-mix(in srgb, var(--dfx-color-blue-500) 20%, transparent);
+  --dfx-color-contrast-background-variant: var(--dfx-color-gray-800);
 
   /* Color neutral */
   --dfx-color-neutral-dark: var(--dfx-color-gray-700);
   --dfx-color-neutral-dark-variant: var(--dfx-color-gray-800);
   --dfx-color-neutral-light: color-mix(in srgb, var(--dfx-color-gray-500) 10%, transparent);
   --dfx-color-neutral-light-variant: color-mix(in srgb, var(--dfx-color-gray-500) 20%, transparent);
+
+  /* Color primary */
+  --dfx-color-primary-dark: var(--dfx-color-blue-600);
+  --dfx-color-primary-dark-variant: var(--dfx-color-blue-700);
+  --dfx-color-primary-light: color-mix(in srgb, var(--dfx-color-blue-500) 10%, transparent);
+  --dfx-color-primary-light-variant: color-mix(in srgb, var(--dfx-color-blue-500) 20%, transparent);
 
   /* Color success */
   --dfx-color-success-dark: var(--dfx-color-green-600);
@@ -143,10 +153,6 @@
   --dfx-box-shadow-m: 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.1);
   --dfx-box-shadow-l: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
 
-  /* Forms */
-  --dfx-form-disabled-opacity: 0.5;
-  --dfx-form-outline-offset: 0.125rem; /* 2px */
-
   /* Transitions */
   --dfx-transition-fast: 0.1s ease-in-out;
   --dfx-transition-medium: 0.2s ease-in-out;
@@ -167,6 +173,14 @@
   --dfx-size-4xl: 3rem; /* 48px */
   --dfx-size-5xl: 4rem; /* 64px */
 
+  /* Forms */
+  --dfx-form-disabled-opacity: 0.5;
+  --dfx-form-outline-offset: 0.2rem;
+  --dfx-form-border: inset 0 0 0 0.05rem var(--dfx-color-border-dark);
+  --dfx-form-border-active: inset 0 0 0 0.1rem var(--dfx-color-contrast-background);
+  --dfx-form-border-error: inset 0 0 0 0.05rem var(--dfx-color-danger-dark);
+  --dfx-form-border-error-active: inset 0 0 0 0.1rem var(--dfx-color-danger-dark);
+
   /* Z-indexes */
   --dfx-z-index-overlay: 100;
   --dfx-z-index-dialog: 200;
@@ -176,7 +190,7 @@
 
   /* Set default styles */
   color: var(--dfx-color-text-dark);
-  background-color: var(--dfx-color-background-body);
+  background-color: var(--dfx-color-background-dark);
   font-family: var(--dfx-font-family);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
