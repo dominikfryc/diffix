@@ -1,6 +1,5 @@
 :host {
   display: inline-block;
-  contain: content;
   width: var(--dfx-textarea-width);
 
   --dfx-textarea-border-radius: var(--dfx-border-radius-m, 0.375rem);

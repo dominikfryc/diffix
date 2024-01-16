@@ -1,7 +1,6 @@
 :host {
   display: inline-block;
   width: fit-content;
-  contain: layout;
   outline: none;
 
   --dfx-checkbox-group-direction: column;

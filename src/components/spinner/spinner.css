@@ -3,7 +3,6 @@
   gap: var(--dfx-spinner-gap);
   justify-items: center;
   width: fit-content;
-  contain: content;
 
   --dfx-spinner-color: currentColor;
   --dfx-spinner-font-family: var(

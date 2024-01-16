@@ -1,6 +1,5 @@
 :host {
   display: inline-block;
-  contain: layout;
 
   --dfx-radio-border-radius: var(--dfx-border-radius-full, 62.438rem);
   --dfx-radio-color: var(--dfx-color-primary-dark, #0063eb);

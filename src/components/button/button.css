@@ -1,6 +1,5 @@
 :host {
   display: inline-block;
-  contain: layout;
   width: fit-content;
 
   --dfx-button-border-radius: var(--dfx-border-radius-m, 0.375rem);

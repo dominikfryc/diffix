@@ -1,6 +1,5 @@
 :host {
   display: block;
-  contain: content;
   color: var(--dfx-label-color);
   font-family: var(--dfx-label-font-family);
   font-size: var(--dfx-label-font-size);

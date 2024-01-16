@@ -1,6 +1,5 @@
 :host {
   display: block;
-  contain: content;
 
   --dfx-alert-border-radius: var(--dfx-border-radius-l, 0.5rem);
   --dfx-alert-box-shadow: inset 0 0 0 var(--dfx-size-5xs, 0.0625rem)
