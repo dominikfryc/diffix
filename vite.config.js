@@ -7,9 +7,10 @@ import { copy } from '@web/rollup-plugin-copy';
 export default defineConfig({
   build: {
     lib: {
+      formats: ['es'],
       entry: Object.fromEntries(
         glob
-          .sync(['src/index.ts', 'src/components/**/*.ts'], {
+          .sync(['src/**/*.ts'], {
             ignore: ['src/**/*.stories.ts', 'src/**/*.test.ts'],
           })
           .map(file => [
@@ -19,14 +20,13 @@ export default defineConfig({
       ),
     },
     rollupOptions: {
-      output: [
-        {
-          chunkFileNames: 'assets/[name]-[hash].js',
-        },
-      ],
+      external: [/^lit/, /^@open-wc/],
+      output: {
+        hoistTransitiveImports: false,
+      },
     },
     target: 'esnext',
     sourcemap: true,
   },
-  plugins: [copy({ patterns: 'themes/*', exclude: [], rootDir: 'src' })],
+  plugins: [copy({ patterns: 'themes/**/*', exclude: [], rootDir: 'src' })],
 });
