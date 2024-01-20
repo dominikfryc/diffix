@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult, unsafeCSS, html, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import icon from '../../assets/spinner.svg?raw';
 import style from './spinner.css?raw';
@@ -16,7 +16,6 @@ import style from './spinner.css?raw';
  * @cssprop [--dfx-spinner-padding=0] - Spinner padding
  * @cssprop [--dfx-spinner-size=var(--dfx-size-2xl, 2rem)] - Spinner size
  */
-@customElement('dfx-spinner')
 export class Spinner extends LitElement {
   static styles = unsafeCSS(style);
 
@@ -35,11 +34,5 @@ export class Spinner extends LitElement {
   render(): TemplateResult {
     const label = html`<span>${this.label}</span>`;
     return html`${unsafeSVG(icon)} ${this.label ? label : nothing}`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-spinner': Spinner;
   }
 }

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Radio } from './radio.js';
+import { Radio } from './index.js';
 
 type Component = Radio & {
   slot: string;

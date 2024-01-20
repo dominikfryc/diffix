@@ -1,7 +1,7 @@
 import { Component } from '../generate.js';
 
-const testTemplate = (component: Component): string => {
-  return `import { html, fixture, expect } from '@open-wc/testing';
+export const testTemplate = (component: Component): string =>
+  `import { html, fixture, expect } from '@open-wc/testing';
 import { ${component.name} } from './index.js';
 
 describe('${component.name}', () => {
@@ -31,5 +31,3 @@ describe('${component.name}', () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });\n`;
-};
-export { testTemplate };

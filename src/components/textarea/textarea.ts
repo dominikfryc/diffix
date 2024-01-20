@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event.js';
@@ -28,7 +28,6 @@ import '../label/index.js';
  * @csspart textarea - Textarea element
  * @csspart container - Container element
  */
-@customElement('dfx-textarea')
 export class Textarea extends FormControlMixin(LitElement) {
   static styles = unsafeCSS(style);
 
@@ -252,11 +251,5 @@ export class Textarea extends FormControlMixin(LitElement) {
         </div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-textarea': Textarea;
   }
 }

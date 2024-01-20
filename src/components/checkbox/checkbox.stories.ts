@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { TemplateResult, html, nothing } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Checkbox } from './checkbox.js';
+import { Checkbox } from './index.js';
 
 type Component = Checkbox & {
   slot: string;

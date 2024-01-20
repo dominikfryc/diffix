@@ -1,8 +1,8 @@
 import { Component } from '../generate.js';
 
-const componentTemplate = (component: Component): string => {
-  return `import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+export const componentTemplate = (component: Component): string =>
+  `import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
+import { property } from 'lit/decorators.js';
 import style from './${component.tag}.css?raw';
 
 /**
@@ -10,7 +10,6 @@ import style from './${component.tag}.css?raw';
  *
  * @element dfx-${component.tag}
  */
-@customElement('dfx-${component.tag}')
 export class ${component.name} extends LitElement {
   static styles = unsafeCSS(style);
 
@@ -23,12 +22,4 @@ export class ${component.name} extends LitElement {
   render(): TemplateResult {
     return html\`${component.name}\`;
   }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-${component.tag}': ${component.name};
-  }
 }\n`;
-};
-export { componentTemplate };

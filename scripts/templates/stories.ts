@@ -1,7 +1,7 @@
 import { Component } from '../generate.js';
 
-const storiesTemplate = (component: Component): string => {
-  return `import type { Meta, StoryObj } from '@storybook/web-components';
+export const storiesTemplate = (component: Component): string =>
+  `import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { ${component.name} } from './index.js';
@@ -27,5 +27,3 @@ const ${component.name}Template = (args: Partial<Component>): TemplateResult => 
 export const Default: Story = {
   render: args => ${component.name}Template(args),
 };\n`;
-};
-export { storiesTemplate };

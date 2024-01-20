@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Checkbox } from './checkbox.js';
+import { Checkbox } from './index.js';
 
 describe('Checkbox', () => {
   it('is defined', () => {

@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { FormControlMixin } from '@open-wc/form-control';
@@ -40,7 +40,6 @@ import '../spinner/index.js';
  * @csspart container - Container element
  * @csspart button - Button element
  */
-@customElement('dfx-input')
 export class Input extends FormControlMixin(LitElement) {
   static styles = unsafeCSS(style);
 
@@ -408,11 +407,5 @@ export class Input extends FormControlMixin(LitElement) {
         ${this.#showError ? this.#renderError() : this.#renderHelper()}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-input': Input;
   }
 }

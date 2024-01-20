@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import style from './label.css?raw';
 
 /**
@@ -13,7 +13,6 @@ import style from './label.css?raw';
  * @cssprop [--dfx-label-font-weight=var(--dfx-font-weight-semibold, 600)] - Label font weight
  * @cssprop [--dfx-label-line-height=var(--dfx-line-height-m, 1.5)] - Label line height
  */
-@customElement('dfx-label')
 export class Label extends LitElement {
   static styles = unsafeCSS(style);
 
@@ -29,11 +28,5 @@ export class Label extends LitElement {
         <slot></slot>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-label': Label;
   }
 }

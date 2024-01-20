@@ -1,4 +1,4 @@
-const styleTemplate = (): string => `:host {
+export const styleTemplate = (): string =>
+  `:host {
   display: inline-block;
 }\n`;
-export { styleTemplate };

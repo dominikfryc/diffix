@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Input } from './input.js';
+import { Input } from './index.js';
 
 describe('Input', () => {
   it('is defined', () => {

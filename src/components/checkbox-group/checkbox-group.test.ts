@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { CheckboxGroup } from './checkbox-group.js';
+import { CheckboxGroup } from './index.js';
 import '../checkbox/index.js';
 
 describe('CheckboxGroup', () => {

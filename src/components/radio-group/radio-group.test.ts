@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { RadioGroup } from './radio-group.js';
+import { RadioGroup } from './index.js';
 import '../radio/index.js';
 
 describe('RadioGroup', () => {

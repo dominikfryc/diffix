@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { TemplateResult, html, nothing } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { Input } from './input.js';
+import { Input } from './index.js';
 
 type Component = Input & {
   start: string;

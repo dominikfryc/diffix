@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event.js';
@@ -25,7 +25,6 @@ import '../label/index.js';
  * @csspart label - Label element
  * @csspart container - Container element
  */
-@customElement('dfx-radio')
 export class Radio extends FormControlMixin(LitElement) {
   static styles = unsafeCSS(style);
 
@@ -111,11 +110,5 @@ export class Radio extends FormControlMixin(LitElement) {
         ${this.helperText ? this.#renderHelper() : nothing}
       </div>
     </label>`;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-radio': Radio;
   }
 }

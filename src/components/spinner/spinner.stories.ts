@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { TemplateResult, html, nothing } from 'lit';
-import { Spinner } from './spinner.js';
+import { Spinner } from './index.js';
 
 type Component = Spinner;
 

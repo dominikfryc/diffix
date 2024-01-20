@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { event, EventEmitter } from '../../utils/event.js';
 import style from './alert.css?raw';
@@ -36,7 +36,6 @@ import '../button/index.js';
  * @csspart icon-slot - Icon element
  * @csspart content - Default slot
  */
-@customElement('dfx-alert')
 export class Alert extends LitElement {
   static styles = unsafeCSS(style);
 
@@ -119,11 +118,5 @@ export class Alert extends LitElement {
         ${this.closable ? this.#renderCloseButton() : nothing}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-alert': Alert;
   }
 }

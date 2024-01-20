@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { FormControlMixin } from '@open-wc/form-control';
 import { event, EventEmitter } from '../../utils/event.js';
 import { groupRequiredValidator } from '../../utils/validators.js';
@@ -19,7 +19,6 @@ import '../label/index.js';
  * @csspart fieldset - Fieldset element
  * @csspart container - Container for checkboxes
  */
-@customElement('dfx-checkbox-group')
 export class CheckboxGroup extends FormControlMixin(LitElement) {
   static styles = unsafeCSS(style);
 
@@ -181,11 +180,5 @@ export class CheckboxGroup extends FormControlMixin(LitElement) {
         ${this.#showError ? this.#renderError() : this.#renderHelper()}
       </fieldset>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-checkbox-group': CheckboxGroup;
   }
 }

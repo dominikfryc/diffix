@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing, TemplateResult } from 'lit';
-import { Textarea } from './textarea.js';
+import { Textarea } from './index.js';
 
 type Component = Textarea & {
   'helper-text': string;

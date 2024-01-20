@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Radio } from './radio.js';
+import { Radio } from './index.js';
 
 describe('Radio', () => {
   it('is defined', () => {
