@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "inlineSources": true,
     "outDir": "dist",
@@ -26,10 +27,10 @@
         "rules": {
           "no-missing-import": "off",
           "no-incompatible-type-binding": "off",
-          "no-unknown-slot": "off"
-        }
-      }
-    ]
+          "no-unknown-slot": "off",
+        },
+      },
+    ],
   },
-  "include": ["src", "docs", "scripts"]
+  "include": ["src", "docs", "scripts"],
 }
