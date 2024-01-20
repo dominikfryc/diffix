@@ -64,7 +64,7 @@
 }
 
 :host(:not([disabled])) :not(.invalid) [part='control']:has(:focus, :active) {
-  box-shadow: var(--dfx-form-border-active, inset 0 0 0 0.05rem #20242c);
+  box-shadow: var(--dfx-form-border-active, inset 0 0 0 0.1rem #20242c);
 }
 
 .invalid [part='control'] {

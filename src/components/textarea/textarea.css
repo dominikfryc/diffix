@@ -62,7 +62,7 @@ textarea {
   margin: 0;
 
   &:focus-visible {
-    box-shadow: var(--dfx-form-border-active, inset 0 0 0 0.05rem #20242c);
+    box-shadow: var(--dfx-form-border-active, inset 0 0 0 0.1rem #20242c);
   }
 
   &::placeholder {
