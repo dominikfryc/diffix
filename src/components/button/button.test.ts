@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { Button } from './button.js';
+import { Button } from './index.js';
 
 describe('Button', () => {
   it('is defined', () => {

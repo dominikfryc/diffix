@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { TemplateResult, html, nothing } from 'lit';
-import { Button } from './button.js';
+import { Button } from './index.js';
 
 type Component = Button & {
   slot: string;
