@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult, html, nothing, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { event, EventEmitter } from '../../utils/event.js';
 import style from './button.css?raw';
 import '../spinner/spinner.js';
@@ -34,7 +34,6 @@ import '../spinner/spinner.js';
  * @cssprop [--dfx-button-transition=all var(--dfx-transition-medium, 0.2s ease-in-out)] - Transition
  * @csspart button - Button element
  */
-@customElement('dfx-button')
 export class Button extends LitElement {
   static styles = unsafeCSS(style);
 
@@ -163,11 +162,5 @@ export class Button extends LitElement {
             ${this.loading ? this.#renderLoadingContent() : this.#renderSlots()}
           </button>
         `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'dfx-button': Button;
   }
 }
