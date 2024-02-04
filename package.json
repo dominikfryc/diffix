@@ -15,6 +15,7 @@
   "license": "MIT",
   "author": "Dominik Fryč <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
   "funding": "https://ko-fi.com/dominikfryc",
+  "packageManager": "pnpm@8.15.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dominikfryc/diffix-test.git"
