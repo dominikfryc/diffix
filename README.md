@@ -1,8 +1,8 @@
 # Diffix - Web Components UI Library
 
-[![Storybook](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/storybook-button.svg)](https://www.diffix.dev)
-[![GitHub](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/github-button.svg)](https://github.com/dominikfryc/diffix-test)
-[![npm](https://raw.githubusercontent.com/dominikfryc/diffix-test/next/docs/assets/npm-button.svg)](https://www.npmjs.com/package/diffix-test)
+[![Storybook](https://raw.githubusercontent.com/dominikfryc/diffix/next/docs/assets/storybook-button.svg)](https://www.diffix.dev)
+[![GitHub](https://raw.githubusercontent.com/dominikfryc/diffix/next/docs/assets/github-button.svg)](https://github.com/dominikfryc/diffix)
+[![npm](https://raw.githubusercontent.com/dominikfryc/diffix/next/docs/assets/npm-button.svg)](https://www.npmjs.com/package/diffix)
 
 Diffix Web Components is a modern, performant, customizable, open-source UI library. Provides a set of reusable components to build web applications with consistent user experience.
 
@@ -14,24 +14,24 @@ Diffix Web Components is a modern, performant, customizable, open-source UI libr
 
 ## Instalation
 
-Ensure you have the latest [Node.js](https://nodejs.org/) installed on your machine. Use a package manager to install Diffix from [npm](https://www.npmjs.com/package/diffix-test):
+Ensure you have the latest [Node.js](https://nodejs.org/) installed on your machine. Use a package manager to install Diffix from [npm](https://www.npmjs.com/package/diffix):
 
 ```bash
-npm install diffix-test
+npm install diffix
 ```
 
 ## Import components
 
-Import the target component from `diffix-test/components/component-name`. Import automatically registers the Web Component (causes a side effect).
+Import the target component from `diffix/components/component-name`. Import automatically registers the Web Component (causes a side effect).
 
 ```ts
-import 'diffix-test/components/button';
+import 'diffix/components/button';
 ```
 
 Or you can import all components at once:
 
 ```ts
-import 'diffix-test';
+import 'diffix';
 ```
 
 ## Import theme
@@ -41,13 +41,13 @@ To use the default theme, import the CSS file. There are two ways to do this:
 1. Using an application bundler (Webpack, Rollup, Vite, etc.):
 
 ```ts
-import 'diffix-test/themes/default.css';
+import 'diffix/themes/default.css';
 ```
 
 2. Or using a `<link>` tag:
 
 ```html
-<link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
+<link href="/node_modules/diffix/dist/themes/default.css" rel="stylesheet" />
 ```
 
 ## Usage
@@ -79,7 +79,7 @@ Form controls should be automatically detectable inside the `<form>` element. Yo
 
 Components are published as ES modules so that they can be used in all modern browsers with no build step. That's good for prototyping, but for performance reasons, components in production should be bundled, tree-shaken, and optimized by individual applications using bundlers like Webpack, Rollup, or Vite.
 
-There is a [simple demo](https://github.com/dominikfryc/diffix-test/tree/next/demo/) using Vite to showcase the usage of individual components.
+There is a [simple demo](https://github.com/dominikfryc/diffix/tree/next/demo/) using Vite to showcase the usage of individual components.
 
 ## Attribution
 
@@ -95,8 +95,8 @@ Special thanks to the following projects that help make this project possible:
 
 ## Contribute
 
-As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. Please read the [Contributing Guide](https://github.com/dominikfryc/diffix-test/blob/next/.github/CONTRIBUTING.md) if you want to contribute to the code.
+As an open-source project, all contributions are welcome! Feel free to report bugs and submit feature requests. Please read the [Contributing Guide](https://github.com/dominikfryc/diffix/blob/next/.github/CONTRIBUTING.md) if you want to contribute to the code.
 
 ## License
 
-Diffix was created by [Dominik Fryč](https://github.com/dominikfryc). It's available under the [MIT license](https://github.com/dominikfryc/diffix-test/blob/next/LICENSE.md). You can use it in any project, commercial or not, with or without attribution.
+Diffix was created by [Dominik Fryč](https://github.com/dominikfryc). It's available under the [MIT license](https://github.com/dominikfryc/diffix/blob/next/LICENSE.md). You can use it in any project, commercial or not, with or without attribution.

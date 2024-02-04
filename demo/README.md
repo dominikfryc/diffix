@@ -7,13 +7,13 @@ This demo application showcases the usage of Diffix Web Components. It's built w
 1. Clone the Diffix repository:
 
 ```bash
-git clone git@github.com:dominikfryc/diffix-test.git
+git clone git@github.com:dominikfryc/diffix.git
 ```
 
 2. Get inside the repository folder:
 
 ```bash
-cd diffix-test
+cd diffix
 ```
 
 3. Install the library dependencies:

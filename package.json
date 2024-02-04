@@ -1,5 +1,5 @@
 {
-  "name": "diffix-test",
+  "name": "diffix",
   "version": "0.0.0",
   "description": "Web Components UI Library",
   "keywords": [
@@ -11,14 +11,14 @@
     "design-system"
   ],
   "homepage": "https://www.diffix.dev",
-  "bugs": "https://github.com/dominikfryc/diffix-test/issues",
+  "bugs": "https://github.com/dominikfryc/diffix/issues",
   "license": "MIT",
   "author": "Dominik Fryč <fryc.dominik@gmail.com> (https://dominikfryc.com/)",
   "funding": "https://ko-fi.com/dominikfryc",
   "packageManager": "pnpm@8.15.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dominikfryc/diffix-test.git"
+    "url": "git+https://github.com/dominikfryc/diffix.git"
   },
   "publishConfig": {
     "access": "public",

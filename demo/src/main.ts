@@ -1,10 +1,10 @@
 // Import styles
-import 'diffix-test/themes/default.css';
-import 'diffix-test/themes/dark.css';
+import 'diffix/themes/default.css';
+import 'diffix/themes/dark.css';
 import './styles.css';
 
 // Import all components
-import 'diffix-test';
+import 'diffix';
 
 // Set theme as soon as possible to prevent flashing on page load
 const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

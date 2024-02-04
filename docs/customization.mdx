@@ -20,7 +20,7 @@ To use the default theme, import the CSS file.
 <Source
   language="ts"
   code={`
-import 'diffix-test/themes/default.css';
+import 'diffix/themes/default.css';
 `}
 />
 
@@ -29,7 +29,7 @@ import 'diffix-test/themes/default.css';
 <Source
   language="html"
   code={`
-<link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
+<link href="/node_modules/diffix/dist/themes/default.css" rel="stylesheet" />
 `}
 />
 
@@ -42,8 +42,8 @@ To use the dark theme, import the CSS file of the default theme and the dark the
 <Source
   language="ts"
   code={`
-import 'diffix-test/themes/default.css';
-import 'diffix-test/themes/dark.css';
+import 'diffix/themes/default.css';
+import 'diffix/themes/dark.css';
 `}
 />
 
@@ -52,8 +52,8 @@ import 'diffix-test/themes/dark.css';
 <Source
   language="html"
   code={`
-<link href="/node_modules/diffix-test/dist/themes/default.css" rel="stylesheet" />
-<link href="/node_modules/diffix-test/dist/themes/dark.css" rel="stylesheet" />
+<link href="/node_modules/diffix/dist/themes/default.css" rel="stylesheet" />
+<link href="/node_modules/diffix/dist/themes/dark.css" rel="stylesheet" />
 `}
 />
 
@@ -71,7 +71,7 @@ The dark theme is not applied automatically. Use the `data-theme` attribute on t
 
 <Canvas sourceState="shown" of={Stories.DarkTheme} />
 
-If you want to implement a theme toggle, save the preferred theme outside the current session, or auto-detect the user system preference, check out our [simple demo](https://github.com/dominikfryc/diffix-test/tree/next/demo/), which implements these features.
+If you want to implement a theme toggle, save the preferred theme outside the current session, or auto-detect the user system preference, check out our [simple demo](https://github.com/dominikfryc/diffix/tree/next/demo/), which implements these features.
 
 ## Custom theme
 
