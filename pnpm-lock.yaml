@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/inter':
+    specifier: ^5.0.16
+    version: 5.0.16
   '@open-wc/form-control':
     specifier: ^1.0.0
     version: 1.0.0
@@ -25,9 +28,6 @@ devDependencies:
   '@custom-elements-manifest/analyzer':
     specifier: ^0.9.0
     version: 0.9.0
-  '@fontsource-variable/inter':
-    specifier: ^5.0.16
-    version: 5.0.16
   '@open-wc/testing':
     specifier: ^4.0.0
     version: 4.0.0
@@ -2757,7 +2757,7 @@ packages:
       {
         integrity: sha512-k+BUNqksTL+AN+o+OV7ILeiE9B5M5X+/jA7LWvCwjbV9ovXTqZyKRhA/x7uYv/ml8WQ0XNLBM7cRFIx4jW0/hg==,
       }
-    dev: true
+    dev: false
 
   /@github/catalyst@1.6.0:
     resolution:

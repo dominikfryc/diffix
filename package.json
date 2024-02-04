@@ -64,6 +64,7 @@
     "types:check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.16",
     "@open-wc/form-control": "^1.0.0",
     "lit": "^3.1.1"
   },
@@ -72,7 +73,6 @@
     "@commitlint/config-conventional": "^18.4.4",
     "@commitlint/cz-commitlint": "^18.4.4",
     "@custom-elements-manifest/analyzer": "^0.9.0",
-    "@fontsource-variable/inter": "^5.0.16",
     "@open-wc/testing": "^4.0.0",
     "@storybook/addon-a11y": "^7.6.10",
     "@storybook/addon-essentials": "^7.6.10",
